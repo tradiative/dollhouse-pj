@@ -1,0 +1,11 @@
+{
+  "version": "0.2.0",
+  "sourceCommit": "8129e3401e118106797edfb909ae6ed4ba0ecb05",
+  "publishedAt": "2026-10-23T15:28:50.015436+00:00",
+  "verification": {
+    "unitTests": 26,
+    "browserTests": 14,
+    "chatgptPlanConnected": false,
+    "paidApiEnabled": false
+  }
+}
