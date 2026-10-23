@@ -29,4 +29,18 @@
 
 AI 응답 완료·중단·거부·과금 차단 검사는 모의 응답/미연결 로컬 엔드포인트 검사입니다. 합성 이미지 검사는 실제 브라우저/이미지 픽셀 연산이며 실제 생성형 AI 호출의 증거가 아닙니다. 내부 윤곽 겹침 비율을 독립적인 도면 정확도 점수로 취급하지 않습니다.
 
-공식 SIWC 문서의 실제 열람 결과와 현재 앱의 미연결 사유는 [chatgpt-connection.md](chatgpt-connection.md)에 기록합니다. 운영 주소의 배포 후 검사는 별도 확인합니다.
+공식 SIWC 문서의 실제 열람 결과와 현재 앱의 미연결 사유는 [chatgpt-connection.md](chatgpt-connection.md)에 기록합니다. 운영 주소의 배포 후 검사는 아래 기록과 별도 JSON에 남깁니다.
+
+## 공개 주소 직접 검사
+
+2026-10-24 00:31 (Asia/Seoul)에 Chromium의 새 브라우저 컨텍스트로 [실제 사이트](https://tradiative.github.io/dollhouse-pj/)를 열었습니다. 게시된 앱 소스는 `8129e3401e118106797edfb909ae6ed4ba0ecb05`이며, [Pages 배포 작업](https://github.com/tradiative/dollhouse-pj/actions/runs/39978620360)은 성공했습니다.
+
+- HTTP 200, 실제 합성 이미지 2개/4개 창호의 서로 다른 결과, 4개 창호 결과의 부품 23개 확인.
+- 공개 주소에서 내려받은 SVG 9,781 B · DXF 10,855 B · STL 157,958 B · JSON 94,320 B를 다시 읽어 검사.
+- 원본 2개를 포함한 ZIP에서 실제 PNG 서명과 파일 목록 확인.
+- PDF 지연 로딩·워커가 공개 사이트 하위 경로에서 작동하며 2쪽에서 관찰 개구부 4개 생성.
+- 390px 모바일 화면 가로 넘침 없음. 이미지 추정/3D 화면을 캡처해 직접 열어 확인.
+- 페이지 실행 오류 0, 실패한 정적 자산 0, 실제 AI 요청 0.
+- 기존 `downloads/impi-review-v1/` 파일 트리를 보존했고 기존 치수 CSV의 HTTP 200 확인.
+
+[공개 검사 JSON](public-validation-v2.json)은 합성 입력의 기능 검사 기록입니다. 임피역 원본의 정확도나 실제 ChatGPT 연결의 증거로 사용하지 않습니다.

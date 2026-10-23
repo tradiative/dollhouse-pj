@@ -1,0 +1,37 @@
+{
+  "url": "https://tradiative.github.io/dollhouse-pj/",
+  "sourceCommit": "8129e3401e118106797edfb909ae6ed4ba0ecb05",
+  "checkedAt": "2026-10-23T15:31:56.307Z",
+  "httpStatus": 200,
+  "variableObservedOpenings": [
+    2,
+    4
+  ],
+  "parts": 23,
+  "downloads": [
+    {
+      "format": "SVG",
+      "bytes": 9781
+    },
+    {
+      "format": "DXF",
+      "bytes": 10855
+    },
+    {
+      "format": "STL",
+      "bytes": 157958
+    },
+    {
+      "format": "JSON",
+      "bytes": 94320
+    }
+  ],
+  "completeZipWithOriginals": true,
+  "pdfPage2ObservedOpenings": 4,
+  "mobileOverflow": false,
+  "pageErrors": [],
+  "badAssets": [],
+  "actualAiRequests": 0,
+  "chatgptPlanConnected": false,
+  "scope": "Synthetic pixel and PDF inputs; not verified Impi reconstruction"
+}
