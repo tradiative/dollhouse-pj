@@ -1,5 +1,9 @@
 import * as THREE from "three";
 import { STLExporter } from "three/examples/jsm/exporters/STLExporter.js";
+import type { BuildingDesign, DesignSnapshot, FabricationSettings, Provenance, SizeSettings } from "./design/types";
+import { compileDesign } from "./design/compile";
+import { validateDesign } from "./design/geometry";
+import { designSignature } from "./design/editing";
 
 export type Dimensions = {
   width: number;
@@ -27,6 +31,8 @@ export type Part = {
   rotation: [number, number, number];
   color: string;
   material: string;
+  sourceElementId?: string;
+  provenance?: Provenance;
 };
 export type Source = {
   id: string;
@@ -46,6 +52,8 @@ export type Project = {
   physicalConfirmed: boolean;
   physicalNote: string;
   updatedAt: string;
+  design?: BuildingDesign;
+  designHistory?: DesignSnapshot[];
 };
 export type Check = {
   id: string;
@@ -127,6 +135,15 @@ export function validDimensions(d: Dimensions) {
     d.depth / d.scale <= 2000 &&
     (d.wallHeight + d.roofRise) / d.scale <= 2000
   );
+}
+export function projectSignature(p: Project) {
+  return p.design ? designSignature(p.design) : signature(p.dimensions);
+}
+export function projectParts(p: Project) {
+  return p.design ? compileDesign(p.design) : awaitingImageModel(p) ? [] : buildParts(p.dimensions);
+}
+export function awaitingImageModel(p: Project) {
+  return !p.design && !p.confirmed && p.sources.some(s => !s.sample && (/^image\/(png|jpeg|webp)$/.test(s.type) || /\.pdf$/i.test(s.name)));
 }
 export function geometryIssues(d: Dimensions): string[] {
   if (!validDimensions(d))
@@ -444,49 +461,27 @@ export function geometryFor(part: Part) {
   return geometry;
 }
 export function validateProject(p: Project): Check[] {
-  const issues = geometryIssues(p.dimensions),
-    generated = p.generatedSignature === signature(p.dimensions);
+  if (awaitingImageModel(p)) return [
+    { id: "scale", name: "목표 크기·단위 확인", detail: "이미지에서 모델을 아직 만들지 않았습니다. 목표 크기를 선택하고 외형 추정을 실행하세요. 기존 예시 치수를 실측값으로 보지 않습니다.", status: "review" },
+    { id: "geometry", name: "형상 생성 전", detail: "이미지 자료를 추가한 것만으로 예시 집을 분석 결과로 표시하지 않습니다.", status: "review" },
+    { id: "source", name: "원본 대조", detail: "추정 결과 생성 후 원본과 대조하세요.", status: "review" },
+    { id: "generation", name: "부품 생성 전", detail: "이미지 형상 또는 직접 대조한 치수 기준을 먼저 준비해 주세요.", status: "review" },
+    { id: "fit", name: "실물 조립 확인", detail: "형상 생성과 별도로 실제 재료·조립 확인이 필요합니다.", status: "review" },
+  ];
+  const issues = p.design ? validateDesign(p.design).filter(i => i.severity === "error").map(i => i.message) : geometryIssues(p.dimensions);
+  const generated = p.generatedSignature === projectSignature(p);
   return [
-    {
-      id: "scale",
-      name: "축척·단위 일관성",
-      detail: `실제 치수 mm ÷ ${p.dimensions.scale} → 모형 mm. 재료 두께는 환산하지 않습니다.`,
-      status: validDimensions(p.dimensions) ? "pass" : "fail",
-    },
-    {
-      id: "geometry",
-      name: "윤곽·개구부 검사",
-      detail: issues.length
-        ? issues.join(" ")
-        : "벽·창문·출입문 윤곽이 닫혀 있고 개구부가 벽 범위 안에 있습니다.",
-      status: issues.length ? "fail" : "pass",
-    },
-    {
-      id: "source",
-      name: "원본 치수 대조",
-      detail:
-        p.confirmed && p.sources.length
-          ? "사용자가 입력 치수의 출처와 단위를 확인했습니다."
-          : "샘플·추정 치수입니다. 자료를 등록하고 원본과 비교한 뒤 설계 기준에서 확인해 주세요.",
-      status: p.confirmed && p.sources.length ? "pass" : "review",
-    },
-    {
-      id: "generation",
-      name: "부품 버전 일치",
-      detail: generated
-        ? "현재 설계 기준으로 부품 목록을 생성했습니다."
-        : "현재 기준의 부품 목록을 생성해 주세요. 치수 수정 시 다시 생성해야 합니다.",
-      status: generated ? "pass" : "review",
-    },
-    {
-      id: "fit",
-      name: "재료·조립 실물 확인",
-      detail:
-        p.physicalConfirmed && p.physicalNote.trim()
-          ? `시험 가공 기록: ${p.physicalNote}`
-          : `두께 ${p.dimensions.thickness} mm · 편측 여유 ${p.dimensions.clearance} mm. 연결부 강도·휨·끼움은 실물 확인이 필요합니다.`,
-      status: p.physicalConfirmed && p.physicalNote.trim() ? "pass" : "review",
-    },
+    { id: "scale", name: p.design ? "목표 크기·단위 일관성" : "축척·단위 일관성",
+      detail: p.design ? (p.design.size.mode === "known-reference" ? "입력한 실제 기준 길이와 축척을 적용한 모형 mm입니다. 기준 길이의 출처 확인은 별도입니다." : "목표 폭 " + p.design.size.targetWidthMm + " mm의 추정 모델입니다. 실측 축척·고증 완료로 표시하지 않습니다.") : "실제 치수 mm ÷ " + p.dimensions.scale + " → 모형 mm. 재료 두께는 환산하지 않습니다.",
+      status: p.design ? (issues.length ? "fail" : "pass") : validDimensions(p.dimensions) ? "pass" : "fail" },
+    { id: "geometry", name: "윤곽·개구부 검사",
+      detail: issues.length ? issues.join(" ") : p.design ? "자기 교차·수치·ID·부모 관계·벽 밖 개구부·개구부 겹침·동일 배치 패널 중복 검사를 통과했습니다. 전체 3D 간섭 인증은 아닙니다." : "벽·창문·출입문 윤곽이 닫혀 있고 개구부가 벽 범위 안에 있습니다.",
+      status: issues.length ? "fail" : "pass" },
+    { id: "source", name: p.design ? "원본 형상·추정 근거 대조" : "원본 치수 대조",
+      detail: p.confirmed && p.sources.length ? "사용자가 원본 자료와 입력·추정 근거를 대조했습니다. 실측 또는 미관찰 후면 확인을 뜻하지 않습니다." : p.design ? "입면 투영·요소별 근거를 비교해 주세요. 내부 윤곽 겹침 지표는 독립적인 정확도 검증이 아닙니다. 미관찰 후면은 검증되지 않았습니다." : "샘플·추정 치수입니다. 자료를 등록하고 원본과 비교한 뒤 설계 기준에서 확인해 주세요.",
+      status: p.confirmed && p.sources.length ? "pass" : "review" },
+    { id: "generation", name: "부품 버전 일치", detail: generated ? "현재 형상 데이터에서 화면과 내보내기용 부품을 생성했습니다." : "현재 기준의 부품 목록을 생성해 주세요. 형상 수정 시 다시 생성해야 합니다.", status: generated ? "pass" : "review" },
+    { id: "fit", name: "재료·조립 실물 확인", detail: p.physicalConfirmed && p.physicalNote.trim() ? "시험 가공 기록: " + p.physicalNote : "두께 " + (p.design?.fabrication.thicknessMm ?? p.dimensions.thickness) + " mm. 연결부 강도·휨·끼움은 실물 확인이 필요합니다.", status: p.physicalConfirmed && p.physicalNote.trim() ? "pass" : "review" },
   ];
 }
 function n(v: number) {
@@ -527,7 +522,8 @@ export function layoutParts(parts: Part[]) {
     return item;
   });
 }
-export function svgDrawing(parts: Part[], d: Dimensions) {
+export function svgDrawing(parts: Part[], d: Dimensions, size?: SizeSettings, fabrication?: FabricationSettings) {
+  const kerf = fabrication?.kerfMm ?? d.kerf;
   const layout = layoutParts(parts),
     height = Math.max(80, ...layout.map((p) => p.y + p.height)) + 24;
   const sheetWidth = Math.max(
@@ -537,7 +533,9 @@ export function svgDrawing(parts: Part[], d: Dimensions) {
   const path = (poly: Point[]) =>
     poly.map((p, i) => `${i ? "L" : "M"}${n(p[0])},${n(p[1])}`).join(" ") +
     " Z";
-  return `<?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" width="${n(sheetWidth)}mm" height="${n(height)}mm" viewBox="0 0 ${n(sheetWidth)} ${n(height)}"><title>TRADIATIVE · 1:${d.scale} · 검토용 도안</title><desc>단위 mm. 빨강: 윤곽. 파랑: 부품 번호. kerf ${d.kerf}mm 보정 미적용; 가공업체 CAM에서 재료별 분리·보정 필요.</desc>${layout.map((p) => `<g transform="translate(${n(p.x)},${n(p.y + p.height)}) scale(1,-1)"><path d="${[p.part.outline, ...p.part.holes].map(path).join(" ")}" fill="none" stroke="#b5573e" stroke-width="0.12"/></g><text x="${n(p.x)}" y="${n(p.y + p.height + 3)}" font-family="sans-serif" font-size="2.2" fill="#344b64">${p.part.id} · ${xml(p.part.name)} · ${xml(p.part.material)} · t${p.part.thickness}</text>`).join("")}<text x="8" y="${n(height - 6)}" font-family="sans-serif" font-size="3" fill="#444">TRADIATIVE / REVIEW ONLY / 1:${d.scale} / mm / kerf compensation not applied</text></svg>`;
+  const output = `<?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" width="${n(sheetWidth)}mm" height="${n(height)}mm" viewBox="0 0 ${n(sheetWidth)} ${n(height)}"><title>TRADIATIVE · 1:${d.scale} · 검토용 도안</title><desc>단위 mm. 빨강: 윤곽. 파랑: 부품 번호. kerf ${kerf}mm 보정 미적용; 가공업체 CAM에서 재료별 분리·보정 필요.</desc>${layout.map((p) => `<g transform="translate(${n(p.x)},${n(p.y + p.height)}) scale(1,-1)"><path d="${[p.part.outline, ...p.part.holes].map(path).join(" ")}" fill="none" stroke="#b5573e" stroke-width="0.12"/></g><text x="${n(p.x)}" y="${n(p.y + p.height + 3)}" font-family="sans-serif" font-size="2.2" fill="#344b64">${p.part.id} · ${xml(p.part.name)} · ${xml(p.part.material)} · t${p.part.thickness}</text>`).join("")}<text x="8" y="${n(height - 6)}" font-family="sans-serif" font-size="3" fill="#444">TRADIATIVE / REVIEW ONLY / 1:${d.scale} / mm / kerf compensation not applied</text></svg>`;
+  const label = size ? (size.mode === "known-reference" ? "1:" + size.scaleDenominator : "목표 폭 " + size.targetWidthMm + " mm · 실물 축척 미확인") : "1:" + d.scale;
+  return output.replaceAll("1:" + d.scale, label);
 }
 export function dxfDrawing(parts: Part[]) {
   const lines = [
@@ -634,7 +632,8 @@ export function stlAssembly(parts: Part[]) {
     group.add(mesh);
   });
   group.rotation.x = Math.PI / 2;
-  group.position.z = 2.5;
+  group.updateMatrixWorld(true);
+  group.position.z = -new THREE.Box3().setFromObject(group).min.z;
   group.updateMatrixWorld(true);
   const result = new STLExporter().parse(group, { binary: false });
   group.traverse((o) => {
@@ -643,9 +642,9 @@ export function stlAssembly(parts: Part[]) {
   return result;
 }
 export function manifest(p: Project) {
-  const parts = buildParts(p.dimensions);
+  const parts = projectParts(p);
   return {
-    schema: "tradiative.project.v1",
+    schema: p.design ? "tradiative.project.v2" : "tradiative.project.v1",
     status: "검토용",
     exportedAt: new Date().toISOString(),
     units: "mm",
@@ -656,7 +655,7 @@ export function manifest(p: Project) {
       assemblySTL: "Z-up, base bottom at Z=0",
     },
     disclaimer:
-      "샘플 형상입니다. 문화유산의 실측 복원이 아니며 원본·실물 확인 전 제작 승인으로 사용할 수 없습니다. STL 좌표 단위 mm. 절단 도안에 kerf 보정 미적용.",
+      p.design ? "관찰·추정·설계 보완을 구분한 검토용 형상입니다. 실제 크기 미확인 시 정밀 축척 복원을 주장하지 않습니다. 원본·실물 조립 검증 전 제작 승인으로 사용할 수 없습니다. STL 단위 mm. kerf 보정 미적용." : "샘플 형상입니다. 문화유산의 실측 복원이 아니며 원본·실물 확인 전 제작 승인으로 사용할 수 없습니다. STL 좌표 단위 mm. 절단 도안에 kerf 보정 미적용.",
     ...p,
     sources: p.sources.map(({ url, text, ...s }) => ({
       ...s,

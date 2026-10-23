@@ -9,24 +9,33 @@ import {
   Box,
   MoveUpRight,
 } from "lucide-react";
-import { buildParts, geometryFor, svgDrawing, type Dimensions } from "./engine";
+import { buildParts, geometryFor, svgDrawing, type Dimensions, type Part } from "./engine";
+import type { BuildingDesign } from "./design/types";
+import { modelBounds } from "./design/geometry";
 
 export default function ModelView({
   dimensions: d,
   projectName,
   selected,
   onSelect,
+  design,
+  providedParts,
+  pendingImage,
 }: {
   dimensions: Dimensions;
   projectName: string;
   selected: string;
   onSelect: (id: string) => void;
+  design?: BuildingDesign;
+  providedParts?: Part[];
+  pendingImage?: boolean;
 }) {
   const mount = useRef<HTMLDivElement>(null);
   const [view, setView] = useState<"3d" | "front" | "plan">("3d");
   const [exploded, setExploded] = useState(false);
   const [reset, setReset] = useState(0);
   const [error, setError] = useState(false);
+  const [proofColors, setProofColors] = useState(false);
   const [ruler, setRuler] = useState({ width: 50, length: 50 });
   useEffect(() => {
     const el = mount.current;
@@ -49,11 +58,12 @@ export default function ModelView({
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     el.appendChild(renderer.domElement);
     const scene = new THREE.Scene();
-    const parts = buildParts(d),
-      w = d.width / d.scale,
-      depth = d.depth / d.scale,
-      h = d.wallHeight / d.scale,
-      rise = d.roofRise / d.scale;
+    const dimensions = design ? modelBounds(design) : undefined;
+    const parts = providedParts || buildParts(d),
+      w = dimensions?.width || d.width / d.scale,
+      depth = dimensions?.depth || d.depth / d.scale,
+      h = dimensions ? dimensions.height * 0.7 : d.wallHeight / d.scale,
+      rise = dimensions ? dimensions.height * 0.3 : d.roofRise / d.scale;
     const baseSpan =
       Math.max(w, depth, (h + rise) * 1.8, 100) * (exploded ? 1.45 : 1.15);
     const fittedSpan = (aspect: number) =>
@@ -118,7 +128,7 @@ export default function ModelView({
     parts.forEach((p) => {
       const geometry = geometryFor(p);
       const material = new THREE.MeshStandardMaterial({
-        color: p.id === selected ? "#cc865a" : p.color,
+        color: p.id === selected ? "#cc865a" : proofColors && p.provenance ? ({ observed: "#6b9f92", inferred: "#c5a468", designed: "#ab85a1" })[p.provenance] : p.color,
         roughness: p.group === "glass" ? 0.2 : 0.88,
         metalness: p.group === "roof" ? 0.15 : 0,
         transparent: p.group === "glass",
@@ -152,7 +162,7 @@ export default function ModelView({
         }),
       );
       mesh.add(edges);
-      if (p.group === "roof") {
+      if (p.group === "roof" && !design) {
         const rw = Math.max(...p.outline.map((q) => q[0])),
           rh = Math.max(...p.outline.map((q) => q[1]));
         const points = [];
@@ -172,7 +182,7 @@ export default function ModelView({
           ),
         );
       }
-      if (p.group === "wall") {
+      if (p.group === "wall" && !design) {
         const points: THREE.Vector3[] = [];
         const pw = Math.max(...p.outline.map((q) => q[0]));
         for (let y = 3; y < h; y += 3) {
@@ -207,7 +217,7 @@ export default function ModelView({
       }
     });
     // A non-fabrication label, like the annotations on a physical study model.
-    if (parts.length && !exploded) {
+    if (parts.length && !exploded && !design) {
       const canvas = document.createElement("canvas");
       canvas.width = 512;
       canvas.height = 180;
@@ -310,8 +320,9 @@ export default function ModelView({
       renderer.dispose();
       renderer.domElement.remove();
     };
-  }, [d, projectName, view, exploded, reset, selected, onSelect]);
-  const parts = buildParts(d);
+  }, [d, projectName, view, exploded, reset, selected, onSelect, design, providedParts, proofColors]);
+  const parts = providedParts || buildParts(d);
+  const dimensions = design ? modelBounds(design) : undefined;
   return (
     <section className="model-card">
       <div className="model-toolbar">
@@ -337,6 +348,7 @@ export default function ModelView({
           ))}
         </div>
       </div>
+      {design && <label className="model-proof-control"><input type="checkbox" checked={proofColors} onChange={e => setProofColors(e.target.checked)}/>근거 색상: 관찰 · 추정 · 설계 보완</label>}
       <div
         className="model-canvas"
         ref={mount}
@@ -346,7 +358,7 @@ export default function ModelView({
           <div
             className="svg-preview"
             dangerouslySetInnerHTML={{
-              __html: svgDrawing(parts, d).replace(/<\?xml.*?\?>/, ""),
+              __html: svgDrawing(parts, d, design?.size, design?.fabrication).replace(/<\?xml.*?\?>/, ""),
             }}
           />
         )}
@@ -357,11 +369,12 @@ export default function ModelView({
             <button onClick={() => setView("plan")}>부품 도안 보기</button>
           </div>
         )}
+        {pendingImage && <div className="canvas-fallback"><Box size={35}/><p>이미지 모델을 아직 만들지 않았습니다.</p><p>위의 ‘이미지에서 외형 추정’을 실행해 주세요.</p></div>}
         <div className="canvas-label">
           <span className="tiny-dot" />{" "}
           {view === "plan"
             ? "제작 전 검토용 · kerf 보정 전"
-            : "파라메트릭 모델 · 샘플 형상"}
+            : design ? "이미지 윤곽 추정 · 깊이 보완 · 검토용" : "기존 예시 형상 · 이미지 분석 결과 아님"}
         </div>
         <div className="compass">
           <span>N</span>
@@ -411,12 +424,12 @@ export default function ModelView({
         )}
       </div>
       <div className="model-footer">
-        <span className="scale-tag">1 : {d.scale}</span>
+        <span className="scale-tag">{design ? design.size.mode === "known-reference" ? "입력 기준 1:" + design.size.scaleDenominator : "목표 모형 mm" : "1 : " + d.scale}</span>
         <span>
           모형 크기{" "}
           <b>
-            {(d.width / d.scale).toFixed(1)} × {(d.depth / d.scale).toFixed(1)}{" "}
-            × {((d.wallHeight + d.roofRise) / d.scale).toFixed(1)}
+            {(dimensions?.width ?? d.width / d.scale).toFixed(1)} × {(dimensions?.depth ?? d.depth / d.scale).toFixed(1)}{" "}
+            × {(dimensions?.height ?? (d.wallHeight + d.roofRise) / d.scale).toFixed(1)}
           </b>{" "}
           <small>mm</small>
         </span>

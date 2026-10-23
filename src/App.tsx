@@ -33,9 +33,16 @@ import {
   X,
 } from "lucide-react";
 import ModelView from "./ModelView";
+import DesignStudio from "./DesignStudio";
+import type { BuildingDesign } from "./design/types";
+import { modelBounds, validateDesign } from "./design/geometry";
+import { snapshot } from "./design/editing";
+import { parseProjectMetadata } from "./design/archive";
 import { imageData, readSourceFile, saveSourceFile } from "./sourceStore";
 import {
-  buildParts,
+  projectParts,
+  projectSignature,
+  awaitingImageModel,
   DEFAULT_DIMENSIONS,
   download,
   dxfDrawing,
@@ -43,7 +50,6 @@ import {
   manifest,
   parseDimensions,
   sampleProject,
-  signature,
   stlAssembly,
   stlPart,
   svgDrawing,
@@ -96,6 +102,8 @@ function loadProject(): Project {
         return {
           ...sampleProject(),
           ...p,
+          design: p.design ? parseProjectMetadata({ ...p, schema: "tradiative.project.v2" }).design : undefined,
+          designHistory: p.designHistory || [],
           name: p.name.slice(0, 100),
           confirmed: p.confirmed === true,
           physicalConfirmed: p.physicalConfirmed === true,
@@ -145,12 +153,15 @@ export default function App() {
   }, []);
   const notify = useCallback((text: string) => setToast(text), []);
   const d = project.dimensions;
-  const parts = useMemo(() => buildParts(d), [d]);
+  const pendingImage = awaitingImageModel(project);
+  const parts = useMemo(() => projectParts(project), [d, project.design, pendingImage]);
+  const sceneBounds = project.design ? modelBounds(project.design) : undefined;
+  const selectedElementId = parts.find(p => p.id === selected)?.sourceElementId || selected;
   const checks = useMemo(() => validateProject(project), [project]);
   const passed = checks.filter((c) => c.status === "pass").length;
   const progress = Math.round((passed / checks.length) * 100);
-  const generated = project.generatedSignature === signature(d);
-  const issues = geometryIssues(d);
+  const generated = project.generatedSignature === projectSignature(project);
+  const issues = project.design ? validateDesign(project.design).filter(i => i.severity === "error").map(i => i.message) : pendingImage ? ["이미지 모델 생성 전입니다. 위의 이미지 외형 추정을 실행하거나 직접 입력한 치수를 원본과 대조해 주세요."] : geometryIssues(d);
   useEffect(() => {
     if (!toast) return;
     const t = setTimeout(() => setToast(""), 4000);
@@ -308,6 +319,8 @@ export default function App() {
       ...p,
       sources: [...p.sources, ...accepted],
       confirmed: false,
+      generatedSignature: "",
+      physicalConfirmed: false,
       updatedAt: new Date().toISOString(),
     }));
     notify(
@@ -371,7 +384,7 @@ export default function App() {
         notify(
           aiConfigured
             ? "분석 가능한 이미지나 치수 텍스트를 다시 첨부해 주세요."
-            : "사진 AI 분석이 연결되지 않았습니다. 치수를 직접 입력하거나 CSV·TXT 자료를 추가해 주세요.",
+            : "치수 텍스트를 찾지 못했습니다. 이미지 형상은 위의 ‘이미지에서 외형 추정’을 사용하세요.",
         );
       }
     } catch (e) {
@@ -387,7 +400,7 @@ export default function App() {
       notify(issues[0]);
       return;
     }
-    update({ generatedSignature: signature(d) });
+    update({ generatedSignature: projectSignature(project) });
     notify(`${parts.length}개 파츠를 현재 설계 기준으로 생성했습니다.`);
   }
   function exportFile(format: "svg" | "dxf" | "stl" | "json") {
@@ -401,9 +414,11 @@ export default function App() {
       setStage(2);
       return;
     }
-    const prefix = `${project.name.replace(/[\\/:*?"<>|]/g, "_")}_1-${d.scale}_검토용`;
+    const safeName = project.name.replace(/[\\/:*?"<>|]/g, "_");
+    const sizeLabel = project.design ? (project.design.size.mode === "known-reference" ? "1-" + project.design.size.scaleDenominator : "목표폭-" + project.design.size.targetWidthMm + "mm") : "1-" + d.scale;
+    const prefix = safeName + "_" + sizeLabel + "_검토용";
     if (format === "svg")
-      download(svgDrawing(parts, d), `${prefix}.svg`, "image/svg+xml");
+      download(svgDrawing(parts, d, project.design?.size, project.design?.fabrication), `${prefix}.svg`, "image/svg+xml");
     if (format === "dxf")
       download(dxfDrawing(parts), `${prefix}.dxf`, "application/dxf");
     if (format === "stl")
@@ -423,44 +438,8 @@ export default function App() {
     try {
       if (file.size > 2 * 1024 * 1024)
         throw new Error("프로젝트 JSON은 2 MB 이하만 가져올 수 있습니다.");
-      const p = JSON.parse(await file.text());
-      if (
-        p.schema !== "tradiative.project.v1" ||
-        !validDimensions(p.dimensions) ||
-        typeof p.name !== "string" ||
-        !Array.isArray(p.sources)
-      )
-        throw new Error("지원되는 TRADIATIVE 프로젝트 파일이 아닙니다.");
-      const sources: Source[] = p.sources
-        .slice(0, 100)
-        .filter((s: Source) => typeof s.name === "string")
-        .map((s: Source) => ({
-          id:
-            typeof s.id === "string" && /^[a-zA-Z0-9-]{1,100}$/.test(s.id)
-              ? s.id
-              : crypto.randomUUID(),
-          name: s.name.slice(0, 200),
-          type: typeof s.type === "string" ? s.type : "",
-          size: Number(s.size) || 0,
-          sample: Boolean(s.sample),
-          text:
-            typeof s.text === "string" && !s.text.startsWith("data:")
-              ? s.text.slice(0, 150000)
-              : undefined,
-        }));
-      setProject({
-        name: p.name.slice(0, 100),
-        dimensions: p.dimensions,
-        sources,
-        confirmed: false,
-        generatedSignature: "",
-        physicalConfirmed: false,
-        physicalNote:
-          typeof p.physicalNote === "string"
-            ? p.physicalNote.slice(0, 10000)
-            : "",
-        updatedAt: new Date().toISOString(),
-      });
+      const restored = parseProjectMetadata(JSON.parse(await file.text()));
+      setProject(restored);
       setCandidates([]);
       setSelected("");
       setStage(1);
@@ -489,6 +468,15 @@ export default function App() {
       "새 프로젝트를 열었습니다. 이전 프로젝트는 백업 파일로 내려받았습니다.",
     );
   }
+  const applyDesign = (design: BuildingDesign, label: string) => {
+    setProject(p => ({ ...p, design, designHistory: [...(p.designHistory || []), ...(p.design ? [snapshot(p.design, label)] : [])].slice(-10), confirmed: false, physicalConfirmed: false, generatedSignature: "", updatedAt: new Date().toISOString() }));
+  };
+  const undoDesign = () => {
+    setProject(p => {
+      const history = p.designHistory || [], previous = history.at(-1);
+      return previous ? { ...p, design: structuredClone(previous.design), designHistory: history.slice(0, -1), generatedSignature: "", confirmed: false, physicalConfirmed: false, updatedAt: new Date().toISOString() } : p;
+    });
+  };
   const go = (i: number) => {
     setStage(i);
     setNav("workspace");
@@ -761,12 +749,18 @@ export default function App() {
               );
             })}
           </div>
+          <DesignStudio project={project} selectedId={selectedElementId}
+            onSelect={id => setSelected(parts.find(p => p.sourceElementId === id)?.id || id)}
+            onAddSources={() => inputRef.current?.click()} onDesign={applyDesign} onUndo={undoDesign} onRestore={restored => { setProject(restored); setSelected(""); setStage(0); }} notify={notify}/>
           <div className="workspace-grid">
             <ModelView
               dimensions={d}
               projectName={project.name}
               selected={selected}
               onSelect={onSelect}
+              design={project.design}
+              providedParts={parts}
+              pendingImage={pendingImage}
             />
             <aside className="right-column">
               <section className="readiness-card">
@@ -805,6 +799,14 @@ export default function App() {
                     <SlidersHorizontal size={16} />
                   </button>
                 </div>
+                {project.design && sceneBounds ? <div className="scene-summary">
+                  <span>{project.design.size.mode === "known-reference" ? "입력 기준 1:" + project.design.size.scaleDenominator : "실물 크기 미확인 · 목표 모형 mm"}</span>
+                  <b>{sceneBounds.width.toFixed(1)} × {sceneBounds.depth.toFixed(1)} × {sceneBounds.height.toFixed(1)} mm</b>
+                  <p>베이스 제외 외형 · 요소 {project.design.elements.length}개 · 부품 {parts.length}개</p>
+                  <p>실제 판재 두께 {project.design.fabrication.thicknessMm} mm · kerf 보정 미적용</p>
+                  {(() => { const o = project.design.observations[0], source = project.sources.find(s => s.id === o?.sourceId); return source?.url && source.type.startsWith("image/") && o ? <svg role="img" aria-label="모델 비교 원본" width="100%" viewBox={[o.crop.x,o.crop.y,o.crop.width,o.crop.height].join(" ")}><image href={source.url} width={o.pixelWidth} height={o.pixelHeight}/></svg> : null; })()}
+                  <p>3D 보기에서 ‘정면도’를 선택해 원본 입면과 비교하세요. 미관찰 후면과 깊이는 보완 가정입니다.</p>
+                </div> : <>
                 <div className="scale-setting">
                   <span>모형 축척</span>
                   <label>
@@ -857,6 +859,7 @@ export default function App() {
                     {project.physicalConfirmed ? "실물 확인" : "미확인"}
                   </span>
                 </div>
+                </>}
               </section>
               <div className="next-note">
                 <span className="note-icon">
@@ -1012,7 +1015,7 @@ export default function App() {
                     <p>
                       {aiConfigured
                         ? "AI가 판독한 치수는 근거와 함께 제안되며, 직접 확인한 뒤 반영합니다."
-                        : "CSV·TXT의 명시된 치수를 읽습니다. 사진 AI 분석은 서버 키 연결 후 사용할 수 있습니다."}
+                        : "이 버튼은 CSV·TXT의 명시된 치수만 읽습니다. 이미지 형상은 위의 ‘이미지에서 외형 추정’을 사용하세요. ChatGPT 사용량 연동은 별도 검증 전입니다."}
                     </p>
                   </div>
                   <button
@@ -1082,13 +1085,12 @@ export default function App() {
                 )}
                 <p className="footnote">
                   <ShieldCheck size={13} />
-                  원본 자료는 이 브라우저에 보관됩니다. AI 분석을 누를 때만 분석
-                  가능한 자료가 AI 서비스로 전송됩니다. PDF·DXF 자동 판독은
-                  지원하지 않습니다.
+                  원본은 이 브라우저에 보관됩니다. 브라우저 이미지 추정은 외부 AI로 전송하지 않습니다. PDF는 페이지를 이미지로 연 뒤 추정할 수 있습니다. DXF 자동 판독은 지원하지 않습니다.
                 </p>
               </div>
             )}
-            {stage === 1 && (
+            {stage === 1 && project.design && <div className="scene-reference">이 모델의 기준은 위의 목표 크기·건물 요소·제작 설정입니다. 요소를 선택해 수정하면 화면과 도안이 함께 바뀝니다. 원본 대조는 위의 입면 투영과 근거를 확인한 뒤 검수에서 기록하세요.</div>}
+            {stage === 1 && !project.design && (
               <div className="dimensions-content">
                 <div className="dimensions-section">
                   <div className="section-description">
@@ -1408,6 +1410,7 @@ export default function App() {
                     </div>
                   ))}
                 </div>
+                {project.design && <label className="design-source-confirmation"><input type="checkbox" checked={project.confirmed} onChange={e => update({ confirmed: e.target.checked })}/>원본 입면과 관찰·추정·설계 보완 근거를 대조했습니다. 실측 또는 미관찰 후면 검증을 뜻하지 않습니다.</label>}
                 <div className="physical-review">
                   <h3>실물 시험 기록</h3>
                   <p className="footnote">
@@ -1475,13 +1478,13 @@ export default function App() {
             </span>
             <span>
               TRADIATIVE STUDIO <i />
-              v0.1
+              v0.2
             </span>
           </div>
           <section className="print-report">
             <h1>{project.name} · 설계 검수 기록</h1>
             <p>
-              검토용 / 1:{d.scale} /{" "}
+              검토용 / {project.design ? (project.design.size.mode === "known-reference" ? "입력 기준 1:" + project.design.size.scaleDenominator : "목표 모형 mm · 실물 축척 미확인") : "1:" + d.scale} /{" "}
               {new Date(project.updatedAt).toLocaleString("ko-KR", {
                 timeZone: "Asia/Seoul",
               }) + " KST"}
@@ -1489,9 +1492,9 @@ export default function App() {
             <h2>설계 기준</h2>
             <table>
               <tbody>
-                {Object.entries(d).map(([key, value]) => (
+                {Object.entries(project.design ? { 목표폭: project.design.size.targetWidthMm, 판재두께: project.design.fabrication.thicknessMm, 형상버전: project.design.revision } : d).map(([key, value]) => (
                   <tr key={key}>
-                    <th>{dimensionLabels[key as keyof Dimensions]}</th>
+                    <th>{dimensionLabels[key as keyof Dimensions] || key}</th>
                     <td>
                       {value} {key === "scale" ? "" : "mm"}
                     </td>
@@ -1595,7 +1598,7 @@ export default function App() {
                 <span className="eyebrow">FROM DIGITAL TO PHYSICAL</span>
                 <h2>다음 작업으로 이어지는 파일</h2>
                 <p className="modal-description">
-                  {project.name} · 1:{d.scale} · {parts.length}개 파츠
+                  {project.name} · {project.design ? (project.design.size.mode === "known-reference" ? "입력 기준 1:" + project.design.size.scaleDenominator : "목표 폭 " + project.design.size.targetWidthMm + " mm") : "1:" + d.scale} · {parts.length}개 파츠
                 </p>
                 {(!project.confirmed || !generated) && (
                   <div className="warning-box">
@@ -1758,13 +1761,11 @@ export default function App() {
                       aiConfigured ? "verified-label" : "estimated-label"
                     }
                   >
-                    {aiConfigured ? "서버 키 설정됨" : "연결 전"}
+                    {aiConfigured ? "별도 API 경로 허용됨·실제 호출 별도 확인" : "ChatGPT 연동 미검증"}
                   </b>
                 </div>
                 <p className="settings-description">
-                  AI 분석은 서버의 TRADIATIVE_AI_KEY 설정이 필요합니다. 키는
-                  웹페이지에 입력하거나 저장하지 않습니다. API 키가 없으면 치수
-                  직접 입력과 파일 생성은 계속 사용할 수 있습니다.
+                  ChatGPT 구독 사용량 연동은 로그인·모델 호출 완료 검증 전입니다. 브라우저 이미지 추정은 API 키 없이 작동합니다. 별도 과금 API는 명시적으로 선택·허용하기 전 활성화하지 않습니다.
                 </p>
                 <button
                   className="button secondary wide"
