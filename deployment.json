@@ -1,13 +1,16 @@
 {
-  "version": "0.3.0",
-  "sourceCommit": "b15692903d806781ebceb0da37369f1a1cebd05e",
-  "publishedAt": "2026-10-24T02:53:56.655122+00:00",
-  "verification": {
-    "unitAndHttpTests": 38,
-    "browserTests": 17,
-    "chatgptPlanConnected": false,
-    "paidApiEnabled": false,
-    "impiCase": "operator-reviewed-drawings-not-app-GPT-inference",
-    "impiParts": 64
-  }
+  "version": "0.3.1",
+  "sourceCommit": "fa117dd13b34b29c665f192059375cf108ee6144",
+  "publishedAt": "2026-10-24T03:47:59.026771+00:00",
+  "connectionChoice": "existing-url-remote-approval",
+  "applicationDraftPrepared": true,
+  "remoteApplicationSubmissionVerified": false,
+  "remotePlanApprovalConfirmed": false,
+  "remoteBackendDeployed": false,
+  "chatgptPlanConnected": false,
+  "paidApiEnabled": false,
+  "coreVerificationFromVersion": "0.3.0",
+  "unitAndHttpTestsAtCoreVersion": 38,
+  "browserTestsAtCoreVersion": 17,
+  "impiParts": 64
 }
