@@ -1,0 +1,6561 @@
+{
+  "schema": "tradiative.project.v2",
+  "status": "검토용",
+  "exportedAt": "2026-10-24T02:43:52.245Z",
+  "units": "mm",
+  "coordinateSystem": {
+    "partData": "right-handed Y-up, local XY outlines extruded along +Z before assembly transforms",
+    "partSTL": "XY outlines extruded along +Z",
+    "assemblySTL": "Z-up, base bottom at Z=0"
+  },
+  "disclaimer": "관찰·추정·설계 보완을 구분한 검토용 형상입니다. 실제 크기 미확인 시 정밀 축척 복원을 주장하지 않습니다. 원본·실물 조립 검증 전 제작 승인으로 사용할 수 없습니다. STL 단위 mm. kerf 보정 미적용.",
+  "mode": "manual",
+  "name": "임피역 · 도면 해석 검토 사례",
+  "dimensions": {
+    "width": 12800,
+    "depth": 7200,
+    "wallHeight": 3600,
+    "roofRise": 2200,
+    "windowWidth": 1200,
+    "windowHeight": 1600,
+    "doorWidth": 1600,
+    "doorHeight": 2400,
+    "scale": 80,
+    "thickness": 1.5,
+    "kerf": 0.15,
+    "clearance": 0.2
+  },
+  "sources": [
+    {
+      "id": "plan",
+      "name": "군산_구_임피역_A-006_1층평면도_웹미리보기.jpg",
+      "type": "image/jpeg",
+      "size": 84116
+    },
+    {
+      "id": "north",
+      "name": "군산_구_임피역_A-007_정면도_북측_웹미리보기.jpg",
+      "type": "image/jpeg",
+      "size": 79128
+    },
+    {
+      "id": "sides",
+      "name": "군산_구_임피역_A-008_좌우측면도_웹미리보기.jpg",
+      "type": "image/jpeg",
+      "size": 82093
+    },
+    {
+      "id": "south",
+      "name": "군산_구_임피역_A-009_배면도_남측_웹미리보기.jpg",
+      "type": "image/jpeg",
+      "size": 80290
+    },
+    {
+      "id": "attribution",
+      "name": "출처·해석범위.txt",
+      "type": "text/plain",
+      "size": 1125,
+      "text": "출처: 국가유산청 국가유산 디지털 서비스 · 국가등록유산 군산 구 임피역\n공공누리 제1유형(출처 표시): 각 기록 상세 페이지의 KOGL_1 표시를 2026-10-24에 직접 확인했습니다.\n라이선스 안내: https://www.kogl.or.kr/info/licenseType1.do\n이 번들의 이미지 입력은 500×354 JPEG 웹 미리보기 4개이며 CAD 원본이나 사용자 첨부 고해상도 원본 11개가 아닙니다.\n모델은 작성자의 도면 대조·추정을 포함한 검토 사례입니다. 실제 GPT API 호출·실측·가공·조립 완료의 증거가 아닙니다.\n\nA-006_1층평면도\nhttps://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918171717911&bizId=BIZ201800002653\n\nA-007_정면도_북측\nhttps://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918189717912&bizId=BIZ201800002653\n\nA-008_좌우측면도\nhttps://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918202717913&bizId=BIZ201800002653\n\nA-009_배면도_남측\nhttps://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918214717914&bizId=BIZ201800002653\n"
+    }
+  ],
+  "confirmed": false,
+  "generatedSignature": "{\"elements\":[{\"id\":\"main-front-0\",\"name\":\"길게 놓인 본체 정면 벽\",\"kind\":\"wall\",\"outline\":[[0,0],[278.91082664,0],[278.91082664,71.79431547],[0,71.79431547]],\"position\":[10.544586678238229,0,93.40420915599913],\"rotation\":[0,0,0],\"thickness\":1.5,\"material\":\"검토용 판재\",\"color\":\"#d8ceb7\",\"provenance\":\"observed\",\"evidence\":[{\"classification\":\"observed\",\"sourceId\":\"plan\",\"observation\":\"긴 직사각 본체, 길이 방향 용마루·양 끝 박공\",\"reason\":\"사용자 첨부 입면·평면과 공개 미리보기 대조. 축간 치수와 외벽 외곽을 구분해야 하며 위치는 검토용 추정.\",\"uncertainty\":\"high\",\"alternatives\":[\"원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정\"],\"links\":[\"https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918171717911&bizId=BIZ201800002653\"]}],\"locked\":false,\"userConfirmed\":false,\"measured\":false,\"massId\":\"main\",\"face\":\"front\"},{\"id\":\"main-back-0\",\"name\":\"길게 놓인 본체 후면 벽\",\"kind\":\"wall\",\"outline\":[[0,45.56302886],[46.24647429,45.56302886],[46.24647429,53.69928401],[71.2817314,65.90366674],[96.3169885,53.69928401],[96.3169885,0],[278.91082664,0],[278.91082664,71.79431547],[0,71.79431547]],\"position\":[10.544586678238229,0,0],\"rotation\":[0,0,0],\"thickness\":1.5,\"material\":\"검토용 판재\",\"color\":\"#d8ceb7\",\"provenance\":\"observed\",\"evidence\":[{\"classification\":\"observed\",\"sourceId\":\"plan\",\"observation\":\"긴 직사각 본체, 길이 방향 용마루·양 끝 박공\",\"reason\":\"사용자 첨부 입면·평면과 공개 미리보기 대조. 축간 치수와 외벽 외곽을 구분해야 하며 위치는 검토용 추정.\",\"uncertainty\":\"high\",\"alternatives\":[\"원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정\"],\"links\":[\"https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918171717911&bizId=BIZ201800002653\"]}],\"locked\":false,\"userConfirmed\":false,\"measured\":false,\"massId\":\"main\",\"face\":\"back\"},{\"id\":\"main-left-0\",\"name\":\"길게 놓인 본체 좌측 벽\",\"kind\":\"wall\",\"outline\":[[0,0],[93.40420916,0],[93.40420916,71.79431547],[46.70210458,107.10566283],[0,71.79431547]],\"position\":[10.544586678238229,0,0],\"rotation\":[0,-1.5707963267948966,0],\"thickness\":1.5,\"material\":\"검토용 판재\",\"color\":\"#d8ceb7\",\"provenance\":\"observed\",\"evidence\":[{\"classification\":\"observed\",\"sourceId\":\"plan\",\"observation\":\"긴 직사각 본체, 길이 방향 용마루·양 끝 박공\",\"reason\":\"사용자 첨부 입면·평면과 공개 미리보기 대조. 축간 치수와 외벽 외곽을 구분해야 하며 위치는 검토용 추정.\",\"uncertainty\":\"high\",\"alternatives\":[\"원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정\"],\"links\":[\"https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918171717911&bizId=BIZ201800002653\"]}],\"locked\":false,\"userConfirmed\":false,\"measured\":false,\"massId\":\"main\",\"face\":\"left\"},{\"id\":\"main-right-0\",\"name\":\"길게 놓인 본체 우측 벽\",\"kind\":\"wall\",\"outline\":[[0,0],[93.40420916,0],[93.40420916,71.79431547],[46.70210458,107.10566283],[0,71.79431547]],\"position\":[289.45541332176174,0,0],\"rotation\":[0,-1.5707963267948966,0],\"thickness\":1.5,\"material\":\"검토용 판재\",\"color\":\"#d8ceb7\",\"provenance\":\"observed\",\"evidence\":[{\"classification\":\"observed\",\"sourceId\":\"plan\",\"observation\":\"긴 직사각 본체, 길이 방향 용마루·양 끝 박공\",\"reason\":\"사용자 첨부 입면·평면과 공개 미리보기 대조. 축간 치수와 외벽 외곽을 구분해야 하며 위치는 검토용 추정.\",\"uncertainty\":\"high\",\"alternatives\":[\"원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정\"],\"links\":[\"https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918171717911&bizId=BIZ201800002653\"]}],\"locked\":false,\"userConfirmed\":false,\"measured\":false,\"massId\":\"main\",\"face\":\"right\"},{\"id\":\"cross-front-0\",\"name\":\"높은 직교 박공 정면 벽\",\"kind\":\"wall\",\"outline\":[[0,71.79431547],[97.13061402,71.79431547],[48.56530701,122.56454762]],\"position\":[150.66717292254285,0,93.40420915599913],\"rotation\":[0,0,0],\"thickness\":1.5,\"material\":\"검토용 판재\",\"color\":\"#d8ceb7\",\"provenance\":\"observed\",\"evidence\":[{\"classification\":\"observed\",\"sourceId\":\"north\",\"observation\":\"본체 오른쪽의 더 높은 박공. 반대편 입면에서는 좌우 반전되어 보임.\",\"reason\":\"사용자 첨부 입면·평면과 공개 미리보기 대조. 축간 치수와 외벽 외곽을 구분해야 하며 위치는 검토용 추정.\",\"uncertainty\":\"high\",\"alternatives\":[\"원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정\"],\"links\":[\"https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918189717912&bizId=BIZ201800002653\"]}],\"locked\":false,\"userConfirmed\":false,\"measured\":false,\"massId\":\"cross\",\"face\":\"front\"},{\"id\":\"cross-back-0\",\"name\":\"높은 직교 박공 후면 벽\",\"kind\":\"wall\",\"outline\":[[0,71.79431547],[97.13061402,71.79431547],[48.56530701,122.56454762]],\"position\":[150.66717292254285,0,0],\"rotation\":[0,0,0],\"thickness\":1.5,\"material\":\"검토용 판재\",\"color\":\"#d8ceb7\",\"provenance\":\"observed\",\"evidence\":[{\"classification\":\"observed\",\"sourceId\":\"north\",\"observation\":\"본체 오른쪽의 더 높은 박공. 반대편 입면에서는 좌우 반전되어 보임.\",\"reason\":\"사용자 첨부 입면·평면과 공개 미리보기 대조. 축간 치수와 외벽 외곽을 구분해야 하며 위치는 검토용 추정.\",\"uncertainty\":\"high\",\"alternatives\":[\"원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정\"],\"links\":[\"https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918189717912&bizId=BIZ201800002653\"]}],\"locked\":false,\"userConfirmed\":false,\"measured\":false,\"massId\":\"cross\",\"face\":\"back\"},{\"id\":\"rear-vestibule-back-0\",\"name\":\"후면 돌출 출입부 후면 벽\",\"kind\":\"wall\",\"outline\":[[0,0],[50.07051421,0],[50.07051421,53.69928401],[25.03525711,65.90366674],[0,53.69928401]],\"position\":[56.791060967671946,0,-30.917769581254067],\"rotation\":[0,0,0],\"thickness\":1.5,\"material\":\"검토용 판재\",\"color\":\"#d8ceb7\",\"provenance\":\"observed\",\"evidence\":[{\"classification\":\"observed\",\"sourceId\":\"plan\",\"observation\":\"평면 상 뒤로 돌출된 출입부. 낮은 별도 박공.\",\"reason\":\"사용자 첨부 입면·평면과 공개 미리보기 대조. 축간 치수와 외벽 외곽을 구분해야 하며 위치는 검토용 추정.\",\"uncertainty\":\"high\",\"alternatives\":[\"원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정\"],\"links\":[\"https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918171717911&bizId=BIZ201800002653\"]}],\"locked\":false,\"userConfirmed\":false,\"measured\":false,\"massId\":\"rear-vestibule\",\"face\":\"back\"},{\"id\":\"rear-vestibule-left-0\",\"name\":\"후면 돌출 출입부 좌측 벽\",\"kind\":\"wall\",\"outline\":[[0,45.56302886],[30.91776958,45.56302886],[30.91776958,53.69928401],[0,53.69928401]],\"position\":[56.791060967671946,0,-30.917769581254067],\"rotation\":[0,-1.5707963267948966,0],\"thickness\":1.5,\"material\":\"검토용 판재\",\"color\":\"#d8ceb7\",\"provenance\":\"observed\",\"evidence\":[{\"classification\":\"observed\",\"sourceId\":\"plan\",\"observation\":\"평면 상 뒤로 돌출된 출입부. 낮은 별도 박공.\",\"reason\":\"사용자 첨부 입면·평면과 공개 미리보기 대조. 축간 치수와 외벽 외곽을 구분해야 하며 위치는 검토용 추정.\",\"uncertainty\":\"high\",\"alternatives\":[\"원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정\"],\"links\":[\"https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918171717911&bizId=BIZ201800002653\"]}],\"locked\":false,\"userConfirmed\":false,\"measured\":false,\"massId\":\"rear-vestibule\",\"face\":\"left\"},{\"id\":\"rear-vestibule-right-0\",\"name\":\"후면 돌출 출입부 우측 벽\",\"kind\":\"wall\",\"outline\":[[0,0],[30.91776958,0],[30.91776958,53.69928401],[0,53.69928401]],\"position\":[106.86157517899761,0,-30.917769581254067],\"rotation\":[0,-1.5707963267948966,0],\"thickness\":1.5,\"material\":\"검토용 판재\",\"color\":\"#d8ceb7\",\"provenance\":\"observed\",\"evidence\":[{\"classification\":\"observed\",\"sourceId\":\"plan\",\"observation\":\"평면 상 뒤로 돌출된 출입부. 낮은 별도 박공.\",\"reason\":\"사용자 첨부 입면·평면과 공개 미리보기 대조. 축간 치수와 외벽 외곽을 구분해야 하며 위치는 검토용 추정.\",\"uncertainty\":\"high\",\"alternatives\":[\"원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정\"],\"links\":[\"https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918171717911&bizId=BIZ201800002653\"]}],\"locked\":false,\"userConfirmed\":false,\"measured\":false,\"massId\":\"rear-vestibule\",\"face\":\"right\"},{\"id\":\"service-back-0\",\"name\":\"후면 낮은 부속부 후면 벽\",\"kind\":\"wall\",\"outline\":[[0,0],[46.24647429,0],[46.24647429,45.56302886],[0,45.56302886]],\"position\":[10.544586678238229,0,-30.917769581254067],\"rotation\":[0,0,0],\"thickness\":1.5,\"material\":\"검토용 판재\",\"color\":\"#d8ceb7\",\"provenance\":\"observed\",\"evidence\":[{\"classification\":\"observed\",\"sourceId\":\"south\",\"observation\":\"낮은 부속부. 경사 지붕은 이번 검토에서 평지붕으로 단순화.\",\"reason\":\"사용자 첨부 입면·평면과 공개 미리보기 대조. 축간 치수와 외벽 외곽을 구분해야 하며 위치는 검토용 추정.\",\"uncertainty\":\"high\",\"alternatives\":[\"원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정\"],\"links\":[\"https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918214717914&bizId=BIZ201800002653\"]}],\"locked\":false,\"userConfirmed\":false,\"measured\":false,\"massId\":\"service\",\"face\":\"back\"},{\"id\":\"service-left-0\",\"name\":\"후면 낮은 부속부 좌측 벽\",\"kind\":\"wall\",\"outline\":[[0,0],[30.91776958,0],[30.91776958,45.56302886],[0,45.56302886]],\"position\":[10.544586678238229,0,-30.917769581254067],\"rotation\":[0,-1.5707963267948966,0],\"thickness\":1.5,\"material\":\"검토용 판재\",\"color\":\"#d8ceb7\",\"provenance\":\"observed\",\"evidence\":[{\"classification\":\"observed\",\"sourceId\":\"south\",\"observation\":\"낮은 부속부. 경사 지붕은 이번 검토에서 평지붕으로 단순화.\",\"reason\":\"사용자 첨부 입면·평면과 공개 미리보기 대조. 축간 치수와 외벽 외곽을 구분해야 하며 위치는 검토용 추정.\",\"uncertainty\":\"high\",\"alternatives\":[\"원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정\"],\"links\":[\"https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918214717914&bizId=BIZ201800002653\"]}],\"locked\":false,\"userConfirmed\":false,\"measured\":false,\"massId\":\"service\",\"face\":\"left\"},{\"id\":\"north-window-1\",\"name\":\"북측 긴 창 1\",\"kind\":\"opening\",\"parentId\":\"main-front-0\",\"massId\":\"main\",\"face\":\"front\",\"role\":\"window\",\"outline\":[[17.899761336515514,19.527012367107833],[29.941418962898677,19.527012367107833],[29.941418962898677,54.83835973096116],[17.899761336515514,54.83835973096116]],\"position\":[0,0,0],\"rotation\":[0,0,0],\"thickness\":1.5,\"material\":\"검토용 판재\",\"color\":\"#8eafb5\",\"provenance\":\"observed\",\"evidence\":[{\"classification\":\"observed\",\"sourceId\":\"north\",\"observation\":\"북측 긴 창 1의 보이는 개수와 배치\",\"reason\":\"반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.\",\"uncertainty\":\"high\",\"alternatives\":[\"원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정\"],\"links\":[\"https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918189717912&bizId=BIZ201800002653\"]}],\"locked\":false,\"userConfirmed\":false,\"measured\":false},{\"id\":\"north-window-2\",\"name\":\"북측 긴 창 2\",\"kind\":\"opening\",\"parentId\":\"main-front-0\",\"massId\":\"main\",\"face\":\"front\",\"role\":\"window\",\"outline\":[[63.46279019310045,19.527012367107833],[75.50444781948362,19.527012367107833],[75.50444781948362,54.83835973096116],[63.46279019310045,54.83835973096116]],\"position\":[0,0,0],\"rotation\":[0,0,0],\"thickness\":1.5,\"material\":\"검토용 판재\",\"color\":\"#8eafb5\",\"provenance\":\"observed\",\"evidence\":[{\"classification\":\"observed\",\"sourceId\":\"north\",\"observation\":\"북측 긴 창 2의 보이는 개수와 배치\",\"reason\":\"반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.\",\"uncertainty\":\"high\",\"alternatives\":[\"원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정\"],\"links\":[\"https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918189717912&bizId=BIZ201800002653\"]}],\"locked\":false,\"userConfirmed\":false,\"measured\":false},{\"id\":\"north-window-3\",\"name\":\"북측 긴 창 3\",\"kind\":\"opening\",\"parentId\":\"main-front-0\",\"massId\":\"main\",\"face\":\"front\",\"role\":\"window\",\"outline\":[[85.43067910609676,19.527012367107833],[97.47233673247993,19.527012367107833],[97.47233673247993,54.83835973096116],[85.43067910609676,54.83835973096116]],\"position\":[0,0,0],\"rotation\":[0,0,0],\"thickness\":1.5,\"material\":\"검토용 판재\",\"color\":\"#8eafb5\",\"provenance\":\"observed\",\"evidence\":[{\"classification\":\"observed\",\"sourceId\":\"north\",\"observation\":\"북측 긴 창 3의 보이는 개수와 배치\",\"reason\":\"반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.\",\"uncertainty\":\"high\",\"alternatives\":[\"원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정\"],\"links\":[\"https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918189717912&bizId=BIZ201800002653\"]}],\"locked\":false,\"userConfirmed\":false,\"measured\":false},{\"id\":\"north-window-4\",\"name\":\"북측 긴 창 4\",\"kind\":\"opening\",\"parentId\":\"main-front-0\",\"massId\":\"main\",\"face\":\"front\",\"role\":\"window\",\"outline\":[[107.39856801909308,19.527012367107833],[119.44022564547623,19.527012367107833],[119.44022564547623,54.83835973096116],[107.39856801909308,54.83835973096116]],\"position\":[0,0,0],\"rotation\":[0,0,0],\"thickness\":1.5,\"material\":\"검토용 판재\",\"color\":\"#8eafb5\",\"provenance\":\"observed\",\"evidence\":[{\"classification\":\"observed\",\"sourceId\":\"north\",\"observation\":\"북측 긴 창 4의 보이는 개수와 배치\",\"reason\":\"반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.\",\"uncertainty\":\"high\",\"alternatives\":[\"원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정\"],\"links\":[\"https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918189717912&bizId=BIZ201800002653\"]}],\"locked\":false,\"userConfirmed\":false,\"measured\":false},{\"id\":\"north-window-5\",\"name\":\"북측 긴 창 5\",\"kind\":\"opening\",\"parentId\":\"main-front-0\",\"massId\":\"main\",\"face\":\"front\",\"role\":\"window\",\"outline\":[[248.96940768062487,19.527012367107833],[261.01106530700804,19.527012367107833],[261.01106530700804,54.83835973096116],[248.96940768062487,54.83835973096116]],\"position\":[0,0,0],\"rotation\":[0,0,0],\"thickness\":1.5,\"material\":\"검토용 판재\",\"color\":\"#8eafb5\",\"provenance\":\"observed\",\"evidence\":[{\"classification\":\"observed\",\"sourceId\":\"north\",\"observation\":\"북측 긴 창 5의 보이는 개수와 배치\",\"reason\":\"반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.\",\"uncertainty\":\"high\",\"alternatives\":[\"원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정\"],\"links\":[\"https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918189717912&bizId=BIZ201800002653\"]}],\"locked\":false,\"userConfirmed\":false,\"measured\":false},{\"id\":\"north-slit-1\",\"name\":\"북측 출입구 옆 좁은 창 1\",\"kind\":\"opening\",\"parentId\":\"main-front-0\",\"massId\":\"main\",\"face\":\"front\",\"role\":\"window\",\"outline\":[[142.38446517682794,19.527012367107833],[148.07984378390105,19.527012367107833],[148.07984378390105,54.83835973096116],[142.38446517682794,54.83835973096116]],\"position\":[0,0,0],\"rotation\":[0,0,0],\"thickness\":1.5,\"material\":\"검토용 판재\",\"color\":\"#8eafb5\",\"provenance\":\"observed\",\"evidence\":[{\"classification\":\"observed\",\"sourceId\":\"north\",\"observation\":\"북측 출입구 옆 좁은 창 1의 보이는 개수와 배치\",\"reason\":\"반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.\",\"uncertainty\":\"high\",\"alternatives\":[\"원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정\"],\"links\":[\"https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918189717912&bizId=BIZ201800002653\"]}],\"locked\":false,\"userConfirmed\":false,\"measured\":false},{\"id\":\"north-slit-2\",\"name\":\"북측 출입구 옆 좁은 창 2\",\"kind\":\"opening\",\"parentId\":\"main-front-0\",\"massId\":\"main\",\"face\":\"front\",\"role\":\"window\",\"outline\":[[225.37426773703623,19.527012367107833],[231.06964634410934,19.527012367107833],[231.06964634410934,54.83835973096116],[225.37426773703623,54.83835973096116]],\"position\":[0,0,0],\"rotation\":[0,0,0],\"thickness\":1.5,\"material\":\"검토용 판재\",\"color\":\"#8eafb5\",\"provenance\":\"observed\",\"evidence\":[{\"classification\":\"observed\",\"sourceId\":\"north\",\"observation\":\"북측 출입구 옆 좁은 창 2의 보이는 개수와 배치\",\"reason\":\"반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.\",\"uncertainty\":\"high\",\"alternatives\":[\"원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정\"],\"links\":[\"https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918189717912&bizId=BIZ201800002653\"]}],\"locked\":false,\"userConfirmed\":false,\"measured\":false},{\"id\":\"north-door\",\"name\":\"북측 주출입문\",\"kind\":\"opening\",\"parentId\":\"main-front-0\",\"massId\":\"main\",\"face\":\"front\",\"role\":\"door\",\"outline\":[[171.18680841831198,0],[204.4640919939249,0],[204.4640919939249,45.56302885658494],[171.18680841831198,45.56302885658494]],\"position\":[0,0,0],\"rotation\":[0,0,0],\"thickness\":1.5,\"material\":\"검토용 판재\",\"color\":\"#8eafb5\",\"provenance\":\"observed\",\"evidence\":[{\"classification\":\"observed\",\"sourceId\":\"north\",\"observation\":\"북측 주출입문의 보이는 개수와 배치\",\"reason\":\"반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.\",\"uncertainty\":\"high\",\"alternatives\":[\"원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정\"],\"links\":[\"https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918189717912&bizId=BIZ201800002653\"]}],\"locked\":false,\"userConfirmed\":false,\"measured\":false},{\"id\":\"north-attic\",\"name\":\"북측 박공 환기구\",\"kind\":\"opening\",\"parentId\":\"cross-front-0\",\"massId\":\"cross\",\"face\":\"front\",\"role\":\"vent\",\"outline\":[[45.237578650466475,85.43067910609676],[51.74658277283575,85.43067910609676],[51.74658277283575,94.38055977435452],[45.237578650466475,94.38055977435452]],\"position\":[0,0,0],\"rotation\":[0,0,0],\"thickness\":1.5,\"material\":\"검토용 판재\",\"color\":\"#8eafb5\",\"provenance\":\"observed\",\"evidence\":[{\"classification\":\"observed\",\"sourceId\":\"north\",\"observation\":\"북측 박공 환기구의 보이는 개수와 배치\",\"reason\":\"반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.\",\"uncertainty\":\"high\",\"alternatives\":[\"원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정\"],\"links\":[\"https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918189717912&bizId=BIZ201800002653\"]}],\"locked\":false,\"userConfirmed\":false,\"measured\":false},{\"id\":\"south-attic\",\"name\":\"남측 박공 환기구\",\"kind\":\"opening\",\"parentId\":\"cross-back-0\",\"massId\":\"cross\",\"face\":\"back\",\"role\":\"vent\",\"outline\":[[45.237578650466475,85.43067910609676],[51.74658277283575,85.43067910609676],[51.74658277283575,94.38055977435452],[45.237578650466475,94.38055977435452]],\"position\":[0,0,0],\"rotation\":[0,0,0],\"thickness\":1.5,\"material\":\"검토용 판재\",\"color\":\"#8eafb5\",\"provenance\":\"observed\",\"evidence\":[{\"classification\":\"observed\",\"sourceId\":\"south\",\"observation\":\"남측 박공 환기구의 보이는 개수와 배치\",\"reason\":\"반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.\",\"uncertainty\":\"high\",\"alternatives\":[\"원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정\"],\"links\":[\"https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918214717914&bizId=BIZ201800002653\"]}],\"locked\":false,\"userConfirmed\":false,\"measured\":false},{\"id\":\"left-window-1\",\"name\":\"동측 창 1\",\"kind\":\"opening\",\"parentId\":\"main-left-0\",\"massId\":\"main\",\"face\":\"left\",\"role\":\"window\",\"outline\":[[15.458884790627033,18.38793664569321],[27.500542417010195,18.38793664569321],[27.500542417010195,53.69928400954654],[15.458884790627033,53.69928400954654]],\"position\":[0,0,0],\"rotation\":[0,0,0],\"thickness\":1.5,\"material\":\"검토용 판재\",\"color\":\"#8eafb5\",\"provenance\":\"observed\",\"evidence\":[{\"classification\":\"observed\",\"sourceId\":\"sides\",\"observation\":\"동측 창 1의 보이는 개수와 배치\",\"reason\":\"반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.\",\"uncertainty\":\"high\",\"alternatives\":[\"원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정\"],\"links\":[\"https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918202717913&bizId=BIZ201800002653\"]}],\"locked\":false,\"userConfirmed\":false,\"measured\":false},{\"id\":\"left-window-2\",\"name\":\"동측 창 2\",\"kind\":\"opening\",\"parentId\":\"main-left-0\",\"massId\":\"main\",\"face\":\"left\",\"role\":\"window\",\"outline\":[[34.98589715773487,18.38793664569321],[47.02755478411803,18.38793664569321],[47.02755478411803,53.69928400954654],[34.98589715773487,53.69928400954654]],\"position\":[0,0,0],\"rotation\":[0,0,0],\"thickness\":1.5,\"material\":\"검토용 판재\",\"color\":\"#8eafb5\",\"provenance\":\"observed\",\"evidence\":[{\"classification\":\"observed\",\"sourceId\":\"sides\",\"observation\":\"동측 창 2의 보이는 개수와 배치\",\"reason\":\"반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.\",\"uncertainty\":\"high\",\"alternatives\":[\"원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정\"],\"links\":[\"https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918202717913&bizId=BIZ201800002653\"]}],\"locked\":false,\"userConfirmed\":false,\"measured\":false},{\"id\":\"left-attic\",\"name\":\"동측 박공 환기구\",\"kind\":\"opening\",\"parentId\":\"main-left-0\",\"massId\":\"main\",\"face\":\"left\",\"role\":\"vent\",\"outline\":[[43.447602516814925,83.80342807550444],[49.9566066391842,83.80342807550444],[49.9566066391842,92.7533087437622],[43.447602516814925,92.7533087437622]],\"position\":[0,0,0],\"rotation\":[0,0,0],\"thickness\":1.5,\"material\":\"검토용 판재\",\"color\":\"#8eafb5\",\"provenance\":\"observed\",\"evidence\":[{\"classification\":\"observed\",\"sourceId\":\"sides\",\"observation\":\"동측 박공 환기구의 보이는 개수와 배치\",\"reason\":\"반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.\",\"uncertainty\":\"high\",\"alternatives\":[\"원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정\"],\"links\":[\"https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918202717913&bizId=BIZ201800002653\"]}],\"locked\":false,\"userConfirmed\":false,\"measured\":false},{\"id\":\"right-window-1\",\"name\":\"서측 창 1\",\"kind\":\"opening\",\"parentId\":\"main-right-0\",\"massId\":\"main\",\"face\":\"right\",\"role\":\"window\",\"outline\":[[15.458884790627033,18.38793664569321],[27.500542417010195,18.38793664569321],[27.500542417010195,53.69928400954654],[15.458884790627033,53.69928400954654]],\"position\":[0,0,0],\"rotation\":[0,0,0],\"thickness\":1.5,\"material\":\"검토용 판재\",\"color\":\"#8eafb5\",\"provenance\":\"observed\",\"evidence\":[{\"classification\":\"observed\",\"sourceId\":\"sides\",\"observation\":\"서측 창 1의 보이는 개수와 배치\",\"reason\":\"반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.\",\"uncertainty\":\"high\",\"alternatives\":[\"원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정\"],\"links\":[\"https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918202717913&bizId=BIZ201800002653\"]}],\"locked\":false,\"userConfirmed\":false,\"measured\":false},{\"id\":\"right-window-2\",\"name\":\"서측 창 2\",\"kind\":\"opening\",\"parentId\":\"main-right-0\",\"massId\":\"main\",\"face\":\"right\",\"role\":\"window\",\"outline\":[[34.98589715773487,18.38793664569321],[47.02755478411803,18.38793664569321],[47.02755478411803,53.69928400954654],[34.98589715773487,53.69928400954654]],\"position\":[0,0,0],\"rotation\":[0,0,0],\"thickness\":1.5,\"material\":\"검토용 판재\",\"color\":\"#8eafb5\",\"provenance\":\"observed\",\"evidence\":[{\"classification\":\"observed\",\"sourceId\":\"sides\",\"observation\":\"서측 창 2의 보이는 개수와 배치\",\"reason\":\"반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.\",\"uncertainty\":\"high\",\"alternatives\":[\"원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정\"],\"links\":[\"https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918202717913&bizId=BIZ201800002653\"]}],\"locked\":false,\"userConfirmed\":false,\"measured\":false},{\"id\":\"right-window-3\",\"name\":\"서측 창 3\",\"kind\":\"opening\",\"parentId\":\"main-right-0\",\"massId\":\"main\",\"face\":\"right\",\"role\":\"window\",\"outline\":[[54.5129095248427,18.38793664569321],[66.55456715122585,18.38793664569321],[66.55456715122585,53.69928400954654],[54.5129095248427,53.69928400954654]],\"position\":[0,0,0],\"rotation\":[0,0,0],\"thickness\":1.5,\"material\":\"검토용 판재\",\"color\":\"#8eafb5\",\"provenance\":\"observed\",\"evidence\":[{\"classification\":\"observed\",\"sourceId\":\"sides\",\"observation\":\"서측 창 3의 보이는 개수와 배치\",\"reason\":\"반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.\",\"uncertainty\":\"high\",\"alternatives\":[\"원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정\"],\"links\":[\"https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918202717913&bizId=BIZ201800002653\"]}],\"locked\":false,\"userConfirmed\":false,\"measured\":false},{\"id\":\"right-attic\",\"name\":\"서측 박공 환기구\",\"kind\":\"opening\",\"parentId\":\"main-right-0\",\"massId\":\"main\",\"face\":\"right\",\"role\":\"vent\",\"outline\":[[43.447602516814925,83.80342807550444],[49.9566066391842,83.80342807550444],[49.9566066391842,92.7533087437622],[43.447602516814925,92.7533087437622]],\"position\":[0,0,0],\"rotation\":[0,0,0],\"thickness\":1.5,\"material\":\"검토용 판재\",\"color\":\"#8eafb5\",\"provenance\":\"observed\",\"evidence\":[{\"classification\":\"observed\",\"sourceId\":\"sides\",\"observation\":\"서측 박공 환기구의 보이는 개수와 배치\",\"reason\":\"반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.\",\"uncertainty\":\"high\",\"alternatives\":[\"원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정\"],\"links\":[\"https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918202717913&bizId=BIZ201800002653\"]}],\"locked\":false,\"userConfirmed\":false,\"measured\":false},{\"id\":\"south-window-1\",\"name\":\"남측 본체 창 1\",\"kind\":\"opening\",\"parentId\":\"main-back-0\",\"massId\":\"main\",\"face\":\"back\",\"role\":\"window\",\"outline\":[[110.65307008027771,19.527012367107833],[125.29832935560859,19.527012367107833],[125.29832935560859,50.4447819483619],[110.65307008027771,50.4447819483619]],\"position\":[0,0,0],\"rotation\":[0,0,0],\"thickness\":1.5,\"material\":\"검토용 판재\",\"color\":\"#8eafb5\",\"provenance\":\"observed\",\"evidence\":[{\"classification\":\"observed\",\"sourceId\":\"south\",\"observation\":\"남측 본체 창 1의 보이는 개수와 배치\",\"reason\":\"반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.\",\"uncertainty\":\"high\",\"alternatives\":[\"원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정\"],\"links\":[\"https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918214717914&bizId=BIZ201800002653\"]}],\"locked\":false,\"userConfirmed\":false,\"measured\":false},{\"id\":\"south-window-2\",\"name\":\"남측 본체 창 2\",\"kind\":\"opening\",\"parentId\":\"main-back-0\",\"massId\":\"main\",\"face\":\"back\",\"role\":\"window\",\"outline\":[[149.7070948144934,19.527012367107833],[164.35235408982427,19.527012367107833],[164.35235408982427,50.4447819483619],[149.7070948144934,50.4447819483619]],\"position\":[0,0,0],\"rotation\":[0,0,0],\"thickness\":1.5,\"material\":\"검토용 판재\",\"color\":\"#8eafb5\",\"provenance\":\"observed\",\"evidence\":[{\"classification\":\"observed\",\"sourceId\":\"south\",\"observation\":\"남측 본체 창 2의 보이는 개수와 배치\",\"reason\":\"반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.\",\"uncertainty\":\"high\",\"alternatives\":[\"원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정\"],\"links\":[\"https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918214717914&bizId=BIZ201800002653\"]}],\"locked\":false,\"userConfirmed\":false,\"measured\":false},{\"id\":\"south-window-3\",\"name\":\"남측 본체 창 3\",\"kind\":\"opening\",\"parentId\":\"main-back-0\",\"massId\":\"main\",\"face\":\"back\",\"role\":\"window\",\"outline\":[[226.1878932523324,19.527012367107833],[240.8331525276633,19.527012367107833],[240.8331525276633,50.4447819483619],[226.1878932523324,50.4447819483619]],\"position\":[0,0,0],\"rotation\":[0,0,0],\"thickness\":1.5,\"material\":\"검토용 판재\",\"color\":\"#8eafb5\",\"provenance\":\"observed\",\"evidence\":[{\"classification\":\"observed\",\"sourceId\":\"south\",\"observation\":\"남측 본체 창 3의 보이는 개수와 배치\",\"reason\":\"반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.\",\"uncertainty\":\"high\",\"alternatives\":[\"원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정\"],\"links\":[\"https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918214717914&bizId=BIZ201800002653\"]}],\"locked\":false,\"userConfirmed\":false,\"measured\":false},{\"id\":\"south-window-4\",\"name\":\"남측 본체 창 4\",\"kind\":\"opening\",\"parentId\":\"main-back-0\",\"massId\":\"main\",\"face\":\"back\",\"role\":\"window\",\"outline\":[[253.8511607724018,19.527012367107833],[268.49642004773267,19.527012367107833],[268.49642004773267,50.4447819483619],[253.8511607724018,50.4447819483619]],\"position\":[0,0,0],\"rotation\":[0,0,0],\"thickness\":1.5,\"material\":\"검토용 판재\",\"color\":\"#8eafb5\",\"provenance\":\"observed\",\"evidence\":[{\"classification\":\"observed\",\"sourceId\":\"south\",\"observation\":\"남측 본체 창 4의 보이는 개수와 배치\",\"reason\":\"반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.\",\"uncertainty\":\"high\",\"alternatives\":[\"원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정\"],\"links\":[\"https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918214717914&bizId=BIZ201800002653\"]}],\"locked\":false,\"userConfirmed\":false,\"measured\":false},{\"id\":\"vestibule-door\",\"name\":\"후면 돌출부 출입문\",\"kind\":\"opening\",\"parentId\":\"rear-vestibule-back-0\",\"massId\":\"rear-vestibule\",\"face\":\"back\",\"role\":\"door\",\"outline\":[[26.03601648947711,0],[40.681275764807985,0],[40.681275764807985,39.054024734215666],[26.03601648947711,39.054024734215666]],\"position\":[0,0,0],\"rotation\":[0,0,0],\"thickness\":1.5,\"material\":\"검토용 판재\",\"color\":\"#8eafb5\",\"provenance\":\"observed\",\"evidence\":[{\"classification\":\"observed\",\"sourceId\":\"south\",\"observation\":\"후면 돌출부 출입문의 보이는 개수와 배치\",\"reason\":\"반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.\",\"uncertainty\":\"high\",\"alternatives\":[\"원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정\"],\"links\":[\"https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918214717914&bizId=BIZ201800002653\"]}],\"locked\":false,\"userConfirmed\":false,\"measured\":false},{\"id\":\"vestibule-window\",\"name\":\"후면 돌출부 창\",\"kind\":\"opening\",\"parentId\":\"rear-vestibule-back-0\",\"massId\":\"rear-vestibule\",\"face\":\"back\",\"role\":\"window\",\"outline\":[[5.695378607073118,17.899761336515514],[20.340637882403993,17.899761336515514],[20.340637882403993,43.93577782599262],[5.695378607073118,43.93577782599262]],\"position\":[0,0,0],\"rotation\":[0,0,0],\"thickness\":1.5,\"material\":\"검토용 판재\",\"color\":\"#8eafb5\",\"provenance\":\"observed\",\"evidence\":[{\"classification\":\"observed\",\"sourceId\":\"south\",\"observation\":\"후면 돌출부 창의 보이는 개수와 배치\",\"reason\":\"반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.\",\"uncertainty\":\"high\",\"alternatives\":[\"원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정\"],\"links\":[\"https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918214717914&bizId=BIZ201800002653\"]}],\"locked\":false,\"userConfirmed\":false,\"measured\":false},{\"id\":\"service-door\",\"name\":\"후면 낮은 부속부 문\",\"kind\":\"opening\",\"parentId\":\"service-back-0\",\"massId\":\"service\",\"face\":\"back\",\"role\":\"door\",\"outline\":[[11.390757214146236,0],[26.03601648947711,0],[26.03601648947711,35.79952267303103],[11.390757214146236,35.79952267303103]],\"position\":[0,0,0],\"rotation\":[0,0,0],\"thickness\":1.5,\"material\":\"검토용 판재\",\"color\":\"#8eafb5\",\"provenance\":\"observed\",\"evidence\":[{\"classification\":\"observed\",\"sourceId\":\"south\",\"observation\":\"후면 낮은 부속부 문의 보이는 개수와 배치\",\"reason\":\"반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.\",\"uncertainty\":\"high\",\"alternatives\":[\"원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정\"],\"links\":[\"https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918214717914&bizId=BIZ201800002653\"]}],\"locked\":false,\"userConfirmed\":false,\"measured\":false},{\"id\":\"main-roof-0-0\",\"name\":\"길게 놓인 본체 지붕 1-1\",\"kind\":\"roof\",\"outline\":[[0,0],[71.76834647943494,0],[71.76834647943494,184.4449665787731],[4.243267792730743,145.48869585],[4.243267792730743,252.97626401],[71.76834647943494,214.0199932812269],[71.76834647943494,300],[0,300],[0,86.09737364301641],[3.452261600919588,81.82631807],[0,77.55526249847617]],\"position\":[0,63.821579199489236,-10.54458668],\"rotation\":[-2.218188466534824,1.1102230246251565e-16,-1.5707963267948966],\"thickness\":1.5,\"material\":\"검토용 판재\",\"color\":\"#647568\",\"provenance\":\"observed\",\"evidence\":[{\"classification\":\"observed\",\"sourceId\":\"plan\",\"observation\":\"긴 직사각 본체, 길이 방향 용마루·양 끝 박공\",\"reason\":\"사용자 첨부 입면·평면과 공개 미리보기 대조. 축간 치수와 외벽 외곽을 구분해야 하며 위치는 검토용 추정.\",\"uncertainty\":\"high\",\"alternatives\":[\"원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정\"],\"links\":[\"https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918171717911&bizId=BIZ201800002653\"]}],\"locked\":false,\"userConfirmed\":false,\"measured\":false,\"massId\":\"main\"},{\"id\":\"main-roof-1-0\",\"name\":\"길게 놓인 본체 지붕 2-1\",\"kind\":\"roof\",\"outline\":[[0,0],[71.76834646689825,0],[71.76834646689825,300],[0,300],[0,214.0199932812269],[67.52507868670419,252.97626401],[67.52507868670419,145.48869585],[0,184.4449665787731]],\"position\":[0,107.10566283207393,46.70210458],\"rotation\":[-0.9234041870549682,-5.551115123125783e-17,-1.5707963267948963],\"thickness\":1.5,\"material\":\"검토용 판재\",\"color\":\"#647568\",\"provenance\":\"observed\",\"evidence\":[{\"classification\":\"observed\",\"sourceId\":\"plan\",\"observation\":\"긴 직사각 본체, 길이 방향 용마루·양 끝 박공\",\"reason\":\"사용자 첨부 입면·평면과 공개 미리보기 대조. 축간 치수와 외벽 외곽을 구분해야 하며 위치는 검토용 추정.\",\"uncertainty\":\"high\",\"alternatives\":[\"원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정\"],\"links\":[\"https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918171717911&bizId=BIZ201800002653\"]}],\"locked\":false,\"userConfirmed\":false,\"measured\":false,\"massId\":\"main\"},{\"id\":\"cross-roof-0-0\",\"name\":\"높은 직교 박공 지붕 3-1\",\"kind\":\"roof\",\"outline\":[[0,0],[77.95657305156764,-7.105427357601002e-15],[74.42902919101032,77.87672126602806],[130.63647285566773,24.15764582867545],[56.20744367177434,-53.71907544415445]],\"position\":[145.48869584290418,66.38072911072072,100.56411369],\"rotation\":[-1.570796326794906,-0.8075912591748372,0.7627653778779248],\"thickness\":1.5,\"material\":\"검토용 판재\",\"color\":\"#647568\",\"provenance\":\"observed\",\"evidence\":[{\"classification\":\"observed\",\"sourceId\":\"north\",\"observation\":\"본체 오른쪽의 더 높은 박공. 반대편 입면에서는 좌우 반전되어 보임.\",\"reason\":\"사용자 첨부 입면·평면과 공개 미리보기 대조. 축간 치수와 외벽 외곽을 구분해야 하며 위치는 검토용 추정.\",\"uncertainty\":\"high\",\"alternatives\":[\"원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정\"],\"links\":[\"https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918189717912&bizId=BIZ201800002653\"]}],\"locked\":false,\"userConfirmed\":false,\"measured\":false,\"massId\":\"cross\"},{\"id\":\"cross-roof-1-0\",\"name\":\"높은 직교 박공 지붕 4-1\",\"kind\":\"roof\",\"outline\":[[0,0],[107.72401821999999,0],[107.72401821999999,77.74969961800775],[53.86200910999999,21.392701325172112],[0,77.74969960816318]],\"position\":[199.23247993,122.56454762480999,-7.15990453],\"rotation\":[-1.570796326794897,0.8075912591748328,-1.5707963267948966],\"thickness\":1.5,\"material\":\"검토용 판재\",\"color\":\"#647568\",\"provenance\":\"observed\",\"evidence\":[{\"classification\":\"observed\",\"sourceId\":\"north\",\"observation\":\"본체 오른쪽의 더 높은 박공. 반대편 입면에서는 좌우 반전되어 보임.\",\"reason\":\"사용자 첨부 입면·평면과 공개 미리보기 대조. 축간 치수와 외벽 외곽을 구분해야 하며 위치는 검토용 추정.\",\"uncertainty\":\"high\",\"alternatives\":[\"원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정\"],\"links\":[\"https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918189717912&bizId=BIZ201800002653\"]}],\"locked\":false,\"userConfirmed\":false,\"measured\":false,\"massId\":\"cross\"},{\"id\":\"rear-vestibule-roof-0-0\",\"name\":\"후면 돌출 출입부 지붕 5-1\",\"kind\":\"roof\",\"outline\":[[0,0],[23.953135169999992,0],[23.953135169999992,27.082741094921648],[26.70686384967704,31.834267607391062],[0,31.834267607391062]],\"position\":[53.2111087,51.95410090863399,-34.49772185],\"rotation\":[-1.5707963267948966,-0.45358784906516925,-1.570796326794897],\"thickness\":1.5,\"material\":\"검토용 판재\",\"color\":\"#647568\",\"provenance\":\"observed\",\"evidence\":[{\"classification\":\"observed\",\"sourceId\":\"plan\",\"observation\":\"평면 상 뒤로 돌출된 출입부. 낮은 별도 박공.\",\"reason\":\"사용자 첨부 입면·평면과 공개 미리보기 대조. 축간 치수와 외벽 외곽을 구분해야 하며 위치는 검토용 추정.\",\"uncertainty\":\"high\",\"alternatives\":[\"원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정\"],\"links\":[\"https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918171717911&bizId=BIZ201800002653\"]}],\"locked\":false,\"userConfirmed\":false,\"measured\":false,\"massId\":\"rear-vestibule\"},{\"id\":\"rear-vestibule-roof-1-0\",\"name\":\"후면 돌출 출입부 지붕 6-1\",\"kind\":\"roof\",\"outline\":[[0,0],[26.70686384986728,0],[23.953135169999992,4.751526512469413],[23.953135169999992,31.834267618515998],[0,31.834267618515998]],\"position\":[81.82631807,65.9036667406146,-34.49772185],\"rotation\":[-1.5707963267948966,0.45358784906515964,-1.5707963267948966],\"thickness\":1.5,\"material\":\"검토용 판재\",\"color\":\"#647568\",\"provenance\":\"observed\",\"evidence\":[{\"classification\":\"observed\",\"sourceId\":\"plan\",\"observation\":\"평면 상 뒤로 돌출된 출입부. 낮은 별도 박공.\",\"reason\":\"사용자 첨부 입면·평면과 공개 미리보기 대조. 축간 치수와 외벽 외곽을 구분해야 하며 위치는 검토용 추정.\",\"uncertainty\":\"high\",\"alternatives\":[\"원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정\"],\"links\":[\"https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918171717911&bizId=BIZ201800002653\"]}],\"locked\":false,\"userConfirmed\":false,\"measured\":false,\"massId\":\"rear-vestibule\"},{\"id\":\"service-roof-flat-0\",\"name\":\"후면 낮은 부속부 지붕 7-1\",\"kind\":\"roof\",\"outline\":[[0,0],[22.00043393,0],[22.00043393,44.29377305],[0,44.29377305]],\"position\":[8.91733565,45.56302885658494,-32.54502061],\"rotation\":[-1.5707963267948966,0,-1.5707963267948966],\"thickness\":1.5,\"material\":\"검토용 판재\",\"color\":\"#647568\",\"provenance\":\"observed\",\"evidence\":[{\"classification\":\"observed\",\"sourceId\":\"south\",\"observation\":\"낮은 부속부. 경사 지붕은 이번 검토에서 평지붕으로 단순화.\",\"reason\":\"사용자 첨부 입면·평면과 공개 미리보기 대조. 축간 치수와 외벽 외곽을 구분해야 하며 위치는 검토용 추정.\",\"uncertainty\":\"high\",\"alternatives\":[\"원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정\"],\"links\":[\"https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918214717914&bizId=BIZ201800002653\"]}],\"locked\":false,\"userConfirmed\":false,\"measured\":false,\"massId\":\"service\"},{\"id\":\"veranda-roof-flat-0\",\"name\":\"후면 개방 차양 지붕 8-1\",\"kind\":\"roof\",\"outline\":[[0,0],[22.00043393,0],[22.00043393,180.64113690000002],[0,180.64113690000002]],\"position\":[110.44152745,45.56302885658494,-32.54502061],\"rotation\":[-1.5707963267948966,0,-1.5707963267948966],\"thickness\":1.5,\"material\":\"검토용 판재\",\"color\":\"#647568\",\"provenance\":\"observed\",\"evidence\":[{\"classification\":\"observed\",\"sourceId\":\"south\",\"observation\":\"후면 창 앞의 개방 차양. 벽으로 막지 않고 지붕만 표현.\",\"reason\":\"사용자 첨부 입면·평면과 공개 미리보기 대조. 축간 치수와 외벽 외곽을 구분해야 하며 위치는 검토용 추정.\",\"uncertainty\":\"high\",\"alternatives\":[\"원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정\"],\"links\":[\"https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918214717914&bizId=BIZ201800002653\"]}],\"locked\":false,\"userConfirmed\":false,\"measured\":false,\"massId\":\"veranda\"},{\"id\":\"entry-canopy-roof-flat-0\",\"name\":\"주출입구 차양 지붕 9-1\",\"kind\":\"roof\",\"outline\":[[0,0],[12.236927750000007,0],[12.236927750000007,64.27641570999998],[0,64.27641570999998]],\"position\":[167.57431113,56.14016055543502,103.94879583],\"rotation\":[-1.5707963267948966,0,-1.5707963267948966],\"thickness\":1.5,\"material\":\"검토용 판재\",\"color\":\"#647568\",\"provenance\":\"observed\",\"evidence\":[{\"classification\":\"observed\",\"sourceId\":\"north\",\"observation\":\"주출입구 위 돌출 차양. 두께·위치는 도면 비례 추정.\",\"reason\":\"사용자 첨부 입면·평면과 공개 미리보기 대조. 축간 치수와 외벽 외곽을 구분해야 하며 위치는 검토용 추정.\",\"uncertainty\":\"high\",\"alternatives\":[\"원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정\"],\"links\":[\"https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918189717912&bizId=BIZ201800002653\"]}],\"locked\":false,\"userConfirmed\":false,\"measured\":false,\"massId\":\"entry-canopy\"}],\"fabrication\":{\"material\":\"검토용 판재\",\"thicknessMm\":1.5,\"frameThicknessMm\":1,\"glassThicknessMm\":0.3,\"clearanceMm\":0.2,\"kerfMm\":0.15,\"joinery\":\"review-only\"},\"size\":{\"mode\":\"target-width\",\"targetWidthMm\":300}}",
+  "physicalConfirmed": false,
+  "physicalNote": "",
+  "updatedAt": "2026-10-24T02:43:52.149Z",
+  "design": {
+    "schema": "tradiative.building.v2",
+    "revision": 1,
+    "createdAt": "2026-10-24T02:43:52.181Z",
+    "size": {
+      "mode": "target-width",
+      "targetWidthMm": 300
+    },
+    "fabrication": {
+      "material": "검토용 판재",
+      "thicknessMm": 1.5,
+      "frameThicknessMm": 1,
+      "glassThicknessMm": 0.3,
+      "clearanceMm": 0.2,
+      "kerfMm": 0.15,
+      "joinery": "review-only"
+    },
+    "elements": [
+      {
+        "id": "main-front-0",
+        "name": "길게 놓인 본체 정면 벽",
+        "kind": "wall",
+        "outline": [
+          [
+            0,
+            0
+          ],
+          [
+            278.91082664,
+            0
+          ],
+          [
+            278.91082664,
+            71.79431547
+          ],
+          [
+            0,
+            71.79431547
+          ]
+        ],
+        "position": [
+          10.544586678238229,
+          0,
+          93.40420915599913
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "thickness": 1.5,
+        "material": "검토용 판재",
+        "color": "#d8ceb7",
+        "provenance": "observed",
+        "evidence": [
+          {
+            "classification": "observed",
+            "sourceId": "plan",
+            "observation": "긴 직사각 본체, 길이 방향 용마루·양 끝 박공",
+            "reason": "사용자 첨부 입면·평면과 공개 미리보기 대조. 축간 치수와 외벽 외곽을 구분해야 하며 위치는 검토용 추정.",
+            "uncertainty": "high",
+            "alternatives": [
+              "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+            ],
+            "links": [
+              "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918171717911&bizId=BIZ201800002653"
+            ]
+          }
+        ],
+        "locked": false,
+        "userConfirmed": false,
+        "measured": false,
+        "massId": "main",
+        "face": "front"
+      },
+      {
+        "id": "main-back-0",
+        "name": "길게 놓인 본체 후면 벽",
+        "kind": "wall",
+        "outline": [
+          [
+            0,
+            45.56302886
+          ],
+          [
+            46.24647429,
+            45.56302886
+          ],
+          [
+            46.24647429,
+            53.69928401
+          ],
+          [
+            71.2817314,
+            65.90366674
+          ],
+          [
+            96.3169885,
+            53.69928401
+          ],
+          [
+            96.3169885,
+            0
+          ],
+          [
+            278.91082664,
+            0
+          ],
+          [
+            278.91082664,
+            71.79431547
+          ],
+          [
+            0,
+            71.79431547
+          ]
+        ],
+        "position": [
+          10.544586678238229,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "thickness": 1.5,
+        "material": "검토용 판재",
+        "color": "#d8ceb7",
+        "provenance": "observed",
+        "evidence": [
+          {
+            "classification": "observed",
+            "sourceId": "plan",
+            "observation": "긴 직사각 본체, 길이 방향 용마루·양 끝 박공",
+            "reason": "사용자 첨부 입면·평면과 공개 미리보기 대조. 축간 치수와 외벽 외곽을 구분해야 하며 위치는 검토용 추정.",
+            "uncertainty": "high",
+            "alternatives": [
+              "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+            ],
+            "links": [
+              "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918171717911&bizId=BIZ201800002653"
+            ]
+          }
+        ],
+        "locked": false,
+        "userConfirmed": false,
+        "measured": false,
+        "massId": "main",
+        "face": "back"
+      },
+      {
+        "id": "main-left-0",
+        "name": "길게 놓인 본체 좌측 벽",
+        "kind": "wall",
+        "outline": [
+          [
+            0,
+            0
+          ],
+          [
+            93.40420916,
+            0
+          ],
+          [
+            93.40420916,
+            71.79431547
+          ],
+          [
+            46.70210458,
+            107.10566283
+          ],
+          [
+            0,
+            71.79431547
+          ]
+        ],
+        "position": [
+          10.544586678238229,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          -1.5707963267948966,
+          0
+        ],
+        "thickness": 1.5,
+        "material": "검토용 판재",
+        "color": "#d8ceb7",
+        "provenance": "observed",
+        "evidence": [
+          {
+            "classification": "observed",
+            "sourceId": "plan",
+            "observation": "긴 직사각 본체, 길이 방향 용마루·양 끝 박공",
+            "reason": "사용자 첨부 입면·평면과 공개 미리보기 대조. 축간 치수와 외벽 외곽을 구분해야 하며 위치는 검토용 추정.",
+            "uncertainty": "high",
+            "alternatives": [
+              "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+            ],
+            "links": [
+              "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918171717911&bizId=BIZ201800002653"
+            ]
+          }
+        ],
+        "locked": false,
+        "userConfirmed": false,
+        "measured": false,
+        "massId": "main",
+        "face": "left"
+      },
+      {
+        "id": "main-right-0",
+        "name": "길게 놓인 본체 우측 벽",
+        "kind": "wall",
+        "outline": [
+          [
+            0,
+            0
+          ],
+          [
+            93.40420916,
+            0
+          ],
+          [
+            93.40420916,
+            71.79431547
+          ],
+          [
+            46.70210458,
+            107.10566283
+          ],
+          [
+            0,
+            71.79431547
+          ]
+        ],
+        "position": [
+          289.45541332176174,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          -1.5707963267948966,
+          0
+        ],
+        "thickness": 1.5,
+        "material": "검토용 판재",
+        "color": "#d8ceb7",
+        "provenance": "observed",
+        "evidence": [
+          {
+            "classification": "observed",
+            "sourceId": "plan",
+            "observation": "긴 직사각 본체, 길이 방향 용마루·양 끝 박공",
+            "reason": "사용자 첨부 입면·평면과 공개 미리보기 대조. 축간 치수와 외벽 외곽을 구분해야 하며 위치는 검토용 추정.",
+            "uncertainty": "high",
+            "alternatives": [
+              "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+            ],
+            "links": [
+              "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918171717911&bizId=BIZ201800002653"
+            ]
+          }
+        ],
+        "locked": false,
+        "userConfirmed": false,
+        "measured": false,
+        "massId": "main",
+        "face": "right"
+      },
+      {
+        "id": "cross-front-0",
+        "name": "높은 직교 박공 정면 벽",
+        "kind": "wall",
+        "outline": [
+          [
+            0,
+            71.79431547
+          ],
+          [
+            97.13061402,
+            71.79431547
+          ],
+          [
+            48.56530701,
+            122.56454762
+          ]
+        ],
+        "position": [
+          150.66717292254285,
+          0,
+          93.40420915599913
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "thickness": 1.5,
+        "material": "검토용 판재",
+        "color": "#d8ceb7",
+        "provenance": "observed",
+        "evidence": [
+          {
+            "classification": "observed",
+            "sourceId": "north",
+            "observation": "본체 오른쪽의 더 높은 박공. 반대편 입면에서는 좌우 반전되어 보임.",
+            "reason": "사용자 첨부 입면·평면과 공개 미리보기 대조. 축간 치수와 외벽 외곽을 구분해야 하며 위치는 검토용 추정.",
+            "uncertainty": "high",
+            "alternatives": [
+              "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+            ],
+            "links": [
+              "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918189717912&bizId=BIZ201800002653"
+            ]
+          }
+        ],
+        "locked": false,
+        "userConfirmed": false,
+        "measured": false,
+        "massId": "cross",
+        "face": "front"
+      },
+      {
+        "id": "cross-back-0",
+        "name": "높은 직교 박공 후면 벽",
+        "kind": "wall",
+        "outline": [
+          [
+            0,
+            71.79431547
+          ],
+          [
+            97.13061402,
+            71.79431547
+          ],
+          [
+            48.56530701,
+            122.56454762
+          ]
+        ],
+        "position": [
+          150.66717292254285,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "thickness": 1.5,
+        "material": "검토용 판재",
+        "color": "#d8ceb7",
+        "provenance": "observed",
+        "evidence": [
+          {
+            "classification": "observed",
+            "sourceId": "north",
+            "observation": "본체 오른쪽의 더 높은 박공. 반대편 입면에서는 좌우 반전되어 보임.",
+            "reason": "사용자 첨부 입면·평면과 공개 미리보기 대조. 축간 치수와 외벽 외곽을 구분해야 하며 위치는 검토용 추정.",
+            "uncertainty": "high",
+            "alternatives": [
+              "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+            ],
+            "links": [
+              "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918189717912&bizId=BIZ201800002653"
+            ]
+          }
+        ],
+        "locked": false,
+        "userConfirmed": false,
+        "measured": false,
+        "massId": "cross",
+        "face": "back"
+      },
+      {
+        "id": "rear-vestibule-back-0",
+        "name": "후면 돌출 출입부 후면 벽",
+        "kind": "wall",
+        "outline": [
+          [
+            0,
+            0
+          ],
+          [
+            50.07051421,
+            0
+          ],
+          [
+            50.07051421,
+            53.69928401
+          ],
+          [
+            25.03525711,
+            65.90366674
+          ],
+          [
+            0,
+            53.69928401
+          ]
+        ],
+        "position": [
+          56.791060967671946,
+          0,
+          -30.917769581254067
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "thickness": 1.5,
+        "material": "검토용 판재",
+        "color": "#d8ceb7",
+        "provenance": "observed",
+        "evidence": [
+          {
+            "classification": "observed",
+            "sourceId": "plan",
+            "observation": "평면 상 뒤로 돌출된 출입부. 낮은 별도 박공.",
+            "reason": "사용자 첨부 입면·평면과 공개 미리보기 대조. 축간 치수와 외벽 외곽을 구분해야 하며 위치는 검토용 추정.",
+            "uncertainty": "high",
+            "alternatives": [
+              "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+            ],
+            "links": [
+              "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918171717911&bizId=BIZ201800002653"
+            ]
+          }
+        ],
+        "locked": false,
+        "userConfirmed": false,
+        "measured": false,
+        "massId": "rear-vestibule",
+        "face": "back"
+      },
+      {
+        "id": "rear-vestibule-left-0",
+        "name": "후면 돌출 출입부 좌측 벽",
+        "kind": "wall",
+        "outline": [
+          [
+            0,
+            45.56302886
+          ],
+          [
+            30.91776958,
+            45.56302886
+          ],
+          [
+            30.91776958,
+            53.69928401
+          ],
+          [
+            0,
+            53.69928401
+          ]
+        ],
+        "position": [
+          56.791060967671946,
+          0,
+          -30.917769581254067
+        ],
+        "rotation": [
+          0,
+          -1.5707963267948966,
+          0
+        ],
+        "thickness": 1.5,
+        "material": "검토용 판재",
+        "color": "#d8ceb7",
+        "provenance": "observed",
+        "evidence": [
+          {
+            "classification": "observed",
+            "sourceId": "plan",
+            "observation": "평면 상 뒤로 돌출된 출입부. 낮은 별도 박공.",
+            "reason": "사용자 첨부 입면·평면과 공개 미리보기 대조. 축간 치수와 외벽 외곽을 구분해야 하며 위치는 검토용 추정.",
+            "uncertainty": "high",
+            "alternatives": [
+              "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+            ],
+            "links": [
+              "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918171717911&bizId=BIZ201800002653"
+            ]
+          }
+        ],
+        "locked": false,
+        "userConfirmed": false,
+        "measured": false,
+        "massId": "rear-vestibule",
+        "face": "left"
+      },
+      {
+        "id": "rear-vestibule-right-0",
+        "name": "후면 돌출 출입부 우측 벽",
+        "kind": "wall",
+        "outline": [
+          [
+            0,
+            0
+          ],
+          [
+            30.91776958,
+            0
+          ],
+          [
+            30.91776958,
+            53.69928401
+          ],
+          [
+            0,
+            53.69928401
+          ]
+        ],
+        "position": [
+          106.86157517899761,
+          0,
+          -30.917769581254067
+        ],
+        "rotation": [
+          0,
+          -1.5707963267948966,
+          0
+        ],
+        "thickness": 1.5,
+        "material": "검토용 판재",
+        "color": "#d8ceb7",
+        "provenance": "observed",
+        "evidence": [
+          {
+            "classification": "observed",
+            "sourceId": "plan",
+            "observation": "평면 상 뒤로 돌출된 출입부. 낮은 별도 박공.",
+            "reason": "사용자 첨부 입면·평면과 공개 미리보기 대조. 축간 치수와 외벽 외곽을 구분해야 하며 위치는 검토용 추정.",
+            "uncertainty": "high",
+            "alternatives": [
+              "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+            ],
+            "links": [
+              "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918171717911&bizId=BIZ201800002653"
+            ]
+          }
+        ],
+        "locked": false,
+        "userConfirmed": false,
+        "measured": false,
+        "massId": "rear-vestibule",
+        "face": "right"
+      },
+      {
+        "id": "service-back-0",
+        "name": "후면 낮은 부속부 후면 벽",
+        "kind": "wall",
+        "outline": [
+          [
+            0,
+            0
+          ],
+          [
+            46.24647429,
+            0
+          ],
+          [
+            46.24647429,
+            45.56302886
+          ],
+          [
+            0,
+            45.56302886
+          ]
+        ],
+        "position": [
+          10.544586678238229,
+          0,
+          -30.917769581254067
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "thickness": 1.5,
+        "material": "검토용 판재",
+        "color": "#d8ceb7",
+        "provenance": "observed",
+        "evidence": [
+          {
+            "classification": "observed",
+            "sourceId": "south",
+            "observation": "낮은 부속부. 경사 지붕은 이번 검토에서 평지붕으로 단순화.",
+            "reason": "사용자 첨부 입면·평면과 공개 미리보기 대조. 축간 치수와 외벽 외곽을 구분해야 하며 위치는 검토용 추정.",
+            "uncertainty": "high",
+            "alternatives": [
+              "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+            ],
+            "links": [
+              "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918214717914&bizId=BIZ201800002653"
+            ]
+          }
+        ],
+        "locked": false,
+        "userConfirmed": false,
+        "measured": false,
+        "massId": "service",
+        "face": "back"
+      },
+      {
+        "id": "service-left-0",
+        "name": "후면 낮은 부속부 좌측 벽",
+        "kind": "wall",
+        "outline": [
+          [
+            0,
+            0
+          ],
+          [
+            30.91776958,
+            0
+          ],
+          [
+            30.91776958,
+            45.56302886
+          ],
+          [
+            0,
+            45.56302886
+          ]
+        ],
+        "position": [
+          10.544586678238229,
+          0,
+          -30.917769581254067
+        ],
+        "rotation": [
+          0,
+          -1.5707963267948966,
+          0
+        ],
+        "thickness": 1.5,
+        "material": "검토용 판재",
+        "color": "#d8ceb7",
+        "provenance": "observed",
+        "evidence": [
+          {
+            "classification": "observed",
+            "sourceId": "south",
+            "observation": "낮은 부속부. 경사 지붕은 이번 검토에서 평지붕으로 단순화.",
+            "reason": "사용자 첨부 입면·평면과 공개 미리보기 대조. 축간 치수와 외벽 외곽을 구분해야 하며 위치는 검토용 추정.",
+            "uncertainty": "high",
+            "alternatives": [
+              "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+            ],
+            "links": [
+              "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918214717914&bizId=BIZ201800002653"
+            ]
+          }
+        ],
+        "locked": false,
+        "userConfirmed": false,
+        "measured": false,
+        "massId": "service",
+        "face": "left"
+      },
+      {
+        "id": "north-window-1",
+        "name": "북측 긴 창 1",
+        "kind": "opening",
+        "parentId": "main-front-0",
+        "massId": "main",
+        "face": "front",
+        "role": "window",
+        "outline": [
+          [
+            17.899761336515514,
+            19.527012367107833
+          ],
+          [
+            29.941418962898677,
+            19.527012367107833
+          ],
+          [
+            29.941418962898677,
+            54.83835973096116
+          ],
+          [
+            17.899761336515514,
+            54.83835973096116
+          ]
+        ],
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "thickness": 1.5,
+        "material": "검토용 판재",
+        "color": "#8eafb5",
+        "provenance": "observed",
+        "evidence": [
+          {
+            "classification": "observed",
+            "sourceId": "north",
+            "observation": "북측 긴 창 1의 보이는 개수와 배치",
+            "reason": "반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.",
+            "uncertainty": "high",
+            "alternatives": [
+              "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+            ],
+            "links": [
+              "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918189717912&bizId=BIZ201800002653"
+            ]
+          }
+        ],
+        "locked": false,
+        "userConfirmed": false,
+        "measured": false
+      },
+      {
+        "id": "north-window-2",
+        "name": "북측 긴 창 2",
+        "kind": "opening",
+        "parentId": "main-front-0",
+        "massId": "main",
+        "face": "front",
+        "role": "window",
+        "outline": [
+          [
+            63.46279019310045,
+            19.527012367107833
+          ],
+          [
+            75.50444781948362,
+            19.527012367107833
+          ],
+          [
+            75.50444781948362,
+            54.83835973096116
+          ],
+          [
+            63.46279019310045,
+            54.83835973096116
+          ]
+        ],
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "thickness": 1.5,
+        "material": "검토용 판재",
+        "color": "#8eafb5",
+        "provenance": "observed",
+        "evidence": [
+          {
+            "classification": "observed",
+            "sourceId": "north",
+            "observation": "북측 긴 창 2의 보이는 개수와 배치",
+            "reason": "반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.",
+            "uncertainty": "high",
+            "alternatives": [
+              "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+            ],
+            "links": [
+              "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918189717912&bizId=BIZ201800002653"
+            ]
+          }
+        ],
+        "locked": false,
+        "userConfirmed": false,
+        "measured": false
+      },
+      {
+        "id": "north-window-3",
+        "name": "북측 긴 창 3",
+        "kind": "opening",
+        "parentId": "main-front-0",
+        "massId": "main",
+        "face": "front",
+        "role": "window",
+        "outline": [
+          [
+            85.43067910609676,
+            19.527012367107833
+          ],
+          [
+            97.47233673247993,
+            19.527012367107833
+          ],
+          [
+            97.47233673247993,
+            54.83835973096116
+          ],
+          [
+            85.43067910609676,
+            54.83835973096116
+          ]
+        ],
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "thickness": 1.5,
+        "material": "검토용 판재",
+        "color": "#8eafb5",
+        "provenance": "observed",
+        "evidence": [
+          {
+            "classification": "observed",
+            "sourceId": "north",
+            "observation": "북측 긴 창 3의 보이는 개수와 배치",
+            "reason": "반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.",
+            "uncertainty": "high",
+            "alternatives": [
+              "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+            ],
+            "links": [
+              "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918189717912&bizId=BIZ201800002653"
+            ]
+          }
+        ],
+        "locked": false,
+        "userConfirmed": false,
+        "measured": false
+      },
+      {
+        "id": "north-window-4",
+        "name": "북측 긴 창 4",
+        "kind": "opening",
+        "parentId": "main-front-0",
+        "massId": "main",
+        "face": "front",
+        "role": "window",
+        "outline": [
+          [
+            107.39856801909308,
+            19.527012367107833
+          ],
+          [
+            119.44022564547623,
+            19.527012367107833
+          ],
+          [
+            119.44022564547623,
+            54.83835973096116
+          ],
+          [
+            107.39856801909308,
+            54.83835973096116
+          ]
+        ],
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "thickness": 1.5,
+        "material": "검토용 판재",
+        "color": "#8eafb5",
+        "provenance": "observed",
+        "evidence": [
+          {
+            "classification": "observed",
+            "sourceId": "north",
+            "observation": "북측 긴 창 4의 보이는 개수와 배치",
+            "reason": "반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.",
+            "uncertainty": "high",
+            "alternatives": [
+              "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+            ],
+            "links": [
+              "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918189717912&bizId=BIZ201800002653"
+            ]
+          }
+        ],
+        "locked": false,
+        "userConfirmed": false,
+        "measured": false
+      },
+      {
+        "id": "north-window-5",
+        "name": "북측 긴 창 5",
+        "kind": "opening",
+        "parentId": "main-front-0",
+        "massId": "main",
+        "face": "front",
+        "role": "window",
+        "outline": [
+          [
+            248.96940768062487,
+            19.527012367107833
+          ],
+          [
+            261.01106530700804,
+            19.527012367107833
+          ],
+          [
+            261.01106530700804,
+            54.83835973096116
+          ],
+          [
+            248.96940768062487,
+            54.83835973096116
+          ]
+        ],
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "thickness": 1.5,
+        "material": "검토용 판재",
+        "color": "#8eafb5",
+        "provenance": "observed",
+        "evidence": [
+          {
+            "classification": "observed",
+            "sourceId": "north",
+            "observation": "북측 긴 창 5의 보이는 개수와 배치",
+            "reason": "반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.",
+            "uncertainty": "high",
+            "alternatives": [
+              "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+            ],
+            "links": [
+              "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918189717912&bizId=BIZ201800002653"
+            ]
+          }
+        ],
+        "locked": false,
+        "userConfirmed": false,
+        "measured": false
+      },
+      {
+        "id": "north-slit-1",
+        "name": "북측 출입구 옆 좁은 창 1",
+        "kind": "opening",
+        "parentId": "main-front-0",
+        "massId": "main",
+        "face": "front",
+        "role": "window",
+        "outline": [
+          [
+            142.38446517682794,
+            19.527012367107833
+          ],
+          [
+            148.07984378390105,
+            19.527012367107833
+          ],
+          [
+            148.07984378390105,
+            54.83835973096116
+          ],
+          [
+            142.38446517682794,
+            54.83835973096116
+          ]
+        ],
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "thickness": 1.5,
+        "material": "검토용 판재",
+        "color": "#8eafb5",
+        "provenance": "observed",
+        "evidence": [
+          {
+            "classification": "observed",
+            "sourceId": "north",
+            "observation": "북측 출입구 옆 좁은 창 1의 보이는 개수와 배치",
+            "reason": "반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.",
+            "uncertainty": "high",
+            "alternatives": [
+              "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+            ],
+            "links": [
+              "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918189717912&bizId=BIZ201800002653"
+            ]
+          }
+        ],
+        "locked": false,
+        "userConfirmed": false,
+        "measured": false
+      },
+      {
+        "id": "north-slit-2",
+        "name": "북측 출입구 옆 좁은 창 2",
+        "kind": "opening",
+        "parentId": "main-front-0",
+        "massId": "main",
+        "face": "front",
+        "role": "window",
+        "outline": [
+          [
+            225.37426773703623,
+            19.527012367107833
+          ],
+          [
+            231.06964634410934,
+            19.527012367107833
+          ],
+          [
+            231.06964634410934,
+            54.83835973096116
+          ],
+          [
+            225.37426773703623,
+            54.83835973096116
+          ]
+        ],
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "thickness": 1.5,
+        "material": "검토용 판재",
+        "color": "#8eafb5",
+        "provenance": "observed",
+        "evidence": [
+          {
+            "classification": "observed",
+            "sourceId": "north",
+            "observation": "북측 출입구 옆 좁은 창 2의 보이는 개수와 배치",
+            "reason": "반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.",
+            "uncertainty": "high",
+            "alternatives": [
+              "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+            ],
+            "links": [
+              "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918189717912&bizId=BIZ201800002653"
+            ]
+          }
+        ],
+        "locked": false,
+        "userConfirmed": false,
+        "measured": false
+      },
+      {
+        "id": "north-door",
+        "name": "북측 주출입문",
+        "kind": "opening",
+        "parentId": "main-front-0",
+        "massId": "main",
+        "face": "front",
+        "role": "door",
+        "outline": [
+          [
+            171.18680841831198,
+            0
+          ],
+          [
+            204.4640919939249,
+            0
+          ],
+          [
+            204.4640919939249,
+            45.56302885658494
+          ],
+          [
+            171.18680841831198,
+            45.56302885658494
+          ]
+        ],
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "thickness": 1.5,
+        "material": "검토용 판재",
+        "color": "#8eafb5",
+        "provenance": "observed",
+        "evidence": [
+          {
+            "classification": "observed",
+            "sourceId": "north",
+            "observation": "북측 주출입문의 보이는 개수와 배치",
+            "reason": "반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.",
+            "uncertainty": "high",
+            "alternatives": [
+              "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+            ],
+            "links": [
+              "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918189717912&bizId=BIZ201800002653"
+            ]
+          }
+        ],
+        "locked": false,
+        "userConfirmed": false,
+        "measured": false
+      },
+      {
+        "id": "north-attic",
+        "name": "북측 박공 환기구",
+        "kind": "opening",
+        "parentId": "cross-front-0",
+        "massId": "cross",
+        "face": "front",
+        "role": "vent",
+        "outline": [
+          [
+            45.237578650466475,
+            85.43067910609676
+          ],
+          [
+            51.74658277283575,
+            85.43067910609676
+          ],
+          [
+            51.74658277283575,
+            94.38055977435452
+          ],
+          [
+            45.237578650466475,
+            94.38055977435452
+          ]
+        ],
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "thickness": 1.5,
+        "material": "검토용 판재",
+        "color": "#8eafb5",
+        "provenance": "observed",
+        "evidence": [
+          {
+            "classification": "observed",
+            "sourceId": "north",
+            "observation": "북측 박공 환기구의 보이는 개수와 배치",
+            "reason": "반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.",
+            "uncertainty": "high",
+            "alternatives": [
+              "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+            ],
+            "links": [
+              "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918189717912&bizId=BIZ201800002653"
+            ]
+          }
+        ],
+        "locked": false,
+        "userConfirmed": false,
+        "measured": false
+      },
+      {
+        "id": "south-attic",
+        "name": "남측 박공 환기구",
+        "kind": "opening",
+        "parentId": "cross-back-0",
+        "massId": "cross",
+        "face": "back",
+        "role": "vent",
+        "outline": [
+          [
+            45.237578650466475,
+            85.43067910609676
+          ],
+          [
+            51.74658277283575,
+            85.43067910609676
+          ],
+          [
+            51.74658277283575,
+            94.38055977435452
+          ],
+          [
+            45.237578650466475,
+            94.38055977435452
+          ]
+        ],
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "thickness": 1.5,
+        "material": "검토용 판재",
+        "color": "#8eafb5",
+        "provenance": "observed",
+        "evidence": [
+          {
+            "classification": "observed",
+            "sourceId": "south",
+            "observation": "남측 박공 환기구의 보이는 개수와 배치",
+            "reason": "반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.",
+            "uncertainty": "high",
+            "alternatives": [
+              "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+            ],
+            "links": [
+              "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918214717914&bizId=BIZ201800002653"
+            ]
+          }
+        ],
+        "locked": false,
+        "userConfirmed": false,
+        "measured": false
+      },
+      {
+        "id": "left-window-1",
+        "name": "동측 창 1",
+        "kind": "opening",
+        "parentId": "main-left-0",
+        "massId": "main",
+        "face": "left",
+        "role": "window",
+        "outline": [
+          [
+            15.458884790627033,
+            18.38793664569321
+          ],
+          [
+            27.500542417010195,
+            18.38793664569321
+          ],
+          [
+            27.500542417010195,
+            53.69928400954654
+          ],
+          [
+            15.458884790627033,
+            53.69928400954654
+          ]
+        ],
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "thickness": 1.5,
+        "material": "검토용 판재",
+        "color": "#8eafb5",
+        "provenance": "observed",
+        "evidence": [
+          {
+            "classification": "observed",
+            "sourceId": "sides",
+            "observation": "동측 창 1의 보이는 개수와 배치",
+            "reason": "반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.",
+            "uncertainty": "high",
+            "alternatives": [
+              "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+            ],
+            "links": [
+              "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918202717913&bizId=BIZ201800002653"
+            ]
+          }
+        ],
+        "locked": false,
+        "userConfirmed": false,
+        "measured": false
+      },
+      {
+        "id": "left-window-2",
+        "name": "동측 창 2",
+        "kind": "opening",
+        "parentId": "main-left-0",
+        "massId": "main",
+        "face": "left",
+        "role": "window",
+        "outline": [
+          [
+            34.98589715773487,
+            18.38793664569321
+          ],
+          [
+            47.02755478411803,
+            18.38793664569321
+          ],
+          [
+            47.02755478411803,
+            53.69928400954654
+          ],
+          [
+            34.98589715773487,
+            53.69928400954654
+          ]
+        ],
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "thickness": 1.5,
+        "material": "검토용 판재",
+        "color": "#8eafb5",
+        "provenance": "observed",
+        "evidence": [
+          {
+            "classification": "observed",
+            "sourceId": "sides",
+            "observation": "동측 창 2의 보이는 개수와 배치",
+            "reason": "반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.",
+            "uncertainty": "high",
+            "alternatives": [
+              "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+            ],
+            "links": [
+              "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918202717913&bizId=BIZ201800002653"
+            ]
+          }
+        ],
+        "locked": false,
+        "userConfirmed": false,
+        "measured": false
+      },
+      {
+        "id": "left-attic",
+        "name": "동측 박공 환기구",
+        "kind": "opening",
+        "parentId": "main-left-0",
+        "massId": "main",
+        "face": "left",
+        "role": "vent",
+        "outline": [
+          [
+            43.447602516814925,
+            83.80342807550444
+          ],
+          [
+            49.9566066391842,
+            83.80342807550444
+          ],
+          [
+            49.9566066391842,
+            92.7533087437622
+          ],
+          [
+            43.447602516814925,
+            92.7533087437622
+          ]
+        ],
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "thickness": 1.5,
+        "material": "검토용 판재",
+        "color": "#8eafb5",
+        "provenance": "observed",
+        "evidence": [
+          {
+            "classification": "observed",
+            "sourceId": "sides",
+            "observation": "동측 박공 환기구의 보이는 개수와 배치",
+            "reason": "반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.",
+            "uncertainty": "high",
+            "alternatives": [
+              "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+            ],
+            "links": [
+              "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918202717913&bizId=BIZ201800002653"
+            ]
+          }
+        ],
+        "locked": false,
+        "userConfirmed": false,
+        "measured": false
+      },
+      {
+        "id": "right-window-1",
+        "name": "서측 창 1",
+        "kind": "opening",
+        "parentId": "main-right-0",
+        "massId": "main",
+        "face": "right",
+        "role": "window",
+        "outline": [
+          [
+            15.458884790627033,
+            18.38793664569321
+          ],
+          [
+            27.500542417010195,
+            18.38793664569321
+          ],
+          [
+            27.500542417010195,
+            53.69928400954654
+          ],
+          [
+            15.458884790627033,
+            53.69928400954654
+          ]
+        ],
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "thickness": 1.5,
+        "material": "검토용 판재",
+        "color": "#8eafb5",
+        "provenance": "observed",
+        "evidence": [
+          {
+            "classification": "observed",
+            "sourceId": "sides",
+            "observation": "서측 창 1의 보이는 개수와 배치",
+            "reason": "반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.",
+            "uncertainty": "high",
+            "alternatives": [
+              "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+            ],
+            "links": [
+              "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918202717913&bizId=BIZ201800002653"
+            ]
+          }
+        ],
+        "locked": false,
+        "userConfirmed": false,
+        "measured": false
+      },
+      {
+        "id": "right-window-2",
+        "name": "서측 창 2",
+        "kind": "opening",
+        "parentId": "main-right-0",
+        "massId": "main",
+        "face": "right",
+        "role": "window",
+        "outline": [
+          [
+            34.98589715773487,
+            18.38793664569321
+          ],
+          [
+            47.02755478411803,
+            18.38793664569321
+          ],
+          [
+            47.02755478411803,
+            53.69928400954654
+          ],
+          [
+            34.98589715773487,
+            53.69928400954654
+          ]
+        ],
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "thickness": 1.5,
+        "material": "검토용 판재",
+        "color": "#8eafb5",
+        "provenance": "observed",
+        "evidence": [
+          {
+            "classification": "observed",
+            "sourceId": "sides",
+            "observation": "서측 창 2의 보이는 개수와 배치",
+            "reason": "반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.",
+            "uncertainty": "high",
+            "alternatives": [
+              "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+            ],
+            "links": [
+              "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918202717913&bizId=BIZ201800002653"
+            ]
+          }
+        ],
+        "locked": false,
+        "userConfirmed": false,
+        "measured": false
+      },
+      {
+        "id": "right-window-3",
+        "name": "서측 창 3",
+        "kind": "opening",
+        "parentId": "main-right-0",
+        "massId": "main",
+        "face": "right",
+        "role": "window",
+        "outline": [
+          [
+            54.5129095248427,
+            18.38793664569321
+          ],
+          [
+            66.55456715122585,
+            18.38793664569321
+          ],
+          [
+            66.55456715122585,
+            53.69928400954654
+          ],
+          [
+            54.5129095248427,
+            53.69928400954654
+          ]
+        ],
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "thickness": 1.5,
+        "material": "검토용 판재",
+        "color": "#8eafb5",
+        "provenance": "observed",
+        "evidence": [
+          {
+            "classification": "observed",
+            "sourceId": "sides",
+            "observation": "서측 창 3의 보이는 개수와 배치",
+            "reason": "반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.",
+            "uncertainty": "high",
+            "alternatives": [
+              "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+            ],
+            "links": [
+              "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918202717913&bizId=BIZ201800002653"
+            ]
+          }
+        ],
+        "locked": false,
+        "userConfirmed": false,
+        "measured": false
+      },
+      {
+        "id": "right-attic",
+        "name": "서측 박공 환기구",
+        "kind": "opening",
+        "parentId": "main-right-0",
+        "massId": "main",
+        "face": "right",
+        "role": "vent",
+        "outline": [
+          [
+            43.447602516814925,
+            83.80342807550444
+          ],
+          [
+            49.9566066391842,
+            83.80342807550444
+          ],
+          [
+            49.9566066391842,
+            92.7533087437622
+          ],
+          [
+            43.447602516814925,
+            92.7533087437622
+          ]
+        ],
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "thickness": 1.5,
+        "material": "검토용 판재",
+        "color": "#8eafb5",
+        "provenance": "observed",
+        "evidence": [
+          {
+            "classification": "observed",
+            "sourceId": "sides",
+            "observation": "서측 박공 환기구의 보이는 개수와 배치",
+            "reason": "반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.",
+            "uncertainty": "high",
+            "alternatives": [
+              "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+            ],
+            "links": [
+              "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918202717913&bizId=BIZ201800002653"
+            ]
+          }
+        ],
+        "locked": false,
+        "userConfirmed": false,
+        "measured": false
+      },
+      {
+        "id": "south-window-1",
+        "name": "남측 본체 창 1",
+        "kind": "opening",
+        "parentId": "main-back-0",
+        "massId": "main",
+        "face": "back",
+        "role": "window",
+        "outline": [
+          [
+            110.65307008027771,
+            19.527012367107833
+          ],
+          [
+            125.29832935560859,
+            19.527012367107833
+          ],
+          [
+            125.29832935560859,
+            50.4447819483619
+          ],
+          [
+            110.65307008027771,
+            50.4447819483619
+          ]
+        ],
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "thickness": 1.5,
+        "material": "검토용 판재",
+        "color": "#8eafb5",
+        "provenance": "observed",
+        "evidence": [
+          {
+            "classification": "observed",
+            "sourceId": "south",
+            "observation": "남측 본체 창 1의 보이는 개수와 배치",
+            "reason": "반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.",
+            "uncertainty": "high",
+            "alternatives": [
+              "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+            ],
+            "links": [
+              "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918214717914&bizId=BIZ201800002653"
+            ]
+          }
+        ],
+        "locked": false,
+        "userConfirmed": false,
+        "measured": false
+      },
+      {
+        "id": "south-window-2",
+        "name": "남측 본체 창 2",
+        "kind": "opening",
+        "parentId": "main-back-0",
+        "massId": "main",
+        "face": "back",
+        "role": "window",
+        "outline": [
+          [
+            149.7070948144934,
+            19.527012367107833
+          ],
+          [
+            164.35235408982427,
+            19.527012367107833
+          ],
+          [
+            164.35235408982427,
+            50.4447819483619
+          ],
+          [
+            149.7070948144934,
+            50.4447819483619
+          ]
+        ],
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "thickness": 1.5,
+        "material": "검토용 판재",
+        "color": "#8eafb5",
+        "provenance": "observed",
+        "evidence": [
+          {
+            "classification": "observed",
+            "sourceId": "south",
+            "observation": "남측 본체 창 2의 보이는 개수와 배치",
+            "reason": "반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.",
+            "uncertainty": "high",
+            "alternatives": [
+              "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+            ],
+            "links": [
+              "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918214717914&bizId=BIZ201800002653"
+            ]
+          }
+        ],
+        "locked": false,
+        "userConfirmed": false,
+        "measured": false
+      },
+      {
+        "id": "south-window-3",
+        "name": "남측 본체 창 3",
+        "kind": "opening",
+        "parentId": "main-back-0",
+        "massId": "main",
+        "face": "back",
+        "role": "window",
+        "outline": [
+          [
+            226.1878932523324,
+            19.527012367107833
+          ],
+          [
+            240.8331525276633,
+            19.527012367107833
+          ],
+          [
+            240.8331525276633,
+            50.4447819483619
+          ],
+          [
+            226.1878932523324,
+            50.4447819483619
+          ]
+        ],
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "thickness": 1.5,
+        "material": "검토용 판재",
+        "color": "#8eafb5",
+        "provenance": "observed",
+        "evidence": [
+          {
+            "classification": "observed",
+            "sourceId": "south",
+            "observation": "남측 본체 창 3의 보이는 개수와 배치",
+            "reason": "반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.",
+            "uncertainty": "high",
+            "alternatives": [
+              "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+            ],
+            "links": [
+              "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918214717914&bizId=BIZ201800002653"
+            ]
+          }
+        ],
+        "locked": false,
+        "userConfirmed": false,
+        "measured": false
+      },
+      {
+        "id": "south-window-4",
+        "name": "남측 본체 창 4",
+        "kind": "opening",
+        "parentId": "main-back-0",
+        "massId": "main",
+        "face": "back",
+        "role": "window",
+        "outline": [
+          [
+            253.8511607724018,
+            19.527012367107833
+          ],
+          [
+            268.49642004773267,
+            19.527012367107833
+          ],
+          [
+            268.49642004773267,
+            50.4447819483619
+          ],
+          [
+            253.8511607724018,
+            50.4447819483619
+          ]
+        ],
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "thickness": 1.5,
+        "material": "검토용 판재",
+        "color": "#8eafb5",
+        "provenance": "observed",
+        "evidence": [
+          {
+            "classification": "observed",
+            "sourceId": "south",
+            "observation": "남측 본체 창 4의 보이는 개수와 배치",
+            "reason": "반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.",
+            "uncertainty": "high",
+            "alternatives": [
+              "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+            ],
+            "links": [
+              "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918214717914&bizId=BIZ201800002653"
+            ]
+          }
+        ],
+        "locked": false,
+        "userConfirmed": false,
+        "measured": false
+      },
+      {
+        "id": "vestibule-door",
+        "name": "후면 돌출부 출입문",
+        "kind": "opening",
+        "parentId": "rear-vestibule-back-0",
+        "massId": "rear-vestibule",
+        "face": "back",
+        "role": "door",
+        "outline": [
+          [
+            26.03601648947711,
+            0
+          ],
+          [
+            40.681275764807985,
+            0
+          ],
+          [
+            40.681275764807985,
+            39.054024734215666
+          ],
+          [
+            26.03601648947711,
+            39.054024734215666
+          ]
+        ],
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "thickness": 1.5,
+        "material": "검토용 판재",
+        "color": "#8eafb5",
+        "provenance": "observed",
+        "evidence": [
+          {
+            "classification": "observed",
+            "sourceId": "south",
+            "observation": "후면 돌출부 출입문의 보이는 개수와 배치",
+            "reason": "반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.",
+            "uncertainty": "high",
+            "alternatives": [
+              "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+            ],
+            "links": [
+              "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918214717914&bizId=BIZ201800002653"
+            ]
+          }
+        ],
+        "locked": false,
+        "userConfirmed": false,
+        "measured": false
+      },
+      {
+        "id": "vestibule-window",
+        "name": "후면 돌출부 창",
+        "kind": "opening",
+        "parentId": "rear-vestibule-back-0",
+        "massId": "rear-vestibule",
+        "face": "back",
+        "role": "window",
+        "outline": [
+          [
+            5.695378607073118,
+            17.899761336515514
+          ],
+          [
+            20.340637882403993,
+            17.899761336515514
+          ],
+          [
+            20.340637882403993,
+            43.93577782599262
+          ],
+          [
+            5.695378607073118,
+            43.93577782599262
+          ]
+        ],
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "thickness": 1.5,
+        "material": "검토용 판재",
+        "color": "#8eafb5",
+        "provenance": "observed",
+        "evidence": [
+          {
+            "classification": "observed",
+            "sourceId": "south",
+            "observation": "후면 돌출부 창의 보이는 개수와 배치",
+            "reason": "반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.",
+            "uncertainty": "high",
+            "alternatives": [
+              "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+            ],
+            "links": [
+              "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918214717914&bizId=BIZ201800002653"
+            ]
+          }
+        ],
+        "locked": false,
+        "userConfirmed": false,
+        "measured": false
+      },
+      {
+        "id": "service-door",
+        "name": "후면 낮은 부속부 문",
+        "kind": "opening",
+        "parentId": "service-back-0",
+        "massId": "service",
+        "face": "back",
+        "role": "door",
+        "outline": [
+          [
+            11.390757214146236,
+            0
+          ],
+          [
+            26.03601648947711,
+            0
+          ],
+          [
+            26.03601648947711,
+            35.79952267303103
+          ],
+          [
+            11.390757214146236,
+            35.79952267303103
+          ]
+        ],
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "thickness": 1.5,
+        "material": "검토용 판재",
+        "color": "#8eafb5",
+        "provenance": "observed",
+        "evidence": [
+          {
+            "classification": "observed",
+            "sourceId": "south",
+            "observation": "후면 낮은 부속부 문의 보이는 개수와 배치",
+            "reason": "반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.",
+            "uncertainty": "high",
+            "alternatives": [
+              "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+            ],
+            "links": [
+              "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918214717914&bizId=BIZ201800002653"
+            ]
+          }
+        ],
+        "locked": false,
+        "userConfirmed": false,
+        "measured": false
+      },
+      {
+        "id": "main-roof-0-0",
+        "name": "길게 놓인 본체 지붕 1-1",
+        "kind": "roof",
+        "outline": [
+          [
+            0,
+            0
+          ],
+          [
+            71.76834647943494,
+            0
+          ],
+          [
+            71.76834647943494,
+            184.4449665787731
+          ],
+          [
+            4.243267792730743,
+            145.48869585
+          ],
+          [
+            4.243267792730743,
+            252.97626401
+          ],
+          [
+            71.76834647943494,
+            214.0199932812269
+          ],
+          [
+            71.76834647943494,
+            300
+          ],
+          [
+            0,
+            300
+          ],
+          [
+            0,
+            86.09737364301641
+          ],
+          [
+            3.452261600919588,
+            81.82631807
+          ],
+          [
+            0,
+            77.55526249847617
+          ]
+        ],
+        "position": [
+          0,
+          63.821579199489236,
+          -10.54458668
+        ],
+        "rotation": [
+          -2.218188466534824,
+          1.1102230246251565e-16,
+          -1.5707963267948966
+        ],
+        "thickness": 1.5,
+        "material": "검토용 판재",
+        "color": "#647568",
+        "provenance": "observed",
+        "evidence": [
+          {
+            "classification": "observed",
+            "sourceId": "plan",
+            "observation": "긴 직사각 본체, 길이 방향 용마루·양 끝 박공",
+            "reason": "사용자 첨부 입면·평면과 공개 미리보기 대조. 축간 치수와 외벽 외곽을 구분해야 하며 위치는 검토용 추정.",
+            "uncertainty": "high",
+            "alternatives": [
+              "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+            ],
+            "links": [
+              "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918171717911&bizId=BIZ201800002653"
+            ]
+          }
+        ],
+        "locked": false,
+        "userConfirmed": false,
+        "measured": false,
+        "massId": "main"
+      },
+      {
+        "id": "main-roof-1-0",
+        "name": "길게 놓인 본체 지붕 2-1",
+        "kind": "roof",
+        "outline": [
+          [
+            0,
+            0
+          ],
+          [
+            71.76834646689825,
+            0
+          ],
+          [
+            71.76834646689825,
+            300
+          ],
+          [
+            0,
+            300
+          ],
+          [
+            0,
+            214.0199932812269
+          ],
+          [
+            67.52507868670419,
+            252.97626401
+          ],
+          [
+            67.52507868670419,
+            145.48869585
+          ],
+          [
+            0,
+            184.4449665787731
+          ]
+        ],
+        "position": [
+          0,
+          107.10566283207393,
+          46.70210458
+        ],
+        "rotation": [
+          -0.9234041870549682,
+          -5.551115123125783e-17,
+          -1.5707963267948963
+        ],
+        "thickness": 1.5,
+        "material": "검토용 판재",
+        "color": "#647568",
+        "provenance": "observed",
+        "evidence": [
+          {
+            "classification": "observed",
+            "sourceId": "plan",
+            "observation": "긴 직사각 본체, 길이 방향 용마루·양 끝 박공",
+            "reason": "사용자 첨부 입면·평면과 공개 미리보기 대조. 축간 치수와 외벽 외곽을 구분해야 하며 위치는 검토용 추정.",
+            "uncertainty": "high",
+            "alternatives": [
+              "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+            ],
+            "links": [
+              "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918171717911&bizId=BIZ201800002653"
+            ]
+          }
+        ],
+        "locked": false,
+        "userConfirmed": false,
+        "measured": false,
+        "massId": "main"
+      },
+      {
+        "id": "cross-roof-0-0",
+        "name": "높은 직교 박공 지붕 3-1",
+        "kind": "roof",
+        "outline": [
+          [
+            0,
+            0
+          ],
+          [
+            77.95657305156764,
+            -7.105427357601002e-15
+          ],
+          [
+            74.42902919101032,
+            77.87672126602806
+          ],
+          [
+            130.63647285566773,
+            24.15764582867545
+          ],
+          [
+            56.20744367177434,
+            -53.71907544415445
+          ]
+        ],
+        "position": [
+          145.48869584290418,
+          66.38072911072072,
+          100.56411369
+        ],
+        "rotation": [
+          -1.570796326794906,
+          -0.8075912591748372,
+          0.7627653778779248
+        ],
+        "thickness": 1.5,
+        "material": "검토용 판재",
+        "color": "#647568",
+        "provenance": "observed",
+        "evidence": [
+          {
+            "classification": "observed",
+            "sourceId": "north",
+            "observation": "본체 오른쪽의 더 높은 박공. 반대편 입면에서는 좌우 반전되어 보임.",
+            "reason": "사용자 첨부 입면·평면과 공개 미리보기 대조. 축간 치수와 외벽 외곽을 구분해야 하며 위치는 검토용 추정.",
+            "uncertainty": "high",
+            "alternatives": [
+              "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+            ],
+            "links": [
+              "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918189717912&bizId=BIZ201800002653"
+            ]
+          }
+        ],
+        "locked": false,
+        "userConfirmed": false,
+        "measured": false,
+        "massId": "cross"
+      },
+      {
+        "id": "cross-roof-1-0",
+        "name": "높은 직교 박공 지붕 4-1",
+        "kind": "roof",
+        "outline": [
+          [
+            0,
+            0
+          ],
+          [
+            107.72401821999999,
+            0
+          ],
+          [
+            107.72401821999999,
+            77.74969961800775
+          ],
+          [
+            53.86200910999999,
+            21.392701325172112
+          ],
+          [
+            0,
+            77.74969960816318
+          ]
+        ],
+        "position": [
+          199.23247993,
+          122.56454762480999,
+          -7.15990453
+        ],
+        "rotation": [
+          -1.570796326794897,
+          0.8075912591748328,
+          -1.5707963267948966
+        ],
+        "thickness": 1.5,
+        "material": "검토용 판재",
+        "color": "#647568",
+        "provenance": "observed",
+        "evidence": [
+          {
+            "classification": "observed",
+            "sourceId": "north",
+            "observation": "본체 오른쪽의 더 높은 박공. 반대편 입면에서는 좌우 반전되어 보임.",
+            "reason": "사용자 첨부 입면·평면과 공개 미리보기 대조. 축간 치수와 외벽 외곽을 구분해야 하며 위치는 검토용 추정.",
+            "uncertainty": "high",
+            "alternatives": [
+              "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+            ],
+            "links": [
+              "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918189717912&bizId=BIZ201800002653"
+            ]
+          }
+        ],
+        "locked": false,
+        "userConfirmed": false,
+        "measured": false,
+        "massId": "cross"
+      },
+      {
+        "id": "rear-vestibule-roof-0-0",
+        "name": "후면 돌출 출입부 지붕 5-1",
+        "kind": "roof",
+        "outline": [
+          [
+            0,
+            0
+          ],
+          [
+            23.953135169999992,
+            0
+          ],
+          [
+            23.953135169999992,
+            27.082741094921648
+          ],
+          [
+            26.70686384967704,
+            31.834267607391062
+          ],
+          [
+            0,
+            31.834267607391062
+          ]
+        ],
+        "position": [
+          53.2111087,
+          51.95410090863399,
+          -34.49772185
+        ],
+        "rotation": [
+          -1.5707963267948966,
+          -0.45358784906516925,
+          -1.570796326794897
+        ],
+        "thickness": 1.5,
+        "material": "검토용 판재",
+        "color": "#647568",
+        "provenance": "observed",
+        "evidence": [
+          {
+            "classification": "observed",
+            "sourceId": "plan",
+            "observation": "평면 상 뒤로 돌출된 출입부. 낮은 별도 박공.",
+            "reason": "사용자 첨부 입면·평면과 공개 미리보기 대조. 축간 치수와 외벽 외곽을 구분해야 하며 위치는 검토용 추정.",
+            "uncertainty": "high",
+            "alternatives": [
+              "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+            ],
+            "links": [
+              "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918171717911&bizId=BIZ201800002653"
+            ]
+          }
+        ],
+        "locked": false,
+        "userConfirmed": false,
+        "measured": false,
+        "massId": "rear-vestibule"
+      },
+      {
+        "id": "rear-vestibule-roof-1-0",
+        "name": "후면 돌출 출입부 지붕 6-1",
+        "kind": "roof",
+        "outline": [
+          [
+            0,
+            0
+          ],
+          [
+            26.70686384986728,
+            0
+          ],
+          [
+            23.953135169999992,
+            4.751526512469413
+          ],
+          [
+            23.953135169999992,
+            31.834267618515998
+          ],
+          [
+            0,
+            31.834267618515998
+          ]
+        ],
+        "position": [
+          81.82631807,
+          65.9036667406146,
+          -34.49772185
+        ],
+        "rotation": [
+          -1.5707963267948966,
+          0.45358784906515964,
+          -1.5707963267948966
+        ],
+        "thickness": 1.5,
+        "material": "검토용 판재",
+        "color": "#647568",
+        "provenance": "observed",
+        "evidence": [
+          {
+            "classification": "observed",
+            "sourceId": "plan",
+            "observation": "평면 상 뒤로 돌출된 출입부. 낮은 별도 박공.",
+            "reason": "사용자 첨부 입면·평면과 공개 미리보기 대조. 축간 치수와 외벽 외곽을 구분해야 하며 위치는 검토용 추정.",
+            "uncertainty": "high",
+            "alternatives": [
+              "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+            ],
+            "links": [
+              "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918171717911&bizId=BIZ201800002653"
+            ]
+          }
+        ],
+        "locked": false,
+        "userConfirmed": false,
+        "measured": false,
+        "massId": "rear-vestibule"
+      },
+      {
+        "id": "service-roof-flat-0",
+        "name": "후면 낮은 부속부 지붕 7-1",
+        "kind": "roof",
+        "outline": [
+          [
+            0,
+            0
+          ],
+          [
+            22.00043393,
+            0
+          ],
+          [
+            22.00043393,
+            44.29377305
+          ],
+          [
+            0,
+            44.29377305
+          ]
+        ],
+        "position": [
+          8.91733565,
+          45.56302885658494,
+          -32.54502061
+        ],
+        "rotation": [
+          -1.5707963267948966,
+          0,
+          -1.5707963267948966
+        ],
+        "thickness": 1.5,
+        "material": "검토용 판재",
+        "color": "#647568",
+        "provenance": "observed",
+        "evidence": [
+          {
+            "classification": "observed",
+            "sourceId": "south",
+            "observation": "낮은 부속부. 경사 지붕은 이번 검토에서 평지붕으로 단순화.",
+            "reason": "사용자 첨부 입면·평면과 공개 미리보기 대조. 축간 치수와 외벽 외곽을 구분해야 하며 위치는 검토용 추정.",
+            "uncertainty": "high",
+            "alternatives": [
+              "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+            ],
+            "links": [
+              "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918214717914&bizId=BIZ201800002653"
+            ]
+          }
+        ],
+        "locked": false,
+        "userConfirmed": false,
+        "measured": false,
+        "massId": "service"
+      },
+      {
+        "id": "veranda-roof-flat-0",
+        "name": "후면 개방 차양 지붕 8-1",
+        "kind": "roof",
+        "outline": [
+          [
+            0,
+            0
+          ],
+          [
+            22.00043393,
+            0
+          ],
+          [
+            22.00043393,
+            180.64113690000002
+          ],
+          [
+            0,
+            180.64113690000002
+          ]
+        ],
+        "position": [
+          110.44152745,
+          45.56302885658494,
+          -32.54502061
+        ],
+        "rotation": [
+          -1.5707963267948966,
+          0,
+          -1.5707963267948966
+        ],
+        "thickness": 1.5,
+        "material": "검토용 판재",
+        "color": "#647568",
+        "provenance": "observed",
+        "evidence": [
+          {
+            "classification": "observed",
+            "sourceId": "south",
+            "observation": "후면 창 앞의 개방 차양. 벽으로 막지 않고 지붕만 표현.",
+            "reason": "사용자 첨부 입면·평면과 공개 미리보기 대조. 축간 치수와 외벽 외곽을 구분해야 하며 위치는 검토용 추정.",
+            "uncertainty": "high",
+            "alternatives": [
+              "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+            ],
+            "links": [
+              "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918214717914&bizId=BIZ201800002653"
+            ]
+          }
+        ],
+        "locked": false,
+        "userConfirmed": false,
+        "measured": false,
+        "massId": "veranda"
+      },
+      {
+        "id": "entry-canopy-roof-flat-0",
+        "name": "주출입구 차양 지붕 9-1",
+        "kind": "roof",
+        "outline": [
+          [
+            0,
+            0
+          ],
+          [
+            12.236927750000007,
+            0
+          ],
+          [
+            12.236927750000007,
+            64.27641570999998
+          ],
+          [
+            0,
+            64.27641570999998
+          ]
+        ],
+        "position": [
+          167.57431113,
+          56.14016055543502,
+          103.94879583
+        ],
+        "rotation": [
+          -1.5707963267948966,
+          0,
+          -1.5707963267948966
+        ],
+        "thickness": 1.5,
+        "material": "검토용 판재",
+        "color": "#647568",
+        "provenance": "observed",
+        "evidence": [
+          {
+            "classification": "observed",
+            "sourceId": "north",
+            "observation": "주출입구 위 돌출 차양. 두께·위치는 도면 비례 추정.",
+            "reason": "사용자 첨부 입면·평면과 공개 미리보기 대조. 축간 치수와 외벽 외곽을 구분해야 하며 위치는 검토용 추정.",
+            "uncertainty": "high",
+            "alternatives": [
+              "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+            ],
+            "links": [
+              "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918189717912&bizId=BIZ201800002653"
+            ]
+          }
+        ],
+        "locked": false,
+        "userConfirmed": false,
+        "measured": false,
+        "massId": "entry-canopy"
+      }
+    ],
+    "observations": [],
+    "assumptions": [
+      {
+        "classification": "inferred",
+        "sourceId": "plan",
+        "observation": "가로 17,140과 본체 5,740 및 후면 1,900은 기존 판독 제안 값",
+        "reason": "수치들은 공통 상대좌표로만 사용하며 실측확정·1:80으로 표시하지 않음",
+        "uncertainty": "high",
+        "alternatives": [
+          "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+        ],
+        "links": [
+          "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918171717911&bizId=BIZ201800002653"
+        ]
+      }
+    ],
+    "masses": [
+      {
+        "id": "main",
+        "name": "길게 놓인 본체",
+        "origin": [
+          10.544586678238229,
+          0,
+          0
+        ],
+        "size": [
+          278.91082664352354,
+          71.79431546973314,
+          93.40420915599913
+        ],
+        "roofAxis": "x",
+        "roofOnly": false,
+        "evidence": [
+          {
+            "classification": "observed",
+            "sourceId": "plan",
+            "observation": "긴 직사각 본체, 길이 방향 용마루·양 끝 박공",
+            "reason": "사용자 첨부 입면·평면과 공개 미리보기 대조. 축간 치수와 외벽 외곽을 구분해야 하며 위치는 검토용 추정.",
+            "uncertainty": "high",
+            "alternatives": [
+              "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+            ],
+            "links": [
+              "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918171717911&bizId=BIZ201800002653"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "cross",
+        "name": "높은 직교 박공",
+        "origin": [
+          150.66717292254285,
+          0,
+          0
+        ],
+        "size": [
+          97.13061401605555,
+          71.79431546973314,
+          93.40420915599913
+        ],
+        "roofAxis": "z",
+        "roofOnly": true,
+        "evidence": [
+          {
+            "classification": "observed",
+            "sourceId": "north",
+            "observation": "본체 오른쪽의 더 높은 박공. 반대편 입면에서는 좌우 반전되어 보임.",
+            "reason": "사용자 첨부 입면·평면과 공개 미리보기 대조. 축간 치수와 외벽 외곽을 구분해야 하며 위치는 검토용 추정.",
+            "uncertainty": "high",
+            "alternatives": [
+              "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+            ],
+            "links": [
+              "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918189717912&bizId=BIZ201800002653"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "rear-vestibule",
+        "name": "후면 돌출 출입부",
+        "origin": [
+          56.791060967671946,
+          0,
+          -30.917769581254067
+        ],
+        "size": [
+          50.070514211325666,
+          53.69928400954654,
+          30.917769581254067
+        ],
+        "roofAxis": "z",
+        "roofOnly": false,
+        "evidence": [
+          {
+            "classification": "observed",
+            "sourceId": "plan",
+            "observation": "평면 상 뒤로 돌출된 출입부. 낮은 별도 박공.",
+            "reason": "사용자 첨부 입면·평면과 공개 미리보기 대조. 축간 치수와 외벽 외곽을 구분해야 하며 위치는 검토용 추정.",
+            "uncertainty": "high",
+            "alternatives": [
+              "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+            ],
+            "links": [
+              "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918171717911&bizId=BIZ201800002653"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "service",
+        "name": "후면 낮은 부속부",
+        "origin": [
+          10.544586678238229,
+          0,
+          -30.917769581254067
+        ],
+        "size": [
+          46.24647428943371,
+          45.56302885658494,
+          30.917769581254067
+        ],
+        "roofAxis": "x",
+        "roofOnly": false,
+        "evidence": [
+          {
+            "classification": "observed",
+            "sourceId": "south",
+            "observation": "낮은 부속부. 경사 지붕은 이번 검토에서 평지붕으로 단순화.",
+            "reason": "사용자 첨부 입면·평면과 공개 미리보기 대조. 축간 치수와 외벽 외곽을 구분해야 하며 위치는 검토용 추정.",
+            "uncertainty": "high",
+            "alternatives": [
+              "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+            ],
+            "links": [
+              "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918214717914&bizId=BIZ201800002653"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "veranda",
+        "name": "후면 개방 차양",
+        "origin": [
+          106.86157517899761,
+          0,
+          -30.917769581254067
+        ],
+        "size": [
+          182.59383814276416,
+          45.56302885658494,
+          30.917769581254067
+        ],
+        "roofAxis": "x",
+        "roofOnly": true,
+        "evidence": [
+          {
+            "classification": "observed",
+            "sourceId": "south",
+            "observation": "후면 창 앞의 개방 차양. 벽으로 막지 않고 지붕만 표현.",
+            "reason": "사용자 첨부 입면·평면과 공개 미리보기 대조. 축간 치수와 외벽 외곽을 구분해야 하며 위치는 검토용 추정.",
+            "uncertainty": "high",
+            "alternatives": [
+              "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+            ],
+            "links": [
+              "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918214717914&bizId=BIZ201800002653"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "entry-canopy",
+        "name": "주출입구 차양",
+        "origin": [
+          167.57431113039704,
+          0,
+          93.40420915599913
+        ],
+        "size": [
+          64.27641570839661,
+          56.14016055543502,
+          22.78151442829247
+        ],
+        "roofAxis": "x",
+        "roofOnly": true,
+        "evidence": [
+          {
+            "classification": "observed",
+            "sourceId": "north",
+            "observation": "주출입구 위 돌출 차양. 두께·위치는 도면 비례 추정.",
+            "reason": "사용자 첨부 입면·평면과 공개 미리보기 대조. 축간 치수와 외벽 외곽을 구분해야 하며 위치는 검토용 추정.",
+            "uncertainty": "high",
+            "alternatives": [
+              "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+            ],
+            "links": [
+              "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918189717912&bizId=BIZ201800002653"
+            ]
+          }
+        ]
+      }
+    ],
+    "limitations": [
+      "작성자가 기존 첨부 도면과 국가유산청 공개 미리보기를 대조해 구성한 검토 사례입니다. 웹앱의 GPT API 자동생성 결과가 아닙니다.",
+      "입면의 좌우 반전을 공통 좌표에 대응시켰습니다. 같은 높은 박공을 앞면·뒷면에 각각 별도 건물로 만들지 않았습니다.",
+      "창호 위치·유효 개구부 크기·벽 두께·처마·돌출부·차양의 경사는 실측 미확인입니다. 간판·굴뚝·창살·가새는 이번 구조에 포함하지 않았습니다.",
+      "후면 차양과 낮은 부속부의 경사 지붕을 평면으로 단순화했습니다. 이 핵심 차이는 남은 항목으로 판정합니다.",
+      "번들 원본은 국가유산청 공개 웹 미리보기 JPEG 4개(500×354)입니다. CAD 원본이나 사용자 첨부 고해상도 원본 11개를 포함하지 않습니다.",
+      "복수 직사각 덩어리와 평면 박공/평지붕의 상부 표면 교차를 절삭했습니다. 지붕 판재 두께 접합·내부 구조·임의 곡면·실물 조립은 미검증입니다.",
+      "자료 분석은 이 개발 대화에서 수행했습니다. 웹사이트의 GPT 이미지 API 요청은 아직 미검증이며 이 사례를 M1 통과로 세지 않습니다."
+    ]
+  },
+  "checks": [
+    {
+      "id": "scale",
+      "name": "목표 크기·단위 일관성",
+      "detail": "목표 폭 300 mm의 추정 모델입니다. 실측 축척·고증 완료로 표시하지 않습니다.",
+      "status": "pass"
+    },
+    {
+      "id": "geometry",
+      "name": "윤곽·개구부 검사",
+      "detail": "자기 교차·수치·ID·부모 관계·벽 밖 개구부·개구부 겹침·동일 배치 패널 중복 검사를 통과했습니다. 전체 3D 간섭 인증은 아닙니다.",
+      "status": "pass"
+    },
+    {
+      "id": "source",
+      "name": "원본 형상·추정 근거 대조",
+      "detail": "입면 투영·요소별 근거를 비교해 주세요. 내부 윤곽 겹침 지표는 독립적인 정확도 검증이 아닙니다. 미관찰 후면은 검증되지 않았습니다.",
+      "status": "review"
+    },
+    {
+      "id": "generation",
+      "name": "부품 버전 일치",
+      "detail": "현재 형상 데이터에서 화면과 내보내기용 부품을 생성했습니다.",
+      "status": "pass"
+    },
+    {
+      "id": "fit",
+      "name": "재료·조립 실물 확인",
+      "detail": "두께 1.5 mm. 연결부 강도·휨·끼움은 실물 확인이 필요합니다.",
+      "status": "review"
+    }
+  ],
+  "parts": [
+    {
+      "id": "main-front-0",
+      "name": "길게 놓인 본체 정면 벽",
+      "group": "wall",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          171.18680842,
+          0
+        ],
+        [
+          171.18680842,
+          45.56302886
+        ],
+        [
+          204.46409199,
+          45.56302886
+        ],
+        [
+          204.46409199,
+          0
+        ],
+        [
+          278.91082664,
+          0
+        ],
+        [
+          278.91082664,
+          71.79431547
+        ],
+        [
+          0,
+          71.79431547
+        ]
+      ],
+      "holes": [
+        [
+          [
+            17.89976134,
+            19.52701237
+          ],
+          [
+            17.89976134,
+            54.83835973
+          ],
+          [
+            29.94141896,
+            54.83835973
+          ],
+          [
+            29.94141896,
+            19.52701237
+          ]
+        ],
+        [
+          [
+            63.46279019,
+            19.52701237
+          ],
+          [
+            63.46279019,
+            54.83835973
+          ],
+          [
+            75.50444782,
+            54.83835973
+          ],
+          [
+            75.50444782,
+            19.52701237
+          ]
+        ],
+        [
+          [
+            85.43067911,
+            19.52701237
+          ],
+          [
+            85.43067911,
+            54.83835973
+          ],
+          [
+            97.47233673,
+            54.83835973
+          ],
+          [
+            97.47233673,
+            19.52701237
+          ]
+        ],
+        [
+          [
+            107.39856802,
+            19.52701237
+          ],
+          [
+            107.39856802,
+            54.83835973
+          ],
+          [
+            119.44022565,
+            54.83835973
+          ],
+          [
+            119.44022565,
+            19.52701237
+          ]
+        ],
+        [
+          [
+            142.38446518,
+            19.52701237
+          ],
+          [
+            142.38446518,
+            54.83835973
+          ],
+          [
+            148.07984378,
+            54.83835973
+          ],
+          [
+            148.07984378,
+            19.52701237
+          ]
+        ],
+        [
+          [
+            225.37426774,
+            19.52701237
+          ],
+          [
+            225.37426774,
+            54.83835973
+          ],
+          [
+            231.06964634,
+            54.83835973
+          ],
+          [
+            231.06964634,
+            19.52701237
+          ]
+        ],
+        [
+          [
+            248.96940768,
+            19.52701237
+          ],
+          [
+            248.96940768,
+            54.83835973
+          ],
+          [
+            261.01106531,
+            54.83835973
+          ],
+          [
+            261.01106531,
+            19.52701237
+          ]
+        ]
+      ],
+      "position": [
+        10.544586678238229,
+        0,
+        93.40420915599913
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "thickness": 1.5,
+      "material": "검토용 판재",
+      "color": "#d8ceb7",
+      "sourceElementId": "main-front-0",
+      "provenance": "observed",
+      "width": 278.91082664,
+      "height": 71.79431547
+    },
+    {
+      "id": "north-window-1-frame",
+      "name": "북측 긴 창 1 프레임",
+      "group": "window",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          11.641657626383163,
+          0
+        ],
+        [
+          11.641657626383163,
+          34.91134736385333
+        ],
+        [
+          0,
+          34.91134736385333
+        ]
+      ],
+      "holes": [
+        [
+          [
+            0.8,
+            0.8
+          ],
+          [
+            10.841657626383164,
+            0.8
+          ],
+          [
+            10.841657626383164,
+            34.111347363853326
+          ],
+          [
+            0.8,
+            34.111347363853326
+          ]
+        ]
+      ],
+      "position": [
+        28.644348014753742,
+        19.727012367107832,
+        93.90420915599913
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "thickness": 1,
+      "material": "검토용 판재",
+      "color": "#e8e2d4",
+      "sourceElementId": "north-window-1",
+      "provenance": "observed",
+      "width": 11.641657626383163,
+      "height": 34.91134736385333
+    },
+    {
+      "id": "north-window-1-glass",
+      "name": "북측 긴 창 1 투명판",
+      "group": "glass",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          10.041657626383163,
+          0
+        ],
+        [
+          10.041657626383163,
+          33.31134736385333
+        ],
+        [
+          0,
+          33.31134736385333
+        ]
+      ],
+      "holes": [],
+      "position": [
+        29.444348014753743,
+        20.527012367107833,
+        94.00420915599912
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "thickness": 0.3,
+      "material": "검토용 투명판",
+      "color": "#8eafb5",
+      "sourceElementId": "north-window-1",
+      "provenance": "observed",
+      "width": 10.041657626383163,
+      "height": 33.31134736385333
+    },
+    {
+      "id": "north-window-2-frame",
+      "name": "북측 긴 창 2 프레임",
+      "group": "window",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          11.641657626383163,
+          0
+        ],
+        [
+          11.641657626383163,
+          34.91134736385333
+        ],
+        [
+          0,
+          34.91134736385333
+        ]
+      ],
+      "holes": [
+        [
+          [
+            0.8,
+            0.8
+          ],
+          [
+            10.841657626383164,
+            0.8
+          ],
+          [
+            10.841657626383164,
+            34.111347363853326
+          ],
+          [
+            0.8,
+            34.111347363853326
+          ]
+        ]
+      ],
+      "position": [
+        74.20737687133868,
+        19.727012367107832,
+        93.90420915599913
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "thickness": 1,
+      "material": "검토용 판재",
+      "color": "#e8e2d4",
+      "sourceElementId": "north-window-2",
+      "provenance": "observed",
+      "width": 11.641657626383163,
+      "height": 34.91134736385333
+    },
+    {
+      "id": "north-window-2-glass",
+      "name": "북측 긴 창 2 투명판",
+      "group": "glass",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          10.041657626383163,
+          0
+        ],
+        [
+          10.041657626383163,
+          33.31134736385333
+        ],
+        [
+          0,
+          33.31134736385333
+        ]
+      ],
+      "holes": [],
+      "position": [
+        75.00737687133869,
+        20.527012367107833,
+        94.00420915599912
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "thickness": 0.3,
+      "material": "검토용 투명판",
+      "color": "#8eafb5",
+      "sourceElementId": "north-window-2",
+      "provenance": "observed",
+      "width": 10.041657626383163,
+      "height": 33.31134736385333
+    },
+    {
+      "id": "north-window-3-frame",
+      "name": "북측 긴 창 3 프레임",
+      "group": "window",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          11.64165762638317,
+          0
+        ],
+        [
+          11.64165762638317,
+          34.91134736385333
+        ],
+        [
+          0,
+          34.91134736385333
+        ]
+      ],
+      "holes": [
+        [
+          [
+            0.8,
+            0.8
+          ],
+          [
+            10.84165762638317,
+            0.8
+          ],
+          [
+            10.84165762638317,
+            34.111347363853326
+          ],
+          [
+            0.8,
+            34.111347363853326
+          ]
+        ]
+      ],
+      "position": [
+        96.175265784335,
+        19.727012367107832,
+        93.90420915599913
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "thickness": 1,
+      "material": "검토용 판재",
+      "color": "#e8e2d4",
+      "sourceElementId": "north-window-3",
+      "provenance": "observed",
+      "width": 11.64165762638317,
+      "height": 34.91134736385333
+    },
+    {
+      "id": "north-window-3-glass",
+      "name": "북측 긴 창 3 투명판",
+      "group": "glass",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          10.04165762638317,
+          0
+        ],
+        [
+          10.04165762638317,
+          33.31134736385333
+        ],
+        [
+          0,
+          33.31134736385333
+        ]
+      ],
+      "holes": [],
+      "position": [
+        96.975265784335,
+        20.527012367107833,
+        94.00420915599912
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "thickness": 0.3,
+      "material": "검토용 투명판",
+      "color": "#8eafb5",
+      "sourceElementId": "north-window-3",
+      "provenance": "observed",
+      "width": 10.04165762638317,
+      "height": 33.31134736385333
+    },
+    {
+      "id": "north-window-4-frame",
+      "name": "북측 긴 창 4 프레임",
+      "group": "window",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          11.641657626383155,
+          0
+        ],
+        [
+          11.641657626383155,
+          34.91134736385333
+        ],
+        [
+          0,
+          34.91134736385333
+        ]
+      ],
+      "holes": [
+        [
+          [
+            0.8,
+            0.8
+          ],
+          [
+            10.841657626383157,
+            0.8
+          ],
+          [
+            10.841657626383157,
+            34.111347363853326
+          ],
+          [
+            0.8,
+            34.111347363853326
+          ]
+        ]
+      ],
+      "position": [
+        118.14315469733131,
+        19.727012367107832,
+        93.90420915599913
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "thickness": 1,
+      "material": "검토용 판재",
+      "color": "#e8e2d4",
+      "sourceElementId": "north-window-4",
+      "provenance": "observed",
+      "width": 11.641657626383155,
+      "height": 34.91134736385333
+    },
+    {
+      "id": "north-window-4-glass",
+      "name": "북측 긴 창 4 투명판",
+      "group": "glass",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          10.041657626383156,
+          0
+        ],
+        [
+          10.041657626383156,
+          33.31134736385333
+        ],
+        [
+          0,
+          33.31134736385333
+        ]
+      ],
+      "holes": [],
+      "position": [
+        118.94315469733131,
+        20.527012367107833,
+        94.00420915599912
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "thickness": 0.3,
+      "material": "검토용 투명판",
+      "color": "#8eafb5",
+      "sourceElementId": "north-window-4",
+      "provenance": "observed",
+      "width": 10.041657626383156,
+      "height": 33.31134736385333
+    },
+    {
+      "id": "north-window-5-frame",
+      "name": "북측 긴 창 5 프레임",
+      "group": "window",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          11.64165762638317,
+          0
+        ],
+        [
+          11.64165762638317,
+          34.91134736385333
+        ],
+        [
+          0,
+          34.91134736385333
+        ]
+      ],
+      "holes": [
+        [
+          [
+            0.8,
+            0.8
+          ],
+          [
+            10.84165762638317,
+            0.8
+          ],
+          [
+            10.84165762638317,
+            34.111347363853326
+          ],
+          [
+            0.8,
+            34.111347363853326
+          ]
+        ]
+      ],
+      "position": [
+        259.7139943588631,
+        19.727012367107832,
+        93.90420915599913
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "thickness": 1,
+      "material": "검토용 판재",
+      "color": "#e8e2d4",
+      "sourceElementId": "north-window-5",
+      "provenance": "observed",
+      "width": 11.64165762638317,
+      "height": 34.91134736385333
+    },
+    {
+      "id": "north-window-5-glass",
+      "name": "북측 긴 창 5 투명판",
+      "group": "glass",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          10.04165762638317,
+          0
+        ],
+        [
+          10.04165762638317,
+          33.31134736385333
+        ],
+        [
+          0,
+          33.31134736385333
+        ]
+      ],
+      "holes": [],
+      "position": [
+        260.5139943588631,
+        20.527012367107833,
+        94.00420915599912
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "thickness": 0.3,
+      "material": "검토용 투명판",
+      "color": "#8eafb5",
+      "sourceElementId": "north-window-5",
+      "provenance": "observed",
+      "width": 10.04165762638317,
+      "height": 33.31134736385333
+    },
+    {
+      "id": "north-slit-1-frame",
+      "name": "북측 출입구 옆 좁은 창 1 프레임",
+      "group": "window",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          5.2953786070731095,
+          0
+        ],
+        [
+          5.2953786070731095,
+          34.91134736385333
+        ],
+        [
+          0,
+          34.91134736385333
+        ]
+      ],
+      "holes": [
+        [
+          [
+            0.7943067910609664,
+            0.7943067910609664
+          ],
+          [
+            4.501071816012144,
+            0.7943067910609664
+          ],
+          [
+            4.501071816012144,
+            34.11704057279237
+          ],
+          [
+            0.7943067910609664,
+            34.11704057279237
+          ]
+        ]
+      ],
+      "position": [
+        153.12905185506617,
+        19.727012367107832,
+        93.90420915599913
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "thickness": 1,
+      "material": "검토용 판재",
+      "color": "#e8e2d4",
+      "sourceElementId": "north-slit-1",
+      "provenance": "observed",
+      "width": 5.2953786070731095,
+      "height": 34.91134736385333
+    },
+    {
+      "id": "north-slit-1-glass",
+      "name": "북측 출입구 옆 좁은 창 1 투명판",
+      "group": "glass",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          3.706765024951177,
+          0
+        ],
+        [
+          3.706765024951177,
+          33.3227337817314
+        ],
+        [
+          0,
+          33.3227337817314
+        ]
+      ],
+      "holes": [],
+      "position": [
+        153.92335864612713,
+        20.521319158168797,
+        94.00420915599912
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "thickness": 0.3,
+      "material": "검토용 투명판",
+      "color": "#8eafb5",
+      "sourceElementId": "north-slit-1",
+      "provenance": "observed",
+      "width": 3.706765024951177,
+      "height": 33.3227337817314
+    },
+    {
+      "id": "north-slit-2-frame",
+      "name": "북측 출입구 옆 좁은 창 2 프레임",
+      "group": "window",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          5.2953786070731095,
+          0
+        ],
+        [
+          5.2953786070731095,
+          34.91134736385333
+        ],
+        [
+          0,
+          34.91134736385333
+        ]
+      ],
+      "holes": [
+        [
+          [
+            0.7943067910609664,
+            0.7943067910609664
+          ],
+          [
+            4.501071816012144,
+            0.7943067910609664
+          ],
+          [
+            4.501071816012144,
+            34.11704057279237
+          ],
+          [
+            0.7943067910609664,
+            34.11704057279237
+          ]
+        ]
+      ],
+      "position": [
+        236.11885441527446,
+        19.727012367107832,
+        93.90420915599913
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "thickness": 1,
+      "material": "검토용 판재",
+      "color": "#e8e2d4",
+      "sourceElementId": "north-slit-2",
+      "provenance": "observed",
+      "width": 5.2953786070731095,
+      "height": 34.91134736385333
+    },
+    {
+      "id": "north-slit-2-glass",
+      "name": "북측 출입구 옆 좁은 창 2 투명판",
+      "group": "glass",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          3.706765024951177,
+          0
+        ],
+        [
+          3.706765024951177,
+          33.3227337817314
+        ],
+        [
+          0,
+          33.3227337817314
+        ]
+      ],
+      "holes": [],
+      "position": [
+        236.91316120633542,
+        20.521319158168797,
+        94.00420915599912
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "thickness": 0.3,
+      "material": "검토용 투명판",
+      "color": "#8eafb5",
+      "sourceElementId": "north-slit-2",
+      "provenance": "observed",
+      "width": 3.706765024951177,
+      "height": 33.3227337817314
+    },
+    {
+      "id": "north-door-frame",
+      "name": "북측 주출입문 프레임",
+      "group": "window",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          32.87728357561293,
+          0
+        ],
+        [
+          32.87728357561293,
+          45.163028856584944
+        ],
+        [
+          0,
+          45.163028856584944
+        ]
+      ],
+      "holes": [
+        [
+          [
+            0.8,
+            0.8
+          ],
+          [
+            32.077283575612924,
+            0.8
+          ],
+          [
+            32.077283575612924,
+            44.36302885658494
+          ],
+          [
+            0.8,
+            44.36302885658494
+          ]
+        ]
+      ],
+      "position": [
+        181.9313950965502,
+        0.2,
+        93.90420915599913
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "thickness": 1,
+      "material": "검토용 판재",
+      "color": "#e8e2d4",
+      "sourceElementId": "north-door",
+      "provenance": "observed",
+      "width": 32.87728357561293,
+      "height": 45.163028856584944
+    },
+    {
+      "id": "north-door-glass",
+      "name": "북측 주출입문 투명판",
+      "group": "glass",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          31.277283575612927,
+          0
+        ],
+        [
+          31.277283575612927,
+          43.56302885658494
+        ],
+        [
+          0,
+          43.56302885658494
+        ]
+      ],
+      "holes": [],
+      "position": [
+        182.73139509655022,
+        1,
+        94.00420915599912
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "thickness": 0.3,
+      "material": "검토용 투명판",
+      "color": "#8eafb5",
+      "sourceElementId": "north-door",
+      "provenance": "observed",
+      "width": 31.277283575612927,
+      "height": 43.56302885658494
+    },
+    {
+      "id": "main-back-0",
+      "name": "길게 놓인 본체 후면 벽",
+      "group": "wall",
+      "outline": [
+        [
+          0,
+          45.56302886
+        ],
+        [
+          46.24647429,
+          45.56302886
+        ],
+        [
+          46.24647429,
+          53.69928401
+        ],
+        [
+          71.2817314,
+          65.90366674
+        ],
+        [
+          96.3169885,
+          53.69928401
+        ],
+        [
+          96.3169885,
+          0
+        ],
+        [
+          278.91082664,
+          0
+        ],
+        [
+          278.91082664,
+          71.79431547
+        ],
+        [
+          0,
+          71.79431547
+        ]
+      ],
+      "holes": [
+        [
+          [
+            110.65307008,
+            19.52701237
+          ],
+          [
+            110.65307008,
+            50.44478195
+          ],
+          [
+            125.29832936,
+            50.44478195
+          ],
+          [
+            125.29832936,
+            19.52701237
+          ]
+        ],
+        [
+          [
+            149.70709481,
+            19.52701237
+          ],
+          [
+            149.70709481,
+            50.44478195
+          ],
+          [
+            164.35235409,
+            50.44478195
+          ],
+          [
+            164.35235409,
+            19.52701237
+          ]
+        ],
+        [
+          [
+            226.18789325,
+            19.52701237
+          ],
+          [
+            226.18789325,
+            50.44478195
+          ],
+          [
+            240.83315253,
+            50.44478195
+          ],
+          [
+            240.83315253,
+            19.52701237
+          ]
+        ],
+        [
+          [
+            253.85116077,
+            19.52701237
+          ],
+          [
+            253.85116077,
+            50.44478195
+          ],
+          [
+            268.49642005,
+            50.44478195
+          ],
+          [
+            268.49642005,
+            19.52701237
+          ]
+        ]
+      ],
+      "position": [
+        10.544586678238229,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "thickness": 1.5,
+      "material": "검토용 판재",
+      "color": "#d8ceb7",
+      "sourceElementId": "main-back-0",
+      "provenance": "observed",
+      "width": 278.91082664,
+      "height": 71.79431547
+    },
+    {
+      "id": "south-window-1-frame",
+      "name": "남측 본체 창 1 프레임",
+      "group": "window",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          14.245259275330872,
+          0
+        ],
+        [
+          14.245259275330872,
+          30.51776958125407
+        ],
+        [
+          0,
+          30.51776958125407
+        ]
+      ],
+      "holes": [
+        [
+          [
+            0.8,
+            0.8
+          ],
+          [
+            13.445259275330873,
+            0.8
+          ],
+          [
+            13.445259275330873,
+            29.717769581254068
+          ],
+          [
+            0.8,
+            29.717769581254068
+          ]
+        ]
+      ],
+      "position": [
+        121.39765675851595,
+        19.727012367107832,
+        0.5
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "thickness": 1,
+      "material": "검토용 판재",
+      "color": "#e8e2d4",
+      "sourceElementId": "south-window-1",
+      "provenance": "observed",
+      "width": 14.245259275330872,
+      "height": 30.51776958125407
+    },
+    {
+      "id": "south-window-1-glass",
+      "name": "남측 본체 창 1 투명판",
+      "group": "glass",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          12.645259275330872,
+          0
+        ],
+        [
+          12.645259275330872,
+          28.917769581254067
+        ],
+        [
+          0,
+          28.917769581254067
+        ]
+      ],
+      "holes": [],
+      "position": [
+        122.19765675851595,
+        20.527012367107833,
+        0.6000000000000001
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "thickness": 0.3,
+      "material": "검토용 투명판",
+      "color": "#8eafb5",
+      "sourceElementId": "south-window-1",
+      "provenance": "observed",
+      "width": 12.645259275330872,
+      "height": 28.917769581254067
+    },
+    {
+      "id": "south-window-2-frame",
+      "name": "남측 본체 창 2 프레임",
+      "group": "window",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          14.245259275330886,
+          0
+        ],
+        [
+          14.245259275330886,
+          30.51776958125407
+        ],
+        [
+          0,
+          30.51776958125407
+        ]
+      ],
+      "holes": [
+        [
+          [
+            0.8,
+            0.8
+          ],
+          [
+            13.445259275330887,
+            0.8
+          ],
+          [
+            13.445259275330887,
+            29.717769581254068
+          ],
+          [
+            0.8,
+            29.717769581254068
+          ]
+        ]
+      ],
+      "position": [
+        160.4516814927316,
+        19.727012367107832,
+        0.5
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "thickness": 1,
+      "material": "검토용 판재",
+      "color": "#e8e2d4",
+      "sourceElementId": "south-window-2",
+      "provenance": "observed",
+      "width": 14.245259275330886,
+      "height": 30.51776958125407
+    },
+    {
+      "id": "south-window-2-glass",
+      "name": "남측 본체 창 2 투명판",
+      "group": "glass",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          12.645259275330886,
+          0
+        ],
+        [
+          12.645259275330886,
+          28.917769581254067
+        ],
+        [
+          0,
+          28.917769581254067
+        ]
+      ],
+      "holes": [],
+      "position": [
+        161.25168149273162,
+        20.527012367107833,
+        0.6000000000000001
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "thickness": 0.3,
+      "material": "검토용 투명판",
+      "color": "#8eafb5",
+      "sourceElementId": "south-window-2",
+      "provenance": "observed",
+      "width": 12.645259275330886,
+      "height": 28.917769581254067
+    },
+    {
+      "id": "south-window-3-frame",
+      "name": "남측 본체 창 3 프레임",
+      "group": "window",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          14.245259275330886,
+          0
+        ],
+        [
+          14.245259275330886,
+          30.51776958125407
+        ],
+        [
+          0,
+          30.51776958125407
+        ]
+      ],
+      "holes": [
+        [
+          [
+            0.8,
+            0.8
+          ],
+          [
+            13.445259275330887,
+            0.8
+          ],
+          [
+            13.445259275330887,
+            29.717769581254068
+          ],
+          [
+            0.8,
+            29.717769581254068
+          ]
+        ]
+      ],
+      "position": [
+        236.93247993057062,
+        19.727012367107832,
+        0.5
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "thickness": 1,
+      "material": "검토용 판재",
+      "color": "#e8e2d4",
+      "sourceElementId": "south-window-3",
+      "provenance": "observed",
+      "width": 14.245259275330886,
+      "height": 30.51776958125407
+    },
+    {
+      "id": "south-window-3-glass",
+      "name": "남측 본체 창 3 투명판",
+      "group": "glass",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          12.645259275330886,
+          0
+        ],
+        [
+          12.645259275330886,
+          28.917769581254067
+        ],
+        [
+          0,
+          28.917769581254067
+        ]
+      ],
+      "holes": [],
+      "position": [
+        237.73247993057063,
+        20.527012367107833,
+        0.6000000000000001
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "thickness": 0.3,
+      "material": "검토용 투명판",
+      "color": "#8eafb5",
+      "sourceElementId": "south-window-3",
+      "provenance": "observed",
+      "width": 12.645259275330886,
+      "height": 28.917769581254067
+    },
+    {
+      "id": "south-window-4-frame",
+      "name": "남측 본체 창 4 프레임",
+      "group": "window",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          14.245259275330858,
+          0
+        ],
+        [
+          14.245259275330858,
+          30.51776958125407
+        ],
+        [
+          0,
+          30.51776958125407
+        ]
+      ],
+      "holes": [
+        [
+          [
+            0.8,
+            0.8
+          ],
+          [
+            13.445259275330859,
+            0.8
+          ],
+          [
+            13.445259275330859,
+            29.717769581254068
+          ],
+          [
+            0.8,
+            29.717769581254068
+          ]
+        ]
+      ],
+      "position": [
+        264.59574745064003,
+        19.727012367107832,
+        0.5
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "thickness": 1,
+      "material": "검토용 판재",
+      "color": "#e8e2d4",
+      "sourceElementId": "south-window-4",
+      "provenance": "observed",
+      "width": 14.245259275330858,
+      "height": 30.51776958125407
+    },
+    {
+      "id": "south-window-4-glass",
+      "name": "남측 본체 창 4 투명판",
+      "group": "glass",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          12.645259275330858,
+          0
+        ],
+        [
+          12.645259275330858,
+          28.917769581254067
+        ],
+        [
+          0,
+          28.917769581254067
+        ]
+      ],
+      "holes": [],
+      "position": [
+        265.39574745064004,
+        20.527012367107833,
+        0.6000000000000001
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "thickness": 0.3,
+      "material": "검토용 투명판",
+      "color": "#8eafb5",
+      "sourceElementId": "south-window-4",
+      "provenance": "observed",
+      "width": 12.645259275330858,
+      "height": 28.917769581254067
+    },
+    {
+      "id": "main-left-0",
+      "name": "길게 놓인 본체 좌측 벽",
+      "group": "wall",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          93.40420916,
+          0
+        ],
+        [
+          93.40420916,
+          71.79431547
+        ],
+        [
+          46.70210458,
+          107.10566283
+        ],
+        [
+          0,
+          71.79431547
+        ]
+      ],
+      "holes": [
+        [
+          [
+            15.45888479,
+            18.38793665
+          ],
+          [
+            15.45888479,
+            53.69928401
+          ],
+          [
+            27.50054242,
+            53.69928401
+          ],
+          [
+            27.50054242,
+            18.38793665
+          ]
+        ],
+        [
+          [
+            34.98589716,
+            18.38793665
+          ],
+          [
+            34.98589716,
+            53.69928401
+          ],
+          [
+            47.02755478,
+            53.69928401
+          ],
+          [
+            47.02755478,
+            18.38793665
+          ]
+        ],
+        [
+          [
+            43.44760252,
+            83.80342808
+          ],
+          [
+            43.44760252,
+            92.75330874
+          ],
+          [
+            49.95660664,
+            92.75330874
+          ],
+          [
+            49.95660664,
+            83.80342808
+          ]
+        ]
+      ],
+      "position": [
+        10.544586678238229,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        -1.5707963267948966,
+        0
+      ],
+      "thickness": 1.5,
+      "material": "검토용 판재",
+      "color": "#d8ceb7",
+      "sourceElementId": "main-left-0",
+      "provenance": "observed",
+      "width": 93.40420916,
+      "height": 107.10566283
+    },
+    {
+      "id": "left-window-1-frame",
+      "name": "동측 창 1 프레임",
+      "group": "window",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          11.64165762638316,
+          0
+        ],
+        [
+          11.64165762638316,
+          34.91134736385333
+        ],
+        [
+          0,
+          34.91134736385333
+        ]
+      ],
+      "holes": [
+        [
+          [
+            0.8,
+            0.8
+          ],
+          [
+            10.841657626383162,
+            0.8
+          ],
+          [
+            10.841657626383162,
+            34.111347363853326
+          ],
+          [
+            0.8,
+            34.111347363853326
+          ]
+        ]
+      ],
+      "position": [
+        10.044586678238232,
+        18.58793664569321,
+        15.658884790627031
+      ],
+      "rotation": [
+        0,
+        -1.5707963267948966,
+        0
+      ],
+      "thickness": 1,
+      "material": "검토용 판재",
+      "color": "#e8e2d4",
+      "sourceElementId": "left-window-1",
+      "provenance": "observed",
+      "width": 11.64165762638316,
+      "height": 34.91134736385333
+    },
+    {
+      "id": "left-window-1-glass",
+      "name": "동측 창 1 투명판",
+      "group": "glass",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          10.041657626383161,
+          0
+        ],
+        [
+          10.041657626383161,
+          33.31134736385333
+        ],
+        [
+          0,
+          33.31134736385333
+        ]
+      ],
+      "holes": [],
+      "position": [
+        9.944586678238233,
+        19.38793664569321,
+        16.45888479062703
+      ],
+      "rotation": [
+        0,
+        -1.5707963267948966,
+        0
+      ],
+      "thickness": 0.3,
+      "material": "검토용 투명판",
+      "color": "#8eafb5",
+      "sourceElementId": "left-window-1",
+      "provenance": "observed",
+      "width": 10.041657626383161,
+      "height": 33.31134736385333
+    },
+    {
+      "id": "left-window-2-frame",
+      "name": "동측 창 2 프레임",
+      "group": "window",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          11.641657626383163,
+          0
+        ],
+        [
+          11.641657626383163,
+          34.91134736385333
+        ],
+        [
+          0,
+          34.91134736385333
+        ]
+      ],
+      "holes": [
+        [
+          [
+            0.8,
+            0.8
+          ],
+          [
+            10.841657626383164,
+            0.8
+          ],
+          [
+            10.841657626383164,
+            34.111347363853326
+          ],
+          [
+            0.8,
+            34.111347363853326
+          ]
+        ]
+      ],
+      "position": [
+        10.044586678238236,
+        18.58793664569321,
+        35.18589715773487
+      ],
+      "rotation": [
+        0,
+        -1.5707963267948966,
+        0
+      ],
+      "thickness": 1,
+      "material": "검토용 판재",
+      "color": "#e8e2d4",
+      "sourceElementId": "left-window-2",
+      "provenance": "observed",
+      "width": 11.641657626383163,
+      "height": 34.91134736385333
+    },
+    {
+      "id": "left-window-2-glass",
+      "name": "동측 창 2 투명판",
+      "group": "glass",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          10.041657626383163,
+          0
+        ],
+        [
+          10.041657626383163,
+          33.31134736385333
+        ],
+        [
+          0,
+          33.31134736385333
+        ]
+      ],
+      "holes": [],
+      "position": [
+        9.944586678238235,
+        19.38793664569321,
+        35.98589715773487
+      ],
+      "rotation": [
+        0,
+        -1.5707963267948966,
+        0
+      ],
+      "thickness": 0.3,
+      "material": "검토용 투명판",
+      "color": "#8eafb5",
+      "sourceElementId": "left-window-2",
+      "provenance": "observed",
+      "width": 10.041657626383163,
+      "height": 33.31134736385333
+    },
+    {
+      "id": "left-attic-frame",
+      "name": "동측 박공 환기구 프레임",
+      "group": "window",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          6.109004122369276,
+          0
+        ],
+        [
+          6.109004122369276,
+          8.549880668257762
+        ],
+        [
+          0,
+          8.549880668257762
+        ]
+      ],
+      "holes": [
+        [
+          [
+            0.8,
+            0.8
+          ],
+          [
+            5.309004122369276,
+            0.8
+          ],
+          [
+            5.309004122369276,
+            7.749880668257762
+          ],
+          [
+            0.8,
+            7.749880668257762
+          ]
+        ]
+      ],
+      "position": [
+        10.044586678238236,
+        84.00342807550444,
+        43.64760251681493
+      ],
+      "rotation": [
+        0,
+        -1.5707963267948966,
+        0
+      ],
+      "thickness": 1,
+      "material": "검토용 판재",
+      "color": "#e8e2d4",
+      "sourceElementId": "left-attic",
+      "provenance": "observed",
+      "width": 6.109004122369276,
+      "height": 8.549880668257762
+    },
+    {
+      "id": "main-right-0",
+      "name": "길게 놓인 본체 우측 벽",
+      "group": "wall",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          93.40420916,
+          0
+        ],
+        [
+          93.40420916,
+          71.79431547
+        ],
+        [
+          46.70210458,
+          107.10566283
+        ],
+        [
+          0,
+          71.79431547
+        ]
+      ],
+      "holes": [
+        [
+          [
+            15.45888479,
+            18.38793665
+          ],
+          [
+            15.45888479,
+            53.69928401
+          ],
+          [
+            27.50054242,
+            53.69928401
+          ],
+          [
+            27.50054242,
+            18.38793665
+          ]
+        ],
+        [
+          [
+            34.98589716,
+            18.38793665
+          ],
+          [
+            34.98589716,
+            53.69928401
+          ],
+          [
+            47.02755478,
+            53.69928401
+          ],
+          [
+            47.02755478,
+            18.38793665
+          ]
+        ],
+        [
+          [
+            43.44760252,
+            83.80342808
+          ],
+          [
+            43.44760252,
+            92.75330874
+          ],
+          [
+            49.95660664,
+            92.75330874
+          ],
+          [
+            49.95660664,
+            83.80342808
+          ]
+        ],
+        [
+          [
+            54.51290952,
+            18.38793665
+          ],
+          [
+            54.51290952,
+            53.69928401
+          ],
+          [
+            66.55456715,
+            53.69928401
+          ],
+          [
+            66.55456715,
+            18.38793665
+          ]
+        ]
+      ],
+      "position": [
+        289.45541332176174,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        -1.5707963267948966,
+        0
+      ],
+      "thickness": 1.5,
+      "material": "검토용 판재",
+      "color": "#d8ceb7",
+      "sourceElementId": "main-right-0",
+      "provenance": "observed",
+      "width": 93.40420916,
+      "height": 107.10566283
+    },
+    {
+      "id": "right-window-1-frame",
+      "name": "서측 창 1 프레임",
+      "group": "window",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          11.64165762638316,
+          0
+        ],
+        [
+          11.64165762638316,
+          34.91134736385333
+        ],
+        [
+          0,
+          34.91134736385333
+        ]
+      ],
+      "holes": [
+        [
+          [
+            0.8,
+            0.8
+          ],
+          [
+            10.841657626383162,
+            0.8
+          ],
+          [
+            10.841657626383162,
+            34.111347363853326
+          ],
+          [
+            0.8,
+            34.111347363853326
+          ]
+        ]
+      ],
+      "position": [
+        288.95541332176174,
+        18.58793664569321,
+        15.658884790627031
+      ],
+      "rotation": [
+        0,
+        -1.5707963267948966,
+        0
+      ],
+      "thickness": 1,
+      "material": "검토용 판재",
+      "color": "#e8e2d4",
+      "sourceElementId": "right-window-1",
+      "provenance": "observed",
+      "width": 11.64165762638316,
+      "height": 34.91134736385333
+    },
+    {
+      "id": "right-window-1-glass",
+      "name": "서측 창 1 투명판",
+      "group": "glass",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          10.041657626383161,
+          0
+        ],
+        [
+          10.041657626383161,
+          33.31134736385333
+        ],
+        [
+          0,
+          33.31134736385333
+        ]
+      ],
+      "holes": [],
+      "position": [
+        288.8554133217617,
+        19.38793664569321,
+        16.45888479062703
+      ],
+      "rotation": [
+        0,
+        -1.5707963267948966,
+        0
+      ],
+      "thickness": 0.3,
+      "material": "검토용 투명판",
+      "color": "#8eafb5",
+      "sourceElementId": "right-window-1",
+      "provenance": "observed",
+      "width": 10.041657626383161,
+      "height": 33.31134736385333
+    },
+    {
+      "id": "right-window-2-frame",
+      "name": "서측 창 2 프레임",
+      "group": "window",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          11.641657626383163,
+          0
+        ],
+        [
+          11.641657626383163,
+          34.91134736385333
+        ],
+        [
+          0,
+          34.91134736385333
+        ]
+      ],
+      "holes": [
+        [
+          [
+            0.8,
+            0.8
+          ],
+          [
+            10.841657626383164,
+            0.8
+          ],
+          [
+            10.841657626383164,
+            34.111347363853326
+          ],
+          [
+            0.8,
+            34.111347363853326
+          ]
+        ]
+      ],
+      "position": [
+        288.95541332176174,
+        18.58793664569321,
+        35.18589715773487
+      ],
+      "rotation": [
+        0,
+        -1.5707963267948966,
+        0
+      ],
+      "thickness": 1,
+      "material": "검토용 판재",
+      "color": "#e8e2d4",
+      "sourceElementId": "right-window-2",
+      "provenance": "observed",
+      "width": 11.641657626383163,
+      "height": 34.91134736385333
+    },
+    {
+      "id": "right-window-2-glass",
+      "name": "서측 창 2 투명판",
+      "group": "glass",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          10.041657626383163,
+          0
+        ],
+        [
+          10.041657626383163,
+          33.31134736385333
+        ],
+        [
+          0,
+          33.31134736385333
+        ]
+      ],
+      "holes": [],
+      "position": [
+        288.8554133217617,
+        19.38793664569321,
+        35.98589715773487
+      ],
+      "rotation": [
+        0,
+        -1.5707963267948966,
+        0
+      ],
+      "thickness": 0.3,
+      "material": "검토용 투명판",
+      "color": "#8eafb5",
+      "sourceElementId": "right-window-2",
+      "provenance": "observed",
+      "width": 10.041657626383163,
+      "height": 33.31134736385333
+    },
+    {
+      "id": "right-window-3-frame",
+      "name": "서측 창 3 프레임",
+      "group": "window",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          11.641657626383155,
+          0
+        ],
+        [
+          11.641657626383155,
+          34.91134736385333
+        ],
+        [
+          0,
+          34.91134736385333
+        ]
+      ],
+      "holes": [
+        [
+          [
+            0.8,
+            0.8
+          ],
+          [
+            10.841657626383157,
+            0.8
+          ],
+          [
+            10.841657626383157,
+            34.111347363853326
+          ],
+          [
+            0.8,
+            34.111347363853326
+          ]
+        ]
+      ],
+      "position": [
+        288.95541332176174,
+        18.58793664569321,
+        54.7129095248427
+      ],
+      "rotation": [
+        0,
+        -1.5707963267948966,
+        0
+      ],
+      "thickness": 1,
+      "material": "검토용 판재",
+      "color": "#e8e2d4",
+      "sourceElementId": "right-window-3",
+      "provenance": "observed",
+      "width": 11.641657626383155,
+      "height": 34.91134736385333
+    },
+    {
+      "id": "right-window-3-glass",
+      "name": "서측 창 3 투명판",
+      "group": "glass",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          10.041657626383156,
+          0
+        ],
+        [
+          10.041657626383156,
+          33.31134736385333
+        ],
+        [
+          0,
+          33.31134736385333
+        ]
+      ],
+      "holes": [],
+      "position": [
+        288.8554133217617,
+        19.38793664569321,
+        55.5129095248427
+      ],
+      "rotation": [
+        0,
+        -1.5707963267948966,
+        0
+      ],
+      "thickness": 0.3,
+      "material": "검토용 투명판",
+      "color": "#8eafb5",
+      "sourceElementId": "right-window-3",
+      "provenance": "observed",
+      "width": 10.041657626383156,
+      "height": 33.31134736385333
+    },
+    {
+      "id": "right-attic-frame",
+      "name": "서측 박공 환기구 프레임",
+      "group": "window",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          6.109004122369276,
+          0
+        ],
+        [
+          6.109004122369276,
+          8.549880668257762
+        ],
+        [
+          0,
+          8.549880668257762
+        ]
+      ],
+      "holes": [
+        [
+          [
+            0.8,
+            0.8
+          ],
+          [
+            5.309004122369276,
+            0.8
+          ],
+          [
+            5.309004122369276,
+            7.749880668257762
+          ],
+          [
+            0.8,
+            7.749880668257762
+          ]
+        ]
+      ],
+      "position": [
+        288.95541332176174,
+        84.00342807550444,
+        43.64760251681493
+      ],
+      "rotation": [
+        0,
+        -1.5707963267948966,
+        0
+      ],
+      "thickness": 1,
+      "material": "검토용 판재",
+      "color": "#e8e2d4",
+      "sourceElementId": "right-attic",
+      "provenance": "observed",
+      "width": 6.109004122369276,
+      "height": 8.549880668257762
+    },
+    {
+      "id": "cross-front-0",
+      "name": "높은 직교 박공 정면 벽",
+      "group": "wall",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          97.13061402,
+          0
+        ],
+        [
+          48.56530701,
+          50.77023215
+        ]
+      ],
+      "holes": [
+        [
+          [
+            45.23757865,
+            13.636363639999999
+          ],
+          [
+            45.23757865,
+            22.586244300000004
+          ],
+          [
+            51.74658277,
+            22.586244300000004
+          ],
+          [
+            51.74658277,
+            13.636363639999999
+          ]
+        ]
+      ],
+      "position": [
+        150.66717292254285,
+        71.79431547,
+        93.40420915599913
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "thickness": 1.5,
+      "material": "검토용 판재",
+      "color": "#d8ceb7",
+      "sourceElementId": "cross-front-0",
+      "provenance": "observed",
+      "width": 97.13061402,
+      "height": 50.77023215
+    },
+    {
+      "id": "north-attic-frame",
+      "name": "북측 박공 환기구 프레임",
+      "group": "window",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          6.109004122369276,
+          0
+        ],
+        [
+          6.109004122369276,
+          8.549880668257762
+        ],
+        [
+          0,
+          8.549880668257762
+        ]
+      ],
+      "holes": [
+        [
+          [
+            0.8,
+            0.8
+          ],
+          [
+            5.309004122369276,
+            0.8
+          ],
+          [
+            5.309004122369276,
+            7.749880668257762
+          ],
+          [
+            0.8,
+            7.749880668257762
+          ]
+        ]
+      ],
+      "position": [
+        196.1047515730093,
+        85.63067910609676,
+        93.90420915599913
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "thickness": 1,
+      "material": "검토용 판재",
+      "color": "#e8e2d4",
+      "sourceElementId": "north-attic",
+      "provenance": "observed",
+      "width": 6.109004122369276,
+      "height": 8.549880668257762
+    },
+    {
+      "id": "cross-back-0",
+      "name": "높은 직교 박공 후면 벽",
+      "group": "wall",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          97.13061402,
+          0
+        ],
+        [
+          48.56530701,
+          50.77023215
+        ]
+      ],
+      "holes": [
+        [
+          [
+            45.23757865,
+            13.636363639999999
+          ],
+          [
+            45.23757865,
+            22.586244300000004
+          ],
+          [
+            51.74658277,
+            22.586244300000004
+          ],
+          [
+            51.74658277,
+            13.636363639999999
+          ]
+        ]
+      ],
+      "position": [
+        150.66717292254285,
+        71.79431547,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "thickness": 1.5,
+      "material": "검토용 판재",
+      "color": "#d8ceb7",
+      "sourceElementId": "cross-back-0",
+      "provenance": "observed",
+      "width": 97.13061402,
+      "height": 50.77023215
+    },
+    {
+      "id": "south-attic-frame",
+      "name": "남측 박공 환기구 프레임",
+      "group": "window",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          6.109004122369276,
+          0
+        ],
+        [
+          6.109004122369276,
+          8.549880668257762
+        ],
+        [
+          0,
+          8.549880668257762
+        ]
+      ],
+      "holes": [
+        [
+          [
+            0.8,
+            0.8
+          ],
+          [
+            5.309004122369276,
+            0.8
+          ],
+          [
+            5.309004122369276,
+            7.749880668257762
+          ],
+          [
+            0.8,
+            7.749880668257762
+          ]
+        ]
+      ],
+      "position": [
+        196.1047515730093,
+        85.63067910609676,
+        0.5
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "thickness": 1,
+      "material": "검토용 판재",
+      "color": "#e8e2d4",
+      "sourceElementId": "south-attic",
+      "provenance": "observed",
+      "width": 6.109004122369276,
+      "height": 8.549880668257762
+    },
+    {
+      "id": "rear-vestibule-back-0",
+      "name": "후면 돌출 출입부 후면 벽",
+      "group": "wall",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          26.03601649,
+          0
+        ],
+        [
+          26.03601649,
+          39.05402473
+        ],
+        [
+          40.68127576,
+          39.05402473
+        ],
+        [
+          40.68127576,
+          0
+        ],
+        [
+          50.07051421,
+          0
+        ],
+        [
+          50.07051421,
+          53.69928401
+        ],
+        [
+          25.03525711,
+          65.90366674
+        ],
+        [
+          0,
+          53.69928401
+        ]
+      ],
+      "holes": [
+        [
+          [
+            5.69537861,
+            17.89976134
+          ],
+          [
+            5.69537861,
+            43.93577783
+          ],
+          [
+            20.34063788,
+            43.93577783
+          ],
+          [
+            20.34063788,
+            17.89976134
+          ]
+        ]
+      ],
+      "position": [
+        56.791060967671946,
+        0,
+        -30.917769581254067
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "thickness": 1.5,
+      "material": "검토용 판재",
+      "color": "#d8ceb7",
+      "sourceElementId": "rear-vestibule-back-0",
+      "provenance": "observed",
+      "width": 50.07051421,
+      "height": 65.90366674
+    },
+    {
+      "id": "vestibule-door-frame",
+      "name": "후면 돌출부 출입문 프레임",
+      "group": "window",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          14.245259275330875,
+          0
+        ],
+        [
+          14.245259275330875,
+          38.65402473421567
+        ],
+        [
+          0,
+          38.65402473421567
+        ]
+      ],
+      "holes": [
+        [
+          [
+            0.8,
+            0.8
+          ],
+          [
+            13.445259275330876,
+            0.8
+          ],
+          [
+            13.445259275330876,
+            37.85402473421566
+          ],
+          [
+            0.8,
+            37.85402473421566
+          ]
+        ]
+      ],
+      "position": [
+        83.02707745714906,
+        0.2,
+        -30.417769581254067
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "thickness": 1,
+      "material": "검토용 판재",
+      "color": "#e8e2d4",
+      "sourceElementId": "vestibule-door",
+      "provenance": "observed",
+      "width": 14.245259275330875,
+      "height": 38.65402473421567
+    },
+    {
+      "id": "vestibule-door-glass",
+      "name": "후면 돌출부 출입문 투명판",
+      "group": "glass",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          12.645259275330876,
+          0
+        ],
+        [
+          12.645259275330876,
+          37.054024734215666
+        ],
+        [
+          0,
+          37.054024734215666
+        ]
+      ],
+      "holes": [],
+      "position": [
+        83.82707745714906,
+        1,
+        -30.317769581254066
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "thickness": 0.3,
+      "material": "검토용 투명판",
+      "color": "#8eafb5",
+      "sourceElementId": "vestibule-door",
+      "provenance": "observed",
+      "width": 12.645259275330876,
+      "height": 37.054024734215666
+    },
+    {
+      "id": "vestibule-window-frame",
+      "name": "후면 돌출부 창 프레임",
+      "group": "window",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          14.245259275330875,
+          0
+        ],
+        [
+          14.245259275330875,
+          25.63601648947711
+        ],
+        [
+          0,
+          25.63601648947711
+        ]
+      ],
+      "holes": [
+        [
+          [
+            0.8,
+            0.8
+          ],
+          [
+            13.445259275330876,
+            0.8
+          ],
+          [
+            13.445259275330876,
+            24.83601648947711
+          ],
+          [
+            0.8,
+            24.83601648947711
+          ]
+        ]
+      ],
+      "position": [
+        62.686439574745066,
+        18.099761336515513,
+        -30.417769581254067
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "thickness": 1,
+      "material": "검토용 판재",
+      "color": "#e8e2d4",
+      "sourceElementId": "vestibule-window",
+      "provenance": "observed",
+      "width": 14.245259275330875,
+      "height": 25.63601648947711
+    },
+    {
+      "id": "vestibule-window-glass",
+      "name": "후면 돌출부 창 투명판",
+      "group": "glass",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          12.645259275330876,
+          0
+        ],
+        [
+          12.645259275330876,
+          24.03601648947711
+        ],
+        [
+          0,
+          24.03601648947711
+        ]
+      ],
+      "holes": [],
+      "position": [
+        63.48643957474506,
+        18.899761336515514,
+        -30.317769581254066
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "thickness": 0.3,
+      "material": "검토용 투명판",
+      "color": "#8eafb5",
+      "sourceElementId": "vestibule-window",
+      "provenance": "observed",
+      "width": 12.645259275330876,
+      "height": 24.03601648947711
+    },
+    {
+      "id": "rear-vestibule-left-0",
+      "name": "후면 돌출 출입부 좌측 벽",
+      "group": "wall",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          30.91776958,
+          0
+        ],
+        [
+          30.91776958,
+          8.136255149999997
+        ],
+        [
+          0,
+          8.136255149999997
+        ]
+      ],
+      "holes": [],
+      "position": [
+        56.791060967671946,
+        45.56302886,
+        -30.917769581254067
+      ],
+      "rotation": [
+        0,
+        -1.5707963267948966,
+        0
+      ],
+      "thickness": 1.5,
+      "material": "검토용 판재",
+      "color": "#d8ceb7",
+      "sourceElementId": "rear-vestibule-left-0",
+      "provenance": "observed",
+      "width": 30.91776958,
+      "height": 8.136255149999997
+    },
+    {
+      "id": "rear-vestibule-right-0",
+      "name": "후면 돌출 출입부 우측 벽",
+      "group": "wall",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          30.91776958,
+          0
+        ],
+        [
+          30.91776958,
+          53.69928401
+        ],
+        [
+          0,
+          53.69928401
+        ]
+      ],
+      "holes": [],
+      "position": [
+        106.86157517899761,
+        0,
+        -30.917769581254067
+      ],
+      "rotation": [
+        0,
+        -1.5707963267948966,
+        0
+      ],
+      "thickness": 1.5,
+      "material": "검토용 판재",
+      "color": "#d8ceb7",
+      "sourceElementId": "rear-vestibule-right-0",
+      "provenance": "observed",
+      "width": 30.91776958,
+      "height": 53.69928401
+    },
+    {
+      "id": "service-back-0",
+      "name": "후면 낮은 부속부 후면 벽",
+      "group": "wall",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          11.39075721,
+          0
+        ],
+        [
+          11.39075721,
+          35.79952267
+        ],
+        [
+          26.03601649,
+          35.79952267
+        ],
+        [
+          26.03601649,
+          0
+        ],
+        [
+          46.24647429,
+          0
+        ],
+        [
+          46.24647429,
+          45.56302886
+        ],
+        [
+          0,
+          45.56302886
+        ]
+      ],
+      "holes": [],
+      "position": [
+        10.544586678238229,
+        0,
+        -30.917769581254067
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "thickness": 1.5,
+      "material": "검토용 판재",
+      "color": "#d8ceb7",
+      "sourceElementId": "service-back-0",
+      "provenance": "observed",
+      "width": 46.24647429,
+      "height": 45.56302886
+    },
+    {
+      "id": "service-door-frame",
+      "name": "후면 낮은 부속부 문 프레임",
+      "group": "window",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          14.245259275330874,
+          0
+        ],
+        [
+          14.245259275330874,
+          35.39952267303103
+        ],
+        [
+          0,
+          35.39952267303103
+        ]
+      ],
+      "holes": [
+        [
+          [
+            0.8,
+            0.8
+          ],
+          [
+            13.445259275330875,
+            0.8
+          ],
+          [
+            13.445259275330875,
+            34.599522673031025
+          ],
+          [
+            0.8,
+            34.599522673031025
+          ]
+        ]
+      ],
+      "position": [
+        22.135343892384462,
+        0.2,
+        -30.417769581254067
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "thickness": 1,
+      "material": "검토용 판재",
+      "color": "#e8e2d4",
+      "sourceElementId": "service-door",
+      "provenance": "observed",
+      "width": 14.245259275330874,
+      "height": 35.39952267303103
+    },
+    {
+      "id": "service-door-glass",
+      "name": "후면 낮은 부속부 문 투명판",
+      "group": "glass",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          12.645259275330874,
+          0
+        ],
+        [
+          12.645259275330874,
+          33.79952267303103
+        ],
+        [
+          0,
+          33.79952267303103
+        ]
+      ],
+      "holes": [],
+      "position": [
+        22.935343892384466,
+        1,
+        -30.317769581254066
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "thickness": 0.3,
+      "material": "검토용 투명판",
+      "color": "#8eafb5",
+      "sourceElementId": "service-door",
+      "provenance": "observed",
+      "width": 12.645259275330874,
+      "height": 33.79952267303103
+    },
+    {
+      "id": "service-left-0",
+      "name": "후면 낮은 부속부 좌측 벽",
+      "group": "wall",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          30.91776958,
+          0
+        ],
+        [
+          30.91776958,
+          45.56302886
+        ],
+        [
+          0,
+          45.56302886
+        ]
+      ],
+      "holes": [],
+      "position": [
+        10.544586678238229,
+        0,
+        -30.917769581254067
+      ],
+      "rotation": [
+        0,
+        -1.5707963267948966,
+        0
+      ],
+      "thickness": 1.5,
+      "material": "검토용 판재",
+      "color": "#d8ceb7",
+      "sourceElementId": "service-left-0",
+      "provenance": "observed",
+      "width": 30.91776958,
+      "height": 45.56302886
+    },
+    {
+      "id": "main-roof-0-0",
+      "name": "길게 놓인 본체 지붕 1-1",
+      "group": "roof",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          71.76834648,
+          0
+        ],
+        [
+          71.76834648,
+          184.44496658
+        ],
+        [
+          4.24326779,
+          145.48869585
+        ],
+        [
+          4.24326779,
+          252.97626401
+        ],
+        [
+          71.76834648,
+          214.01999328
+        ],
+        [
+          71.76834648,
+          300
+        ],
+        [
+          0,
+          300
+        ],
+        [
+          0,
+          86.09737364
+        ],
+        [
+          3.4522616,
+          81.82631807
+        ],
+        [
+          0,
+          77.5552625
+        ]
+      ],
+      "holes": [],
+      "position": [
+        0,
+        63.821579199489236,
+        -10.54458668
+      ],
+      "rotation": [
+        -2.218188466534824,
+        1.1102230246251565e-16,
+        -1.5707963267948966
+      ],
+      "thickness": 1.5,
+      "material": "검토용 판재",
+      "color": "#647568",
+      "sourceElementId": "main-roof-0-0",
+      "provenance": "observed",
+      "width": 71.76834648,
+      "height": 300
+    },
+    {
+      "id": "main-roof-1-0",
+      "name": "길게 놓인 본체 지붕 2-1",
+      "group": "roof",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          71.76834647,
+          0
+        ],
+        [
+          71.76834647,
+          300
+        ],
+        [
+          0,
+          300
+        ],
+        [
+          0,
+          214.01999328
+        ],
+        [
+          67.52507869,
+          252.97626401
+        ],
+        [
+          67.52507869,
+          145.48869585
+        ],
+        [
+          0,
+          184.44496658
+        ]
+      ],
+      "holes": [],
+      "position": [
+        0,
+        107.10566283207393,
+        46.70210458
+      ],
+      "rotation": [
+        -0.9234041870549682,
+        -5.551115123125783e-17,
+        -1.5707963267948963
+      ],
+      "thickness": 1.5,
+      "material": "검토용 판재",
+      "color": "#647568",
+      "sourceElementId": "main-roof-1-0",
+      "provenance": "observed",
+      "width": 71.76834647,
+      "height": 300
+    },
+    {
+      "id": "cross-roof-0-0",
+      "name": "높은 직교 박공 지붕 3-1",
+      "group": "roof",
+      "outline": [
+        [
+          0,
+          53.71907544
+        ],
+        [
+          77.95657305,
+          53.71907544
+        ],
+        [
+          74.42902919,
+          131.59579671
+        ],
+        [
+          130.63647286,
+          77.87672126999999
+        ],
+        [
+          56.20744367,
+          0
+        ]
+      ],
+      "holes": [],
+      "position": [
+        171.14463168885194,
+        93.20147625073008,
+        139.39914355800323
+      ],
+      "rotation": [
+        -1.570796326794906,
+        -0.8075912591748372,
+        0.7627653778779248
+      ],
+      "thickness": 1.5,
+      "material": "검토용 판재",
+      "color": "#647568",
+      "sourceElementId": "cross-roof-0-0",
+      "provenance": "observed",
+      "width": 130.63647286,
+      "height": 131.59579671
+    },
+    {
+      "id": "cross-roof-1-0",
+      "name": "높은 직교 박공 지붕 4-1",
+      "group": "roof",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          107.72401822,
+          0
+        ],
+        [
+          107.72401822,
+          77.74969962
+        ],
+        [
+          53.86200911,
+          21.39270133
+        ],
+        [
+          0,
+          77.74969961
+        ]
+      ],
+      "holes": [],
+      "position": [
+        199.23247993,
+        122.56454762480999,
+        -7.15990453
+      ],
+      "rotation": [
+        -1.570796326794897,
+        0.8075912591748328,
+        -1.5707963267948966
+      ],
+      "thickness": 1.5,
+      "material": "검토용 판재",
+      "color": "#647568",
+      "sourceElementId": "cross-roof-1-0",
+      "provenance": "observed",
+      "width": 107.72401822,
+      "height": 77.74969962
+    },
+    {
+      "id": "rear-vestibule-roof-0-0",
+      "name": "후면 돌출 출입부 지붕 5-1",
+      "group": "roof",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          23.95313517,
+          0
+        ],
+        [
+          23.95313517,
+          27.08274109
+        ],
+        [
+          26.70686385,
+          31.83426761
+        ],
+        [
+          0,
+          31.83426761
+        ]
+      ],
+      "holes": [],
+      "position": [
+        53.2111087,
+        51.95410090863399,
+        -34.49772185
+      ],
+      "rotation": [
+        -1.5707963267948966,
+        -0.45358784906516925,
+        -1.570796326794897
+      ],
+      "thickness": 1.5,
+      "material": "검토용 판재",
+      "color": "#647568",
+      "sourceElementId": "rear-vestibule-roof-0-0",
+      "provenance": "observed",
+      "width": 26.70686385,
+      "height": 31.83426761
+    },
+    {
+      "id": "rear-vestibule-roof-1-0",
+      "name": "후면 돌출 출입부 지붕 6-1",
+      "group": "roof",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          26.70686385,
+          0
+        ],
+        [
+          23.95313517,
+          4.75152651
+        ],
+        [
+          23.95313517,
+          31.83426762
+        ],
+        [
+          0,
+          31.83426762
+        ]
+      ],
+      "holes": [],
+      "position": [
+        81.82631807,
+        65.9036667406146,
+        -34.49772185
+      ],
+      "rotation": [
+        -1.5707963267948966,
+        0.45358784906515964,
+        -1.5707963267948966
+      ],
+      "thickness": 1.5,
+      "material": "검토용 판재",
+      "color": "#647568",
+      "sourceElementId": "rear-vestibule-roof-1-0",
+      "provenance": "observed",
+      "width": 26.70686385,
+      "height": 31.83426762
+    },
+    {
+      "id": "service-roof-flat-0",
+      "name": "후면 낮은 부속부 지붕 7-1",
+      "group": "roof",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          22.00043393,
+          0
+        ],
+        [
+          22.00043393,
+          44.29377305
+        ],
+        [
+          0,
+          44.29377305
+        ]
+      ],
+      "holes": [],
+      "position": [
+        8.91733565,
+        45.56302885658494,
+        -32.54502061
+      ],
+      "rotation": [
+        -1.5707963267948966,
+        0,
+        -1.5707963267948966
+      ],
+      "thickness": 1.5,
+      "material": "검토용 판재",
+      "color": "#647568",
+      "sourceElementId": "service-roof-flat-0",
+      "provenance": "observed",
+      "width": 22.00043393,
+      "height": 44.29377305
+    },
+    {
+      "id": "veranda-roof-flat-0",
+      "name": "후면 개방 차양 지붕 8-1",
+      "group": "roof",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          22.00043393,
+          0
+        ],
+        [
+          22.00043393,
+          180.6411369
+        ],
+        [
+          0,
+          180.6411369
+        ]
+      ],
+      "holes": [],
+      "position": [
+        110.44152745,
+        45.56302885658494,
+        -32.54502061
+      ],
+      "rotation": [
+        -1.5707963267948966,
+        0,
+        -1.5707963267948966
+      ],
+      "thickness": 1.5,
+      "material": "검토용 판재",
+      "color": "#647568",
+      "sourceElementId": "veranda-roof-flat-0",
+      "provenance": "observed",
+      "width": 22.00043393,
+      "height": 180.6411369
+    },
+    {
+      "id": "entry-canopy-roof-flat-0",
+      "name": "주출입구 차양 지붕 9-1",
+      "group": "roof",
+      "outline": [
+        [
+          0,
+          0
+        ],
+        [
+          12.23692775,
+          0
+        ],
+        [
+          12.23692775,
+          64.27641571
+        ],
+        [
+          0,
+          64.27641571
+        ]
+      ],
+      "holes": [],
+      "position": [
+        167.57431113,
+        56.14016055543502,
+        103.94879583
+      ],
+      "rotation": [
+        -1.5707963267948966,
+        0,
+        -1.5707963267948966
+      ],
+      "thickness": 1.5,
+      "material": "검토용 판재",
+      "color": "#647568",
+      "sourceElementId": "entry-canopy-roof-flat-0",
+      "provenance": "observed",
+      "width": 12.23692775,
+      "height": 64.27641571
+    }
+  ]
+}

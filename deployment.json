@@ -1,11 +1,13 @@
 {
-  "version": "0.2.0",
-  "sourceCommit": "8129e3401e118106797edfb909ae6ed4ba0ecb05",
-  "publishedAt": "2026-10-23T15:28:50.015436+00:00",
+  "version": "0.3.0",
+  "sourceCommit": "b15692903d806781ebceb0da37369f1a1cebd05e",
+  "publishedAt": "2026-10-24T02:53:56.655122+00:00",
   "verification": {
-    "unitTests": 26,
-    "browserTests": 14,
+    "unitAndHttpTests": 38,
+    "browserTests": 17,
     "chatgptPlanConnected": false,
-    "paidApiEnabled": false
+    "paidApiEnabled": false,
+    "impiCase": "operator-reviewed-drawings-not-app-GPT-inference",
+    "impiParts": 64
   }
 }
