@@ -14,7 +14,7 @@
 - Docker 28.4.0에서 Node 공식 이미지의 digest 기반 다운로드까지 완료했으나 두 `npm ci` 단계에서 장시간 진행이 없어 빌드를 중단했습니다(exit 130). 전체 컨테이너 이미지 빌드·실행은 **미완료**입니다. TLS/검증을 끄거나 성공 처리하지 않았습니다. 호스트의 잠금 의존성으로 빌드한 Node 실행부 검증과 구분합니다.
 - 실제 SSH 서버·전용 키·Windows/macOS 실행기·각 OS 자격 증명 ACL은 미실시입니다. 준비한 코드를 사용자용 설치 완료 앱으로 보고하지 않습니다.
 
-- 내부 Chromium 수동 검사: 연결 준비 화면·MIT 변경안 다운로드·개발자 ZIP 다운로드를 직접 열었습니다. ZIP 226개 파일/4,688,417바이트의 SHA-256을 모두 재검사했고 원본 이미지·인증 기록이 없음을 확인했습니다. 휴대폰 가로 넘침 없음, 기존 공개 사례 ZIP의 64개 STL·mm 안내 보존. 증거: [local-validation-v4.json](local-validation-v4.json). 공개 사이트 검증은 배포 후 별도 기록합니다.
+- 내부 Chromium 수동 검사: 연결 준비 화면·MIT 변경안 다운로드·개발자 ZIP 다운로드를 직접 열었습니다. ZIP 226개 파일/4,688,417바이트의 SHA-256을 모두 재검사했고 원본 이미지·인증 기록이 없음을 확인했습니다. 휴대폰 가로 넘침 없음, 기존 공개 사례 ZIP의 64개 STL·mm 안내 보존. 증거: [local-validation-v4.json](local-validation-v4.json). 공개 사이트에서도 같은 검사를 통과했습니다. [public-validation-v4.json](public-validation-v4.json).
 
 ## C01–C10
 
@@ -32,3 +32,16 @@
 | C10 회귀·범용성 | 일부 통과 | 45개 회귀 검사 통과. 공개/브라우저 후속 증거 별도. v4가 지정한 T13(구조 4종), T14(미사용 건물), T15(프로젝트 자료 분리)의 실제 AI 검증은 미실시 |
 
 첫 실제 요청은 호스트·적용 조건·계정 동의가 준비된 뒤 공개 검증 이미지 한 장으로 1회 실행합니다. 완료된 호출이 유효한 형상으로 변환되지 않으면 C04와 C05를 별도로 기록합니다. 자동 SDK/브라우저 재시도 없이 전체 3회·90초 상한을 지킵니다. 실물 검수·끼움·강도·양산 승인은 별도입니다.
+
+## 공개 배포 확인
+
+2026-10-24 15:24 한국 시간에 실제 공개 작업실과 연결 준비 화면을 Chromium으로 열었습니다(HTTP 200). MIT 변경안과 개발자 ZIP을 다운로드해 다시 열고 226개 항목의 해시를 확인했습니다. 모바일 가로 넘침·페이지 오류 없음, 기존 사례의 64개 STL·mm 안내 보존, 실제 AI 요청 0건입니다.
+
+- 실행 코드: `b109cf723aa9bc0757f0623290b65d13b6130145`.
+- 정적 배포에 사용한 소스/개발자 패키지 게시: `e2b2f7f1d1a0fe3ca154b093bd5a09918e64f698`.
+- gh-pages: `47d0a16a2739769a34232f65cb232d3cc6b3a8a0`.
+- [Pages 배포 40069985846](https://github.com/tradiative/dollhouse-pj/actions/runs/40069985846): success.
+- 기존 `downloads/impi-review-v1`과 `cases`의 전체 Git 트리가 이전 배포와 동일함을 확인하고 보존했습니다.
+- [작업실](https://tradiative.github.io/dollhouse-pj/) · [연결 준비·MIT 검토](https://tradiative.github.io/dollhouse-pj/connection/) · [개발자 실행 패키지](https://tradiative.github.io/dollhouse-pj/downloads/connection-v4/TRADIATIVE_connection_v4_developer.zip).
+
+이 링크는 동작하는 공개 정적 화면·검토 파일입니다. 상시 AI 실행부 링크가 아니며 실계정 로그인·이미지 호출은 아직 미실시입니다. 미배포 실행부의 임시/내부 주소를 사용자 사이트로 안내하지 않습니다.
