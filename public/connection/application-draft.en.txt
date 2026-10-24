@@ -1,0 +1,34 @@
+TRADIATIVE Studio — request for remotely hosted ChatGPT plan usage
+Draft prepared 2026-10-24. Owner review and submission required.
+
+Product / brand: TRADIATIVE (트레디에이티브), TRADIATIVE Studio
+Current website: https://tradiative.github.io/dollhouse-pj/
+Public repository: https://github.com/tradiative/dollhouse-pj
+Integration information: https://tradiative.github.io/dollhouse-pj/connection/
+Current data handling: https://tradiative.github.io/dollhouse-pj/connection/data-handling.html
+
+We are building a browser-based architectural miniature design tool. A user selects building photographs, drawings or PDF pages, chooses a target model width, and reviews an editable building structure with source evidence. The tool produces matching SVG/DXF drawings, individual and assembly STL files, a parts list and a project backup.
+
+We would like to apply for the supported remotely hosted/private-client route for Sign in with ChatGPT and ChatGPT plan usage. Our initial beta is intended for the product owner, who has ChatGPT Pro. The existing public website should remain the entry point; users should not need a local server or an API key.
+
+The requested capability is actual image understanding with an account-available model, returning structured building data for our deterministic geometry compiler. Images of the same building may be submitted together. The initial request budget is up to six selected image representations, three total inference attempts and 90 seconds per job. We will not claim historical or manufacturing accuracy from a completed model response alone.
+
+Current implementation: variable multi-mass geometry, intersecting planar roofs, wall-specific openings, source/provenance records, edits and locks, original-inclusive backups and matching manufacturing review exports. A review case was authored from actual Impi Station drawings. Official personal/loopback OAuth and Responses streaming code has mock-provider tests. The public GitHub Pages application has no connected remote authentication/inference service, and no actual ChatGPT image inference has been completed in this application.
+
+Requested rollout: initially owner-restricted access. Before enabling remote inference, we will implement the approved registered-client flow, exact HTTPS callback, secure first-party application sessions, verified account authorization, per-user server-side credential protection, request limits and cancellation. Public visitors must not consume the owner's allowance. Provider access/refresh tokens and client secrets will remain on the protected backend, outside the static bundle, browser storage, source control and logs.
+
+The proposed hosted AI workroom will handle login and AI requests as a top-level first-party application, reached from the existing website. Its deployment/callback hostname is to be provisioned and registered after the supported integration and hosting conditions are confirmed. We will not reuse the OSS loopback registration flow as a remote deployment or assume identity-only login grants inference access.
+
+Original working files currently remain in the user's browser. For the proposed AI flow, only the selected image representations should be sent on the user's explicit request. Provider-supported inference will use store:false, and we will process the stream through its final completion state. Our remaining retention, disconnect and security details will be finalized with the remote implementation before activation.
+
+We prefer eligible ChatGPT plan usage. Separate OpenAI API billing is disabled; we will not switch to it automatically or initiate paid API usage, purchases or credits without a separate owner decision. We are not committing to hosting charges at this stage.
+
+Please advise whether this remotely hosted, initially single-owner beta can participate; how to request both website identity and the separate model-usage grant; the registered-client/callback requirements; and the supported image, structured-result, model-catalog, streaming and quota contracts. Please also confirm any eligibility, review or partner requirements. We are not assuming that a public repository or a Pro subscription alone provides app approval.
+
+Owner-supplied fields for the official form:
+- Applicant's actual name and role
+- Contact email controlled by the applicant
+- Exact organization/legal entity details, if requested
+- Intended rollout and any existing OpenAI representative, if applicable
+
+These fields have intentionally not been invented or included in the public draft. This text is reusable application material, not a claim about the official form's exact field names or an approval already obtained.

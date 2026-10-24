@@ -23,7 +23,7 @@ app.get("/api/health", (_req, res) =>
     ok: true,
     aiConfigured: false,
     storage: "browser-local",
-    version: "0.3.0",
+    version: "0.3.1",
     mode: process.env.NODE_ENV === "production" ? "production" : "development",
   }),
 );

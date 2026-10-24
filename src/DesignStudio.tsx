@@ -207,11 +207,10 @@ export default function DesignStudio({ project, selectedId, onSelect, onDesign, 
     <div className="design-studio-heading"><div><span className="eyebrow">IMAGE → BUILDING ELEMENTS</span><h2>이미지 추정·자동 보완</h2><p>보이는 윤곽과 창호를 개별 요소로 만들고, 보이지 않는 깊이와 뒷면은 근거를 남겨 보완합니다.</p></div>
       <div className="archive-actions"><button className="button secondary small" disabled={busy} onClick={() => void loadCase()}>임피역 도면 검토 사례 열기</button><button className="button secondary small" onClick={() => void backup()}><Download size={15}/>원본 포함 백업</button><button className="button secondary small" disabled={busy} onClick={() => zipInput.current?.click()}><FolderOpen size={15}/>백업 ZIP 가져오기</button><input ref={zipInput} type="file" accept=".zip" hidden onChange={e => void restore(e.target.files?.[0])}/></div></div>
     <div className="connection-banner" role="status"><Sparkles size={18}/><div><b>{connection.label}</b><p>{connection.reason}</p><small>남은 구독 사용량: 조회하지 못함 · 실제 AI 요청: {connection.actualRequestVerified ? "완료 검증됨" : "미검증"} · 외부 검색: 미연결</small></div></div>
-    <details className="connection-options"><summary>연결 방식 보기</summary>
-      <p>현재 링크를 유지한 구독 연동: 원격 앱 승인과 사용자 인증을 갖춘 실행부가 필요합니다. 저장소에 서버 파일을 올리는 것만으로 작동하지 않습니다.</p>
-      <p>개인 PC에서 공식 로그인: 로그인·모델 목록·이미지 요청 코드를 준비했습니다. 설치 형태 선택과 실제 계정 검증은 아직 필요합니다. 현재 사이트를 로컬 전용으로 바꾸지는 않았습니다.</p>
-      <p>일반 API: 별도 요금입니다. 현재 비활성이고 자동 전환하지 않습니다.</p>
-      <a href="https://openai.com/form/sign-in-with-chatgpt-interest/" target="_blank" rel="noreferrer">공식 원격 앱 관심 등록 안내</a>
+    <details className="connection-options"><summary>원격 앱 연결 준비 보기</summary>
+      <p>선택한 방식은 현재 웹 주소를 유지하는 원격 앱 승인 경로입니다. Pro 구독 사용량의 이미지 요청 권한과 보호된 실행부를 확인한 뒤 연결합니다.</p>
+      <p>신청 초안과 현재 데이터 처리 설명을 준비했습니다. 신청 제출·앱 승인·실제 GPT 이미지 요청은 아직 확인 전이며, 별도 API 과금은 비활성입니다.</p>
+      <a className="button secondary small" href={import.meta.env.BASE_URL + "connection/"}>원격 앱 승인 준비 열기</a>
     </details>
     {connection.csrf && <div className="ai-account-actions">
       <button className="button secondary small" disabled={busy} onClick={()=>void connect("login")}>Continue with ChatGPT</button>
