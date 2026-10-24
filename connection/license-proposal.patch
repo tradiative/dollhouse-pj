@@ -1,0 +1,47 @@
+# 검토안 — 적용되지 않았습니다. 앱 코드의 MIT 허락에 대한 소유자 결정 후 적용합니다.
+diff --git a/LICENSE b/LICENSE
+new file mode 100644
+--- /dev/null
++++ b/LICENSE
+@@ -0,0 +1,21 @@
++MIT License
++
++Copyright (c) 2026 TRADIATIVE
++
++Permission is hereby granted, free of charge, to any person obtaining a copy
++of this software and associated documentation files (the "Software"), to deal
++in the Software without restriction, including without limitation the rights
++to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++copies of the Software, and to permit persons to whom the Software is
++furnished to do so, subject to the following conditions:
++
++The above copyright notice and this permission notice shall be included in all
++copies or substantial portions of the Software.
++
++THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
++AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
++SOFTWARE.
+diff --git a/LICENSING.md b/LICENSING.md
+new file mode 100644
+--- /dev/null
++++ b/LICENSING.md
+@@ -0,0 +1,7 @@
++# Scope of the MIT license
++
++The MIT license applies to TRADIATIVE application source code, technical documentation, tests, scripts and deployment/build configuration in this repository.
++
++It does not license uploaded user photographs, architectural drawings, reference images, case study datasets, generated manufacturing/model files, or TRADIATIVE names, logos and trademarks. Those materials retain their respective rights and notices. Merely processing a file with this software does not place it under the code license.
++
++Third-party dependencies, fonts and attributed public heritage materials retain their own licenses and notices, including public/THIRD-PARTY-NOTICES.txt and public/cases/IMPI-SOURCE-NOTICE.txt.
+diff --git a/package.json b/package.json
+--- a/package.json
++++ b/package.json
+@@ -2,3 +2,4 @@
+   "name": "tradiative-studio",
+   "version": "0.4.0",
++  "license": "MIT",
+   "private": true,
