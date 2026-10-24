@@ -1,0 +1,54 @@
+{
+  "url": "https://tradiative.github.io/dollhouse-pj/",
+  "sourceCommit": "b15692903d806781ebceb0da37369f1a1cebd05e",
+  "checkedAt": "2026-10-24T02:56:11.020Z",
+  "httpStatus": 200,
+  "emptyFirstLaunch": true,
+  "case": "operator-reviewed actual Impi drawings; NOT app GPT inference",
+  "masses": 6,
+  "elements": 44,
+  "parts": 64,
+  "views": [
+    "3d",
+    "front",
+    "back",
+    "left",
+    "right"
+  ],
+  "downloads": [
+    {
+      "format": "SVG",
+      "bytes": 24679
+    },
+    {
+      "format": "DXF",
+      "bytes": 25302
+    },
+    {
+      "format": "STL",
+      "bytes": 482736
+    },
+    {
+      "format": "CSV",
+      "bytes": 9300
+    },
+    {
+      "format": "JSON",
+      "bytes": 204508
+    },
+    {
+      "format": "ZIP",
+      "bytes": 101894
+    }
+  ],
+  "originalFilesRestored": 5,
+  "publicPreviewImages": 4,
+  "sourceResolution": "500x354 JPEG previews; not original CAD or 11 high-resolution attachments",
+  "massEvidenceIdsRemapped": true,
+  "mobileOverflow": false,
+  "pageErrors": [],
+  "badAssets": [],
+  "actualAiRequests": 0,
+  "chatgptPlanConnected": false,
+  "paidApiEnabled": false
+}
