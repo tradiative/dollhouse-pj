@@ -36,7 +36,7 @@ export default function DesignStudio({ project, selectedId, onSelect, onDesign, 
   const [projection, setProjection] = useState<EstimateOptions["projection"]>("orthographic");
   const [completion, setCompletion] = useState<EstimateOptions["completion"]>("complete");
   const [depthRatio, setDepthRatio] = useState(0.35);
-  const [iterations, setIterations] = useState(3);
+  const [iterations, setIterations] = useState(1);
   const [thickness, setThickness] = useState(DEFAULT_FABRICATION.thicknessMm);
   const [crop, setCrop] = useState<Rect>();
   const [busy, setBusy] = useState(false);
@@ -100,7 +100,7 @@ export default function DesignStudio({ project, selectedId, onSelect, onDesign, 
       setStage("GPT 이미지 해석·구조 생성·수치 검사 중");
       const result=await requestAiDesign(connection,model,references,options,scene,aiInstruction,abort.signal);
       onDesign(result,"실제 GPT 이미지 설계");setStage("GPT 응답 완료·형상 검사 통과·원본 대조 필요");await refreshConnection();
-    }catch(e){const cancelled=e instanceof Error&&e.name==="AbortError";setStage(cancelled?"AI 작업 취소·이전 모델 보존":"AI 작업 실패·이전 모델 보존");setError(cancelled?"취소했습니다. 이전 모델을 보존했습니다.":e instanceof Error?e.message:"AI 요청 실패");}
+    }catch(e){const cancelled=e instanceof Error&&e.name==="AbortError";setStage(cancelled?"AI 작업 취소·이전 모델 보존":"AI 작업 실패·이전 모델 보존");setError(cancelled?"취소했습니다. 이전 모델을 보존했습니다.":e instanceof Error?e.message:"AI 요청 실패");await refreshConnection();}
     finally{setBusy(false);controller.current=null;}
   }
   async function run() {
@@ -207,16 +207,18 @@ export default function DesignStudio({ project, selectedId, onSelect, onDesign, 
     <div className="design-studio-heading"><div><span className="eyebrow">IMAGE → BUILDING ELEMENTS</span><h2>이미지 추정·자동 보완</h2><p>보이는 윤곽과 창호를 개별 요소로 만들고, 보이지 않는 깊이와 뒷면은 근거를 남겨 보완합니다.</p></div>
       <div className="archive-actions"><button className="button secondary small" disabled={busy} onClick={() => void loadCase()}>임피역 도면 검토 사례 열기</button><button className="button secondary small" onClick={() => void backup()}><Download size={15}/>원본 포함 백업</button><button className="button secondary small" disabled={busy} onClick={() => zipInput.current?.click()}><FolderOpen size={15}/>백업 ZIP 가져오기</button><input ref={zipInput} type="file" accept=".zip" hidden onChange={e => void restore(e.target.files?.[0])}/></div></div>
     <div className="connection-banner" role="status"><Sparkles size={18}/><div><b>{connection.label}</b><p>{connection.reason}</p><small>남은 구독 사용량: 조회하지 못함 · 실제 AI 요청: {connection.actualRequestVerified ? "완료 검증됨" : "미검증"} · 외부 검색: 미연결</small></div></div>
-    <details className="connection-options"><summary>원격 앱 연결 준비 보기</summary>
-      <p>선택한 방식은 현재 웹 주소를 유지하는 원격 앱 승인 경로입니다. Pro 구독 사용량의 이미지 요청 권한과 보호된 실행부를 확인한 뒤 연결합니다.</p>
-      <p>신청 초안과 현재 데이터 처리 설명을 준비했습니다. 신청 제출·앱 승인·실제 GPT 이미지 요청은 아직 확인 전이며, 별도 API 과금은 비활성입니다.</p>
-      <a className="button secondary small" href={import.meta.env.BASE_URL + "connection/"}>원격 앱 승인 준비 열기</a>
+    {connection.plan?.lastCompleted&&<p className="source-version-note">최근 응답 완료: {connection.plan.lastCompleted.model} · {connection.plan.lastCompleted.at} · 형상 검사 {connection.plan.lastCompleted.validDesign?"통과":"실패"}. {model!==connection.plan.lastCompleted.model?"현재 선택 모델의 실제 이미지 처리는 아직 확인하지 않았습니다.":"모델 재현 품질과 제작 파츠는 별도 검수가 필요합니다."}</p>}
+    <details className="connection-options"><summary>ChatGPT 연결 준비 보기</summary>
+      <p>현재 주소를 입구로 유지하며, 조건을 충족하는 오픈소스 앱의 본인 전용 서버 경로를 준비합니다. 다른 사용자에게 제공하는 원격 서비스의 참여 신청은 별도 경로입니다.</p>
+      <p>실제 서버·사용자 로그인·이미지 처리는 확인 전입니다. 실행 시 기존 ChatGPT 사용량을 소비하며, 별도 API 과금은 꺼져 있습니다. 서버 운영비는 아직 확정되지 않았습니다.</p>
+      <a className="button secondary small" href={import.meta.env.BASE_URL + "connection/"}>ChatGPT 연결 준비 열기</a>
     </details>
     {connection.csrf && <div className="ai-account-actions">
-      <button className="button secondary small" disabled={busy} onClick={()=>void connect("login")}>Continue with ChatGPT</button>
+      {connection.plan?.mode!=="personal-vm"?<button className="button secondary small" disabled={busy} onClick={()=>void connect("login")}>Continue with ChatGPT</button>:<span>최초 ChatGPT 로그인·재연결은 준비된 PC 연결 도구에서 진행합니다.</span>}
       <button className="button secondary small" disabled={busy} onClick={()=>void refreshConnection()}>연결 상태 새로고침</button>
       <button className="button secondary small" disabled={busy||!connection.plan?.loginCompleted} onClick={()=>void connect("models")}>사용 가능한 모델 확인</button>
       {connection.plan?.account && <><span>{connection.plan.account.email} · 등록 {connection.plan.account.registration}</span><button className="button secondary small" disabled={busy} onClick={()=>void connect("logout")}>앱 로그아웃</button></>}
+      {connection.plan?.mode==="personal-vm"&&<button className="button secondary small" disabled={busy} onClick={()=>void fetch("/api/owner/logout",{method:"POST"}).then(()=>location.assign("/owner/login"))}>작업실 잠그기</button>}
     </div>}
     <div className="ai-source-selection"><b>GPT에 전달할 같은 건물의 자료 · 최대 6개</b><p>선택한 사진·도면을 한 구조로 해석합니다. PDF는 미리 연 한 페이지를 사용합니다. 로컬 윤곽 추출은 아래에서 선택한 한 입면만 처리합니다.</p>
       {sources.map(s=><label key={s.id}><input type="checkbox" aria-label={"GPT 자료 선택: "+s.name} checked={aiSourceIds.includes(s.id)} disabled={busy||(!aiSourceIds.includes(s.id)&&aiSourceIds.length>=6)} onChange={e=>setAiSourceIds(ids=>e.target.checked?[...ids,s.id]:ids.filter(id=>id!==s.id))}/>{s.name}</label>)}
@@ -244,11 +246,12 @@ export default function DesignStudio({ project, selectedId, onSelect, onDesign, 
         {sizeMode === "known-reference" ? <div className="control-pair"><label>실제 가로 기준거리 (mm)<input aria-label="실제 가로 기준거리" type="number" min="1" value={realWidth} onChange={e => setRealWidth(Number(e.target.value))}/></label><label>축척 분모<input aria-label="추정 설계 축척 분모" type="number" min="10" max="500" value={denominator} onChange={e => setDenominator(Number(e.target.value))}/></label></div> : <label>목표 모형 폭 (mm)<input aria-label="목표 모형 폭" type="number" min="30" max="2000" value={targetWidth} onChange={e => setTargetWidth(Number(e.target.value))}/></label>}
         <div className="control-pair"><label>자료 종류<select aria-label="이미지 투영 종류" value={projection} onChange={e => setProjection(e.target.value as EstimateOptions["projection"])}><option value="orthographic">정면·정투상 도면</option><option value="concept">시안·그림</option><option value="perspective">원근 사진·불확실성 높음</option></select></label><label>보완 범위<select aria-label="보완 범위" value={completion} onChange={e => setCompletion(e.target.value as EstimateOptions["completion"])}><option value="complete">보이는 면 유지·후면 창호 보완</option><option value="conservative">깊이·빈 후면만 보완</option><option value="visible-only">관찰 창호만 사용</option></select></label></div>
         <div className="control-pair"><label>깊이 / 폭 추정 비율<input aria-label="깊이 추정 비율" type="number" min="0.08" max="2" step="0.05" value={depthRatio} onChange={e => setDepthRatio(Number(e.target.value))}/></label><label>실제 판재 두께 (mm)<input aria-label="추정 설계 재료 두께" type="number" min="0.5" max="10" step="0.1" value={thickness} onChange={e => setThickness(Number(e.target.value))}/></label></div>
-        <label>자동 검사·보완 최대 횟수<input aria-label="자동 보완 최대 횟수" type="number" min="1" max="5" value={iterations} onChange={e => setIterations(Number(e.target.value))}/></label>
+        <label>자동 검사·보완 최대 횟수<input aria-label="자동 보완 최대 횟수" type="number" min="1" max="3" value={iterations} onChange={e => setIterations(Number(e.target.value))}/></label>
       </fieldset><div className="design-run-actions"><button className="button primary" disabled={busy || !source || (pdf && !preview)} onClick={() => void run()}><Play size={16}/>이미지에서 외형 추정</button><button className="button secondary" disabled={!busy} onClick={() => controller.current?.abort()}><Square size={14}/>취소</button></div>
         <p className="local-engine-note">브라우저의 윤곽·대비 분석입니다. AI 의미 해석이나 건물 실측 복원은 미검증입니다. 실행 시간 15초, 외부 AI 요청 0회입니다.</p>
         <button className="button primary wide" disabled={busy||!connection.csrf||!connection.plan?.modelAccessVerified||!model||!aiSourceIds.length} title={connection.reason} onClick={()=>void runAi()}>ChatGPT로 설계하기</button>
-        <div className="run-stage" aria-live="polite"><b>{busy ? "진행 중: " : ""}{stage}</b>{scene?.run && <span>수행 {scene.run.attempts.length}/{scene.run.maxIterations}회 · 실제 AI {scene.run.actualAiCompleted ? "완료" : "미실행"}</span>}</div>
+        {connection.plan?.loginCompleted&&<p>연결한 ChatGPT 요금제·크레딧 사용량을 사용합니다. 기본 1회, 전체 최대 3회·90초입니다. 취소 전에 처리된 사용량의 환급은 보장하지 않습니다. <a href="https://chatgpt.com/settings/usage" target="_blank" rel="noreferrer">ChatGPT 사용량 관리</a></p>}
+        <div className="run-stage" aria-live="polite"><b>{busy ? "진행 중: " : ""}{stage}</b>{scene?.run && <span>수행 {scene.run.requestCount??scene.run.attempts.length}/{scene.run.maxIterations}회 · 실제 AI {scene.run.actualAiCompleted ? "완료" : "미실행"}</span>}</div>
       </div>
     </div>
     {error && <div className="design-error" role="alert"><AlertCircle size={17}/>{error}</div>}

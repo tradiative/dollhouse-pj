@@ -2,10 +2,10 @@ import type { Source } from "../engine";
 import { readSourceFile } from "../sourceStore";
 import { parseBuildingDesign } from "./parse";
 import type { BuildingDesign, EstimateOptions } from "./types";
-export type AiConnection = { state: string; label: string; reason: string; actualRequestVerified: boolean; remainingUsage: null; csrf?: string; plan?: { loginCompleted: boolean; modelAccessVerified: boolean; models: Array<{slug: string; display_name: string}>; account?: {email: string;registration: string} | null }; capabilities?: { images: string; structuredOutput: string; search: string } };
-export const DISCONNECTED: AiConnection = {state:"disconnected",label:"ChatGPT 사용량 미연결",reason:"현재 주소에 공식 인증·모델 실행부가 연결되지 않았습니다. 별도 과금 API로 자동 전환하지 않습니다.",actualRequestVerified:false,remainingUsage:null};
+export type AiConnection = { state: string; label: string; reason: string; actualRequestVerified: boolean; remainingUsage: null; csrf?: string; plan?: { loginCompleted: boolean; modelAccessVerified: boolean; geometryVerified?:boolean; mode?:"personal-local"|"personal-vm"; lastCompleted?:{model:string;at:string;responseId:string;validDesign?:boolean}|null; models: Array<{slug: string; display_name: string}>; account?: {email: string;registration: string} | null }; capabilities?: { images: string; structuredOutput: string; search: string } };
+export const DISCONNECTED: AiConnection = {state:"preparing",label:"ChatGPT 사용량 연결 준비 중",reason:"ChatGPT 사용량 연결 준비 중입니다. 별도 API 과금은 꺼져 있습니다.",actualRequestVerified:false,remainingUsage:null};
 export async function connectionStatus(): Promise<AiConnection> {
-  if(location.hostname.endsWith(".github.io"))return {...DISCONNECTED,reason:"GitHub Pages는 화면만 제공합니다. 원격 앱의 구독 승인과 보호된 실행부가 필요합니다. 이 주소에서 아직 실제 GPT 이미지 요청을 실행하지 못했습니다."};
+  if(location.hostname.endsWith(".github.io"))return {...DISCONNECTED,reason:"ChatGPT 사용량 연결 준비 중입니다. 별도 API 과금은 꺼져 있습니다. 본인 전용 OSS 서버 경로를 준비했으며, 코드 이용 허락과 실제 서버·로그인·이미지 요청은 확인 전입니다."};
   const r=await fetch("/api/ai/status",{cache:"no-store"});if(!r.ok)return DISCONNECTED;return r.json();
 }
 export async function connectionAction(action: "login"|"models"|"logout", csrf: string) {

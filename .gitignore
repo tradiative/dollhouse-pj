@@ -7,3 +7,6 @@ test-results/
 playwright-report/
 *.log
 *.tsbuildinfo
+runtime/
+connector-private/
+deploy/personal-vm/reviewed.env

@@ -10,6 +10,7 @@ const SCOPES = "openid profile email offline_access resource.invoke chatgpt.toke
 export type Http = (url: string, init?: RequestInit) => Promise<Response>;
 type Registration = { clientId: string; subject: string; email: string; issuer: string };
 type Credential = Registration & { accessToken: string; refreshToken: string; idToken: string; scopes: string[]; expiresAt: number };
+export type AppTransfer = { format: "tradiative.app-owned-siwc.v1"; id: string; createdAt: number; credential: Credential };
 type Pending = { state: string; nonce: string; verifier: string; redirectUri: string; expires: number; registration?: Registration };
 export class PlanError extends Error {
   constructor(public state: "disconnected" | "denied" | "limited" | "failed" | "cancelled" | "unsupported", message: string) { super(message); }
@@ -25,11 +26,12 @@ export class ChatGPTSession {
   private hostId = "";
   private refreshJob?: Promise<string>;
   private loaded = false;
+  private transfer?: AppTransfer;
   readonly csrf = secret();
   models: Array<{ slug: string; display_name: string }> = [];
   lastError = "";
   lastState = "disconnected";
-  lastCompleted?: { model: string; responseId: string; at: string; sourceIds: string[]; usage: unknown };
+  lastCompleted?: { model: string; responseId: string; at: string; sourceIds: string[]; usage: unknown; validDesign?: boolean; requestCount?: number; elapsedMs?: number; sourceHashes?: string[] };
   constructor(readonly directory: string, private http: Http, private now = () => Date.now()) {}
   private async save(name: string, value: unknown) {
     await mkdir(this.directory, { recursive: true, mode: 0o700 });
@@ -51,16 +53,18 @@ export class ChatGPTSession {
     this.registration = await read("registration.json");
     const c = await read("credentials.json");
     if (c && typeof c.accessToken === "string" && typeof c.refreshToken === "string" && typeof c.idToken === "string" && typeof c.subject === "string" && typeof c.clientId === "string" && Array.isArray(c.scopes) && Number.isFinite(c.expiresAt) && c.subject === this.registration?.subject && c.clientId === this.registration?.clientId) this.credential = c;
+    this.transfer = await read("transfer-pending.json");
     this.loaded = true;
   }
   status() {
     return { loginCompleted: Boolean(this.credential), modelAccessVerified: this.models.length > 0,
-      actualRequestVerified: Boolean(this.lastCompleted), account: this.credential ? { email: this.credential.email, registration: this.credential.clientId.slice(-8) } : null,
+      actualRequestVerified: Boolean(this.lastCompleted), geometryVerified: this.lastCompleted?.validDesign === true, transferPending: Boolean(this.transfer), account: this.credential ? { email: this.credential.email, registration: this.credential.clientId.slice(-8) } : null,
       models: this.models, remainingUsage: null, lastState: this.lastState, error: this.lastError, lastCompleted: this.lastCompleted || null };
   }
   async initialize() { await this.load(); return this.status(); }
   async begin(origin: string) {
     await this.load();
+    if (this.transfer) throw new PlanError("denied", "서버 이전을 마무리해야 합니다. PC에서 같은 갱신 세션을 다시 사용하지 않습니다.");
     const u = new URL(origin);
     if (u.protocol !== "http:" || u.hostname !== "127.0.0.1" || !u.port) throw new PlanError("unsupported", "개인 실행 로그인은 사용자 PC의 127.0.0.1 화면에서만 시작할 수 있습니다.");
     const pending: Pending = { state: secret(), nonce: secret(), verifier: secret(), redirectUri: origin + "/auth/callback", expires: this.now() + 10 * 60_000, registration: this.registration };
@@ -117,6 +121,7 @@ export class ChatGPTSession {
   }
   async accessToken() {
     await this.load();
+    if (this.transfer) throw new PlanError("denied", "이 로그인은 서버로 이전 중입니다. 갱신은 대상 서버만 담당합니다.");
     if (!this.credential) throw new PlanError("disconnected", "먼저 공식 ChatGPT 로그인을 완료하세요.");
     if (!this.credential.scopes.includes("chatgpt.tokens.use.direct") || !this.credential.scopes.includes("resource.invoke")) throw new PlanError("denied", "로그인만 완료됐으며 ChatGPT 사용량 호출 권한이 없습니다. 연결 동의를 다시 확인하세요.");
     if (this.credential.expiresAt > this.now() + 60_000) return this.credential.accessToken;
@@ -146,6 +151,8 @@ export class ChatGPTSession {
     return readPlanStream(r, signal);
   }
   async logout() {
+    await this.load();
+    if (this.transfer) throw new PlanError("denied", "이전 중인 갱신 세션은 PC에서 해제하지 않습니다. 대상 서버의 연결 상태를 먼저 확인하세요.");
     this.pending = undefined; this.models = []; this.lastCompleted = undefined;
     let remoteRevoked = false;
     // Revoke only this app's renewable session, never a platform/Codex session.
@@ -155,6 +162,38 @@ export class ChatGPTSession {
     this.credential = undefined; await unlink(path.join(this.directory, "credentials.json")).catch(e => { if (e.code !== "ENOENT") throw e; }); this.lastState = "disconnected";
     return { remoteRevoked, message: remoteRevoked ? "앱 로그인과 갱신 세션을 해제했습니다." : "앱에서 로그아웃했습니다. 원격 세션 해제는 확인하지 못했습니다. ChatGPT 설정에서 이 앱의 연결을 해제할 수 있습니다." };
   }
+  /** Only the credentials issued by THIS app's validated OAuth flow. Never reads other apps. */
+  async prepareTransfer(): Promise<AppTransfer> {
+    await this.load();
+    if (this.transfer) return this.transfer;
+    await this.accessToken(); // Requires the actual plan scopes; refresh before freezing ownership.
+    this.transfer = { format: "tradiative.app-owned-siwc.v1", id: randomUUID(), createdAt: this.now(), credential: { ...this.credential! } };
+    await this.save("transfer-pending.json", this.transfer);
+    return this.transfer;
+  }
+  async finishTransfer(id: string) {
+    await this.load();
+    if (!this.transfer || this.transfer.id !== id) throw new PlanError("denied", "서버 이전 확인이 일치하지 않습니다.");
+    await unlink(path.join(this.directory, "credentials.json")).catch(e => { if(e.code !== "ENOENT") throw e; });
+    await unlink(path.join(this.directory, "transfer-pending.json"));
+    this.credential = undefined; this.transfer = undefined; this.models = []; this.lastCompleted = undefined; this.lastState = "transferred";
+  }
+  /** Called only by the offline SSH importer, never by a public HTTP endpoint. */
+  async importTransfer(value: AppTransfer) {
+    await this.load(); // Creates/retains THIS VM's host.json; no source host ID is imported.
+    const c = value?.credential;
+    if (value?.format !== "tradiative.app-owned-siwc.v1" || !/^[a-f0-9-]{36}$/.test(value.id || "") || !Number.isFinite(value.createdAt) || this.now()-value.createdAt > 600_000 || value.createdAt > this.now()+30_000 || !c || c.issuer !== AUTH || typeof c.clientId !== "string" || c.clientId === "dynamic_agent_client" || typeof c.subject !== "string" || typeof c.accessToken !== "string" || typeof c.refreshToken !== "string" || !Array.isArray(c.scopes) || !c.scopes.includes("resource.invoke") || !c.scopes.includes("chatgpt.tokens.use.direct") || !Number.isFinite(c.expiresAt) || c.expiresAt <= this.now()) throw new PlanError("denied", "이 앱의 새 로그인·사용량 동의로 발급된 유효한 이전 기록이 아닙니다.");
+    if (this.registration && (c.subject !== this.registration.subject || c.clientId !== this.registration.clientId)) throw new PlanError("denied", "기존 서버의 계정·워크스페이스 등록과 다른 로그인은 가져오지 않습니다.");
+    const metadata = await this.metadata(), r = await this.http(metadata.jwks_uri, {signal: AbortSignal.timeout(15000)});
+    if (!r.ok) throw new PlanError("failed", "서버에서 로그인 서명을 확인하지 못했습니다.");
+    try {
+      const claims = (await jwtVerify(c.idToken, createLocalJWKSet(await r.json() as JSONWebKeySet), {issuer: AUTH, audience:c.clientId, algorithms:["RS256"], requiredClaims:["sub","exp","iat"],currentDate:new Date(this.now())})).payload;
+      if (claims.sub !== c.subject) throw new Error("subject");
+    } catch { throw new PlanError("denied", "이전하는 로그인 신원의 서명·대상·유효기간이 맞지 않습니다."); }
+    const registration: Registration = {clientId:c.clientId,subject:c.subject,issuer:AUTH,email:c.email};
+    await this.save("credentials.json", c); await this.save("registration.json", registration);
+    this.credential = c; this.registration = registration; this.models = []; this.lastCompleted = undefined; this.lastState = "authenticated";
+  }
 }
 export function personalPlanEnabled(env: NodeJS.ProcessEnv = process.env) { return env.TRADIATIVE_CHATGPT_MODE === "personal-local"; }
 export function authDirectory(env: NodeJS.ProcessEnv = process.env) { return env.TRADIATIVE_AUTH_DIR || path.join(homedir(), ".config", "tradiative-studio"); }
@@ -163,6 +202,8 @@ export function authDirectory(env: NodeJS.ProcessEnv = process.env) { return env
 export async function readPlanStream(response: Response, signal?: AbortSignal): Promise<Record<string, unknown>> {
   if (!response.body) throw new PlanError("failed", "AI 응답 스트림이 없습니다.");
   const reader = response.body.getReader(), decoder = new TextDecoder();
+  const abortRead=()=>{void reader.cancel().catch(()=>{});};
+  signal?.addEventListener("abort",abortRead,{once:true});
   let buffer = "", total = 0, completed: Record<string, unknown> | undefined;
   const event = (block: string) => {
     const data = block.split("\n").filter(l => l.startsWith("data:")).map(l => l.slice(5).trimStart()).join("\n");
@@ -174,12 +215,13 @@ export async function readPlanStream(response: Response, signal?: AbortSignal): 
       const code = error?.code || e.error?.code || e.code || "";
       throw new PlanError(/usage_limit|usage_unavailable|rate_limit/.test(code) ? "limited" : "failed", "AI가 응답을 끝내지 못했습니다. 이전 형상을 보존합니다.");
     }
-    if (e.type === "response.completed") { if (e.response?.status !== "completed") throw new PlanError("failed", "AI 최종 완료 상태가 맞지 않습니다."); completed = e.response; }
+    if (e.type === "response.completed") { if (e.response?.status !== "completed" || typeof e.response.id !== "string" || !e.response.id) throw new PlanError("failed", "AI 최종 완료 상태·요청 식별값이 맞지 않습니다."); completed = e.response; }
   };
   try {
     while (true) {
       if (signal?.aborted) throw new PlanError("cancelled", "AI 작업을 취소했습니다.");
       const { value, done } = await reader.read();
+      if (signal?.aborted) throw new PlanError("cancelled", "AI 작업을 취소했습니다.");
       if (done) break;
       total += value.length; if (total > 6_000_000) throw new PlanError("limited", "AI 응답 크기 한도를 넘었습니다.");
       buffer = (buffer + decoder.decode(value, { stream: true })).replace(/\r\n/g, "\n");
@@ -189,5 +231,5 @@ export async function readPlanStream(response: Response, signal?: AbortSignal): 
     buffer += decoder.decode(); if (buffer.trim()) event(buffer);
     if (!completed) throw new PlanError("failed", "최종 response.completed 없이 AI 응답이 중단됐습니다.");
     return completed;
-  } finally { await reader.cancel().catch(() => {}); reader.releaseLock(); }
+  } finally { signal?.removeEventListener("abort",abortRead);await reader.cancel().catch(() => {}); reader.releaseLock(); }
 }

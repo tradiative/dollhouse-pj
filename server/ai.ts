@@ -10,8 +10,8 @@ export function aiStatus(env: NodeJS.ProcessEnv = process.env) {
   const separateEnabled = env.TRADIATIVE_ALLOW_SEPARATE_API === "true" && Boolean(env.TRADIATIVE_AI_KEY);
   return {
     state: separateEnabled && separateApiVerified ? "connected" : "disconnected",
-    label: separateEnabled && separateApiVerified ? "별도 API 사용량으로 연결됨" : "ChatGPT 사용량 미연결",
-    reason: "공식 문서상 Plus·Pro의 구독 사용량 연결 경로가 있습니다. 현재 원격 앱은 별도 승인과 공식 인증 실행부가 연결되지 않았으며, 사용자 모델 권한·실제 이미지 요청도 미검증입니다. 별도 API로 자동 전환하지 않습니다.",
+    label: separateEnabled && separateApiVerified ? "별도 API 사용량으로 연결됨" : "ChatGPT 사용량 연결 준비 중",
+    reason: "ChatGPT 사용량 연결 준비 중입니다. 별도 API 과금은 꺼져 있습니다. 본인 전용 OSS 서버의 적용 검토·실제 배포·사용자 로그인·이미지 요청은 아직 확인 전입니다.",
     provider: separateEnabled && separateApiVerified ? "separate-api" : "none",
     actualRequestVerified: separateEnabled && separateApiVerified,
     remainingUsage: null,

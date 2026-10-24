@@ -1,0 +1,14 @@
+.git
+node_modules
+dist
+runtime
+.env*
+test-results
+playwright-report
+**/credentials.json
+**/transfer-pending.json
+**/owner.json
+**/tradiative_vm_ed25519
+**/target.json
+public/downloads/connection-v4
+deploy/personal-vm/reviewed.env

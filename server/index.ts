@@ -4,14 +4,21 @@ import { fileURLToPath } from "node:url";
 import { existsSync } from "node:fs";
 import { registerAiRoutes } from "./ai";
 import { registerPlanRoutes } from "./planRoutes";
-import { personalPlanEnabled } from "./chatgpt";
+import { personalPlanEnabled, ChatGPTSession } from "./chatgpt";
+import { registerOwnerGate, vmSettings } from "./owner";
+import { lockAuthDirectory } from "./privateFiles";
+import { planHttp } from "./planTransport";
 
 const app = express();
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 if (existsSync(path.join(root, ".env")))
   process.loadEnvFile(path.join(root, ".env"));
 const port = Number(process.env.PORT || 3000);
+const vm=vmSettings();
+const unlock=vm?await lockAuthDirectory(vm.directory):undefined;
 app.disable("x-powered-by");
+app.use("/owner/login",express.urlencoded({extended:false,limit:"1kb"}));
+const policy=vm?registerOwnerGate(app,vm):undefined;
 app.use(express.json({ limit: "24mb" }));
 app.use((_req, res, next) => {
   res.setHeader("X-Content-Type-Options", "nosniff");
@@ -23,11 +30,11 @@ app.get("/api/health", (_req, res) =>
     ok: true,
     aiConfigured: false,
     storage: "browser-local",
-    version: "0.3.1",
+    version: "0.4.0",
     mode: process.env.NODE_ENV === "production" ? "production" : "development",
   }),
 );
-registerPlanRoutes(app);
+registerPlanRoutes(app,vm?new ChatGPTSession(vm.directory,planHttp):undefined,Boolean(vm)||personalPlanEnabled(),policy);
 registerAiRoutes(app);
 app.post("/api/analyze", (_req, res) => res.status(503).json({ error: "기존 치수 전용 AI 연결은 비활성입니다. CSV/TXT 판독과 브라우저 이미지 추정은 키 없이 사용할 수 있습니다. ChatGPT 사용량 연결은 공식 인증과 실제 요청 검증 전입니다." }));
 app.use("/api", (_req, res) => {
@@ -64,7 +71,7 @@ app.use(
       });
   },
 );
-const server = app.listen(port, personalPlanEnabled() ? "127.0.0.1" : "0.0.0.0");
+const server = app.listen(port, vm ? process.env.TRADIATIVE_BIND_ADDRESS||"127.0.0.1" : personalPlanEnabled() ? "127.0.0.1" : "0.0.0.0");
 server.on("listening", () =>
   console.log(
     `TRADIATIVE Studio listening on port ${port} (${process.env.NODE_ENV === "production" ? "production" : "development"})`,
@@ -77,4 +84,4 @@ server.on("error", (error: NodeJS.ErrnoException) => {
   process.exit(1);
 });
 for (const signal of ["SIGINT", "SIGTERM"] as const)
-  process.on(signal, () => server.close(() => process.exit(0)));
+  process.on(signal, () => server.close(async () => {await unlock?.();process.exit(0);}));

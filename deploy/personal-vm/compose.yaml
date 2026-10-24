@@ -1,0 +1,38 @@
+# Developer provisions a real host/domain and verifies costs before deployment.
+# No host binding for port 3000. Only the TLS proxy publishes ports.
+services:
+  runtime:
+    build:
+      context: ../..
+      dockerfile: deploy/personal-vm/Dockerfile
+    restart: "no"
+    environment:
+      TRADIATIVE_PUBLIC_ORIGIN: ${TRADIATIVE_PUBLIC_ORIGIN:?Developer must configure the real HTTPS origin}
+      TRADIATIVE_OSS_REVIEWED: ${TRADIATIVE_OSS_REVIEWED:?License and applicability review required}
+    volumes:
+      - auth:/var/lib/tradiative
+    read_only: true
+    tmpfs:
+      - /tmp:size=16m,noexec,nosuid
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    mem_limit: 768m
+    cpus: 1
+    pids_limit: 64
+    logging:
+      options: {max-size: "5m", max-file: "2"}
+  tls:
+    image: caddy:2.10.2
+    restart: unless-stopped
+    environment:
+      TRADIATIVE_HOST: ${TRADIATIVE_HOST:?Developer must configure the HTTPS host}
+    ports: ["80:80", "443:443"]
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - tls_data:/data
+      - tls_config:/config
+    depends_on: [runtime]
+volumes:
+  auth:
+  tls_data:
+  tls_config:

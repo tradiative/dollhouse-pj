@@ -1,32 +1,18 @@
-<!doctype html>
-<html lang="ko">
-<head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="TRADIATIVE Studio의 기존 웹 주소를 유지하는 ChatGPT 구독 사용량 연결 신청 준비 자료">
-<meta name="referrer" content="no-referrer"><title>TRADIATIVE — 원격 앱 승인 준비</title>
-<style>
+<!doctype html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="referrer" content="no-referrer"><meta name="description" content="TRADIATIVE 본인 전용 ChatGPT 사용량 연결의 현재 상태와 MIT 검토안"><title>TRADIATIVE — ChatGPT 연결 준비</title><style>
 :root{font-family:system-ui,-apple-system,"Noto Sans KR",sans-serif;color:#293c31;background:#f6f6ef;font-size:15px}*{box-sizing:border-box}body{margin:0;padding:32px 18px}main{max-width:860px;margin:auto}a{color:#355f42;text-underline-offset:3px}header{margin:22px 0 28px}h1{font-size:clamp(25px,5vw,36px);margin:12px 0}h2{font-size:19px;margin-top:0}p,li{line-height:1.8}.eyebrow{font-size:11px;letter-spacing:.15em;color:#78816b}.card{background:#fffefa;border:1px solid #dce0d2;border-radius:12px;padding:24px;margin:18px 0}.status{display:inline-block;border:1px solid #d0d9bf;border-radius:20px;padding:7px 12px;background:#edf1e4;font-size:12px}.muted{font-size:12px;color:#707a67}.actions{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}.button{display:inline-flex;align-items:center;justify-content:center;font:inherit;font-size:13px;padding:11px 15px;border:1px solid #cad3be;border-radius:6px;background:#f9faf4;color:#2e4736;text-decoration:none;cursor:pointer}.button.primary{background:#304f3b;color:white;border-color:#304f3b}textarea{width:100%;min-height:330px;resize:vertical;background:#fafbf6;border:1px solid #d8ddcd;border-radius:6px;padding:16px;font:12px/1.7 ui-monospace,monospace;color:#344237}dl{display:grid;grid-template-columns:140px 1fr;gap:12px;font-size:13px}dt{font-weight:650}dd{margin:0;overflow-wrap:anywhere}details p{font-size:13px}footer{padding:12px 0 30px;font-size:12px;color:#77816c}#copy-status{min-height:24px;font-size:13px;color:#355f42}@media(max-width:520px){body{padding:20px 12px}.card{padding:18px}dl{grid-template-columns:1fr;gap:6px}dd{margin-bottom:10px}.actions .button{flex:1;min-width:140px}}
-</style>
-</head>
-<body><main>
+</style></head><body><main>
 <a href="../">← 작업실로 돌아가기</a>
-<header><span class="eyebrow">TRADIATIVE · CHATGPT PLAN USAGE</span><h1>기존 링크를 유지하는 AI 연결</h1><p>선택하신 원격 앱 승인 경로의 신청 초안을 준비했습니다.<br>OpenAI 신청과 신청자 정보 입력은 공식 페이지에서 진행합니다.</p><span class="status">신청 준비 완료 · 제출·승인 여부 미확인</span></header>
-<section class="card"><h2>현재 상태</h2><dl>
-<dt>작업실 주소</dt><dd><a href="../">tradiative.github.io/dollhouse-pj/</a> 유지</dd>
-<dt>선택한 방식</dt><dd>원격 웹앱 · 초기에는 운영자 본인 사용</dd>
-<dt>ChatGPT Pro</dt><dd>사용자가 보유한 구독 사용량 연결을 신청합니다.</dd>
-<dt>추가 API 과금</dt><dd>비활성. 자동 전환·충전·유료 요청 없음</dd>
-<dt>실제 AI 연결</dt><dd>OpenAI 앱 승인과 실제 로그인·이미지 요청은 아직 확인 전입니다.</dd>
-</dl><p class="muted">신청 초안 작성 시점: 2026-10-24. 제출·승인 상태를 자동 조회하는 기능은 없습니다. 현재 작업실의 자료 보관·모델 검토·파일 출력은 계속 사용할 수 있습니다.</p></section>
-<section class="card"><h2>신청에 사용할 소개문</h2><p>서비스 용도, 현재 구현, 요청하는 이미지 해석 권한, 사용량·보안 방침을 영어로 정리했습니다. 공식 양식의 항목에 맞춰 필요한 부분을 사용하세요.</p>
-<div class="actions"><button class="button" id="copy-draft" disabled>신청 초안 복사</button><a class="button" href="application-draft.en.txt" download="TRADIATIVE_remote_application_draft.txt">신청 초안 내려받기</a><a class="button primary" href="https://openai.com/form/sign-in-with-chatgpt-interest/" target="_blank" rel="noopener noreferrer">공식 신청 페이지 열기</a></div>
-<p id="copy-status" role="status" aria-live="polite">초안 불러오는 중</p><textarea id="draft" aria-label="원격 앱 신청 영어 초안" readonly spellcheck="false"></textarea>
-<p class="muted">이름·이메일·정확한 법인명 등은 공개 초안에 넣지 않았습니다. 공식 양식에서 본인 정보를 입력해 주세요. 공식 양식 자체는 개발 환경의 접속 제한으로 열지 못해 실제 항목명·제출 버튼·심사 기간을 확인하지 않았습니다.</p>
-</section>
-<section class="card"><h2>승인 후 연결할 내용</h2><p>현재 주소를 입구로 유지하고, 보호된 AI 작업실에서 공식 로그인과 동의를 진행하는 구성을 준비합니다. 웹사이트 로그인과 모델 호출 권한을 각각 확인한 뒤, 작은 실제 이미지 요청부터 검증합니다.</p><p>서버 호스팅과 비용 조건은 확정 전입니다. 새 서비스 가입이나 유료 배포를 진행하지 않았습니다.</p><details><summary>개발·신청 검토 자료</summary><p><a href="data-handling.html">현재 데이터 처리 설명</a> · <a href="https://github.com/tradiative/dollhouse-pj/blob/main/docs/remote-approval.md" target="_blank" rel="noopener noreferrer">구현 범위와 원격 구성안</a></p><p>공식 근거: <a href="https://developers.openai.com/siwc/quickstart" target="_blank" rel="noopener noreferrer">Quickstart</a> · <a href="https://developers.openai.com/siwc/website" target="_blank" rel="noopener noreferrer">웹사이트 로그인</a> · <a href="https://developers.openai.com/siwc/token-sharing-open-source" target="_blank" rel="noopener noreferrer">구독 사용량 적용 조건</a></p></details></section>
-<footer>TRADIATIVE Studio · 기존 공개 주소 유지 · 원격 승인 준비 자료</footer>
-</main><script>
-const draft=document.getElementById('draft'),button=document.getElementById('copy-draft'),status=document.getElementById('copy-status');
-fetch('./application-draft.en.txt',{cache:'no-store'}).then(async r=>{if(!r.ok)throw new Error('draft unavailable');const text=await r.text();if(text.length>20000)throw new Error('draft too large');draft.value=text;button.disabled=false;status.textContent='초안을 검토한 뒤 복사하거나 내려받을 수 있습니다.';}).catch(()=>{status.textContent='초안을 불러오지 못했습니다. 신청 초안 내려받기를 이용해 주세요.';});
-button.addEventListener('click',async()=>{let copied=false;try{await navigator.clipboard.writeText(draft.value);copied=true;}catch{draft.focus();draft.select();try{copied=document.execCommand('copy');}catch{copied=false;}}status.textContent=copied?'신청 초안을 복사했습니다. 공식 양식에 필요한 부분을 붙여 넣어 주세요.':'브라우저가 자동 복사를 허용하지 않았습니다. 초안을 선택해 직접 복사할 수 있습니다.';});
-</script></body></html>
+<header><span class="eyebrow">TRADIATIVE · CHATGPT PLAN USAGE</span><h1>내 ChatGPT로 쓰는 제작 작업실</h1><p>현재 웹 주소를 입구로 유지하고, 본인 전용 서버에서 AI를 실행하는 경로를 준비했습니다.</p><span class="status">연결 준비 중 · 실제 GPT 이미지 처리 미검증</span></header>
+<section class="card"><h2>지금 어디까지 됐나요?</h2><p><b>ChatGPT 사용량 연결 준비 중입니다. 별도 API 과금은 꺼져 있습니다.</b></p><dl>
+<dt>연결 방식 검토</dt><dd>공식 문서의 오픈소스 앱 자가 서버 경로를 우선 후보로 정했습니다. 원격 서비스 참여 신청과 다른 경로입니다.</dd>
+<dt>실행 환경 준비</dt><dd>보호된 실행부·PC 최초 로그인 도구·개발자 실행 패키지 준비. 실제 상시 서버는 아직 배포하지 않았습니다.</dd>
+<dt>본인 로그인·동의</dt><dd>미실시. 실제 서버가 준비된 뒤 공식 화면에서 진행합니다.</dd>
+<dt>실제 이미지 처리</dt><dd>미실시, 실제 계정 호출 0건. 로그인·모델 목록 확인과 구분합니다.</dd>
+<dt>모델·파츠 검증</dt><dd>기존 엔진·검토 사례는 사용 가능. 실제 GPT 응답으로 연결한 결과는 아직 미검증입니다.</dd>
+</dl></section>
+<section class="card"><h2>먼저 코드 이용 범위를 정해야 합니다</h2><p>공식 자가 서버 절차는 조건을 충족하는 오픈소스 앱을 대상으로 합니다. 현재 저장소에는 자체 코드의 재사용을 허락한 라이선스가 지정돼 있지 않습니다.</p><p><b>제안: 앱 코드·기술 문서를 MIT 라이선스로 제공.</b> 다른 사람도 고지를 유지하며 복제·수정·배포·상업적으로 재사용할 수 있습니다. 사용자 사진·도면·제작 파일·브랜드는 이 허락에서 제외하고 별도 권리를 유지합니다.</p><p>아래는 검토안입니다. 아직 적용하지 않았으며, 적용만으로 공급자의 모든 참여 조건이나 실제 계정 권한이 확정되지는 않습니다.</p><div class="actions"><a class="button primary" href="license-proposal.patch">MIT 적용안 보기</a><a class="button" href="license-proposal.patch" download="TRADIATIVE_MIT_proposal.patch">MIT 적용안 내려받기</a></div><p class="muted">적용 여부는 이 대화에서 결정합니다. 이 페이지의 열람·다운로드는 동의나 라이선스 변경으로 기록되지 않습니다.</p></section>
+<section class="card"><h2>비용은 세 가지로 구분합니다</h2><dl><dt>ChatGPT 요금제</dt><dd>실제 AI 실행 시 기존 요금제·크레딧 사용량을 소비합니다. 무료·무제한 이용이 아닙니다.</dd><dt>별도 API 과금</dt><dd>꺼져 있습니다. 자동 전환하지 않습니다.</dd><dt>서버 운영비</dt><dd>호스팅 미선택·미배포. 무료 할당·만료·초과 요금은 아직 확정 전입니다. 새 결제나 계약을 진행하지 않았습니다.</dd></dl></section>
+<section class="card"><h2>기존 자료와 작업은 계속 보존합니다</h2><p>현재 사이트의 자료·도안·모델은 해당 브라우저에 보관됩니다. 본인 전용 작업실이 준비되면 기존 백업 ZIP으로 옮길 수 있습니다. 자동 동기화나 토큰 복사를 요구하지 않습니다.</p><p><a href="../">작업실 열기</a> · <a href="data-handling.html">현재 데이터 처리 설명</a></p><details><summary>개발·검토 자료</summary><p><a href="https://github.com/tradiative/dollhouse-pj/blob/main/docs/connection-v4.md">현재 연결 결정·공식 근거</a> · <a href="https://github.com/tradiative/dollhouse-pj/blob/main/docs/validation-v4.md">C01–C10 검증 상태</a></p><p><a class="button" href="../downloads/connection-v4/TRADIATIVE_connection_v4_developer.zip" download>개발자 실행 패키지 내려받기</a></p><p>이 패키지는 개발자 검증·배포용입니다. 서버·전용 키·대상 설정·PC용 배포가 끝난 사용자 실행기가 아니므로 대표님이 설치하거나 명령을 입력할 필요는 없습니다. 사용자 자료·계정 비밀 값은 포함하지 않습니다.</p><p>공식 문서: <a href="https://developers.openai.com/siwc/token-sharing-open-source/self-hosted-vms" rel="noreferrer" target="_blank">Self-hosted VMs</a> · <a href="https://developers.openai.com/siwc/token-sharing-open-source">적용 범위</a> · <a href="https://developers.openai.com/siwc/ui-ux-guidelines">사용량 안내</a></p></details></section>
+<section class="card"><details><summary>다른 사용자에게 원격 서비스를 제공하려는 경우</summary><p>공식 참여 대기 명단은 별도 경로입니다. 앞서 준비한 <a href="application-draft.en.txt" download="TRADIATIVE_remote_application_draft.txt">신청 초안</a>과 <a href="https://openai.com/form/sign-in-with-chatgpt-interest/" target="_blank" rel="noopener noreferrer">공식 관심 등록 양식</a>은 남겨 두었습니다. 제출·접수·승인 여부는 미확인이며 자동 조회하지 않습니다. 개발 환경에서는 공식 양식 자체가 접속 제한으로 열리지 않아 실제 필드를 확인하지 못했습니다.</p></details></section>
+<footer>TRADIATIVE Studio 0.4.0 · 2026-10-24 · 실제 서버·사용자 이미지 요청은 아직 미검증</footer>
+</main></body></html>

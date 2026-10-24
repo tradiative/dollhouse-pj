@@ -1,0 +1,13 @@
+{$TRADIATIVE_HOST} {
+  request_body {
+    max_size 24MB
+  }
+  header {
+    Strict-Transport-Security "max-age=31536000"
+    X-Content-Type-Options "nosniff"
+    Referrer-Policy "no-referrer"
+    X-Frame-Options "DENY"
+  }
+  reverse_proxy runtime:3000
+  # No access log containing callback strings, sessions or image bodies.
+}

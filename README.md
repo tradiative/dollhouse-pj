@@ -1,6 +1,6 @@
-# TRADIATIVE Studio 0.3.1
+# TRADIATIVE Studio 0.4.0
 
-[공개 작업실](https://tradiative.github.io/dollhouse-pj/) · [원격 앱 승인 준비](https://tradiative.github.io/dollhouse-pj/connection/) · [v3 진행 기록](docs/actual-ai-v3.md)
+[공개 작업실](https://tradiative.github.io/dollhouse-pj/) · [ChatGPT 연결 준비](https://tradiative.github.io/dollhouse-pj/connection/) · [현재 v4 결정·실행 구성](docs/connection-v4.md)
 
 건축물의 자료·근거·가변 모델·제작 검토 파츠를 관리하는 웹 도구입니다. 첫 실행은 빈 작업대이며 기존 브라우저 프로젝트는 보존합니다. 예시 집은 **예시 프로젝트 열기**, 실제 공개 도면을 대조해 작성한 임피역 사례는 **임피역 도면 검토 사례 열기**로 구분합니다.
 
@@ -19,13 +19,15 @@
 
 ## AI 실행 경로
 
-사용자는 기존 URL을 유지하는 원격 앱 승인 경로를 선택했습니다. [신청 준비 자료](docs/remote-approval.md)에 소개문·현재 데이터 처리·구성안과 미확인 항목을 정리했습니다. 실제 신청 제출·원격 승인·모델 요청은 아직 확인 전입니다. 개인 PC 전환 여부를 다시 묻지 않습니다.
+v4에서 기존 원격 서비스 참여 신청과 **본인 전용 OSS 서버**를 다시 구분했습니다. [현재 실행 결정](docs/connection-v4.md)은 조건을 충족하는 OSS 자가 서버 경로를 우선 후보로 준비합니다. 자체 코드 재사용 허락은 아직 지정되지 않아 [MIT 변경안](docs/license-proposal.patch)을 준비했으며 자동 적용하지 않았습니다. 실제 서버는 미배포, 공식 계정 이미지 요청은 0건입니다. 이는 기존 주소를 버리거나 로컬 전용 제품으로 바꾸는 결정이 아닙니다.
 
-- GitHub Pages에는 서버가 실행되지 않습니다. 원격 앱의 구독 사용량 승인과 보호된 실행부가 준비되기 전에는 공개 방문자에게 소유자 사용량을 제공하지 않습니다.
+- GitHub Pages에는 서버가 실행되지 않습니다. 본인 전용 VM과 사용자에게 제공하는 원격 앱의 적용 조건이 다릅니다. 공개 방문자에게 소유자 사용량을 제공하지 않습니다.
+- `deploy/personal-vm/`에 TLS·격리된 실행부·보호된 인증 볼륨 구성을 준비했습니다. `server/owner.ts`가 단일 소유자 세션·접근 제한을 적용하며 실제 HTTPS origin·OSS 검토·별도 API 비활성 조건 없이 VM 모드를 시작하지 않습니다. 무료 호스트나 운영비는 아직 확정되지 않았습니다.
+- PC 최초 로그인용 `server/connector.ts`와 SSH 수신용 `server/vmImport.ts`를 준비했습니다. 이 앱의 새 공식 OAuth 기록만 이전하고, 서로 다른 호스트 ID를 보존하며, PC 갱신을 잠그고 서버가 이후 갱신을 담당합니다. 실제 SSH·대표님 PC OS 검증은 아직 미실시입니다. 준비 패키지는 개발자용이며 사용자에게 명령·포트·토큰 관리를 요구하지 않습니다.
 - 개인 실행 대안은 명시적 `TRADIATIVE_CHATGPT_MODE=personal-local` 설정에서만 활성화됩니다. **사용자 PC의** HTTP 127.0.0.1 화면과 콜백을 사용하며 이 모드의 서버는 loopback에만 바인딩합니다. 현재 클라우드를 사용자 PC의 콜백으로 제공하지 않습니다.
 - `Continue with ChatGPT` → 사용자 동의 → **사용 가능한 모델 확인** → 자료 선택 → **ChatGPT로 설계하기**. 최초 요청은 실제 이미지 검증 완료 플래그가 없어도 실행할 수 있어 순환 조건이 없습니다.
 - PKCE/state/nonce, 공식 JWKS 서명·issuer/audience/expiry/subject 검증, 소유자 전용 원자적 저장과 직렬 토큰 갱신을 구현했습니다. 플랫폼/Codex/ChatGPT 쿠키·기존 세션 토큰은 읽거나 복사하지 않습니다.
-- 모델 목록은 공식 계정별 `/v1/models` 카탈로그를 사용합니다. 구독 요청은 `store:false`, `stream:true`로 보내며 `response.completed` 전에는 성공이 아닙니다. 최대 6개 선택 자료·3회 요청·90초·동시 1작업으로 제한하고 취소와 구조 오류 재요청을 지원합니다.
+- 모델 목록은 공식 계정별 `/v1/models` 카탈로그를 사용합니다. 구독 요청은 `store:false`, `stream:true`로 보내며 `response.completed` 전에는 성공이 아닙니다. 기본 1회, 최대 6개 선택 자료·전체 3회 요청·90초·동시 1작업으로 제한합니다. 호출 완료와 형상 검사 통과를 별도로 기록하며 계정 변경·로그아웃·가져오기 시 검증 상태를 초기화합니다.
 - 자연어 설계 요청과 기존 형상을 같은 요청에 전달하고 잠긴 요소를 보존합니다. 렌더를 AI에 재입력하는 자동 시각 교정·외부 검색은 아직 연결하지 않았습니다.
 - 일반 API 경로는 별도 허용 설정·서버 키·매 요청의 과금 동의·동일 기기 조건을 모두 요구합니다. 사용자 선택 없이 활성화하지 않습니다.
 
