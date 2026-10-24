@@ -38,7 +38,7 @@ export function inside(point: XY, poly: XY[]) {
   }
   return yes;
 }
-export function clippingPolygon(poly: XY[]): polygonClipping.Polygon { return [poly]; }
+export function clippingPolygon(poly: XY[]): polygonClipping.Polygon { return [poly.map(p => p.map(n => Math.round(n * 1e8) / 1e8) as XY)]; }
 export function clippedArea(polys: polygonClipping.MultiPolygon) { return polys.reduce((s, p) => s + area(p[0] as XY[]) - p.slice(1).reduce((a, ring) => a + area(ring as XY[]), 0), 0); }
 export function openingFits(opening: XY[], wall: XY[]) {
   try { return clippedArea(polygonClipping.difference(clippingPolygon(opening), clippingPolygon(wall))) < EPS; } catch { return false; }
@@ -49,6 +49,15 @@ export function overlap(a: XY[], b: XY[]) {
 export function cleanRing(poly: XY[]) {
   const out = poly.filter((p, i) => i === 0 || Math.hypot(p[0] - poly[i - 1][0], p[1] - poly[i - 1][1]) > EPS);
   if (out.length > 1 && Math.hypot(out[0][0] - out.at(-1)![0], out[0][1] - out.at(-1)![1]) < EPS) out.pop();
+  // Boolean intersections can leave zero-area spikes at shared mass boundaries.
+  // Remove collinear vertices (including a backtrack), without changing area.
+  let changed = true;
+  while (changed && out.length > 3) {
+    changed = false;
+    for (let i = 0; i < out.length; i++) {
+      if (Math.abs(cross(out[(i + out.length - 1) % out.length], out[i], out[(i + 1) % out.length])) < 1e-8) { out.splice(i, 1); changed = true; break; }
+    }
+  }
   return out;
 }
 export function validateDesign(scene: BuildingDesign): GeometryIssue[] {

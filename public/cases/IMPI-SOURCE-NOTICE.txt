@@ -1,0 +1,17 @@
+출처: 국가유산청 국가유산 디지털 서비스 · 국가등록유산 군산 구 임피역
+공공누리 제1유형(출처 표시): 각 기록 상세 페이지의 KOGL_1 표시를 2026-10-24에 직접 확인했습니다.
+라이선스 안내: https://www.kogl.or.kr/info/licenseType1.do
+이 번들의 이미지 입력은 500×354 JPEG 웹 미리보기 4개이며 CAD 원본이나 사용자 첨부 고해상도 원본 11개가 아닙니다.
+모델은 작성자의 도면 대조·추정을 포함한 검토 사례입니다. 실제 GPT API 호출·실측·가공·조립 완료의 증거가 아닙니다.
+
+A-006_1층평면도
+https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918171717911&bizId=BIZ201800002653
+
+A-007_정면도_북측
+https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918189717912&bizId=BIZ201800002653
+
+A-008_좌우측면도
+https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918202717913&bizId=BIZ201800002653
+
+A-009_배면도_남측
+https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918214717914&bizId=BIZ201800002653

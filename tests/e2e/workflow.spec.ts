@@ -1,6 +1,8 @@
 import { test, expect } from "@playwright/test";
 import { readFile } from "node:fs/promises";
 
+test.beforeEach(async ({page})=>{await page.goto("/");await page.getByRole("button",{name:"예시 프로젝트 열기",exact:true}).click();});
+
 test("dimension → generation → review → downloadable drawing, then invalidation", async ({
   page,
 }) => {
@@ -8,7 +10,7 @@ test("dimension → generation → review → downloadable drawing, then invalid
   page.on("pageerror", (e) => errors.push(e.message));
   await page.goto("/");
   await expect(
-    page.getByRole("heading", { name: "임피역 본관", exact: true }),
+    page.getByRole("heading", { name: "예시 건물 · 실자료 아님", exact: true }),
   ).toBeVisible();
   await expect(page.locator(".model-canvas canvas")).toBeVisible();
   await page
@@ -89,7 +91,7 @@ test("source file import reads CSV candidates and persists without claiming they
       buffer: Buffer.from("width,16000\ndepth,8000"),
     });
   await expect(page.locator(".source-info")).toContainText([
-    "임피역_정면입면도.svg",
+    "예시_정면입면도.svg",
     "건축물_기초치수.csv",
     "measurements.csv",
   ]);

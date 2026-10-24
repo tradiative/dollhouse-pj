@@ -1,0 +1,841 @@
+{
+  "schema": "tradiative.program.v1",
+  "units": "relative",
+  "masses": [
+    {
+      "id": "main",
+      "name": "길게 놓인 본체",
+      "x": 0,
+      "z": 0,
+      "width": 17140,
+      "depth": 5740,
+      "eave": 4412,
+      "roof": {
+        "type": "gable",
+        "axis": "x",
+        "rise": 2170,
+        "overhang": 648
+      },
+      "roofOnly": false,
+      "evidence": [
+        {
+          "classification": "observed",
+          "sourceId": "plan",
+          "observation": "긴 직사각 본체, 길이 방향 용마루·양 끝 박공",
+          "reason": "사용자 첨부 입면·평면과 공개 미리보기 대조. 축간 치수와 외벽 외곽을 구분해야 하며 위치는 검토용 추정.",
+          "uncertainty": "high",
+          "alternatives": [
+            "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+          ],
+          "links": [
+            "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918171717911&bizId=BIZ201800002653"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cross",
+      "name": "높은 직교 박공",
+      "x": 8611,
+      "z": 0,
+      "width": 5969,
+      "depth": 5740,
+      "eave": 4412,
+      "roof": {
+        "type": "gable",
+        "axis": "z",
+        "rise": 3120,
+        "overhang": 440
+      },
+      "roofOnly": true,
+      "evidence": [
+        {
+          "classification": "observed",
+          "sourceId": "north",
+          "observation": "본체 오른쪽의 더 높은 박공. 반대편 입면에서는 좌우 반전되어 보임.",
+          "reason": "사용자 첨부 입면·평면과 공개 미리보기 대조. 축간 치수와 외벽 외곽을 구분해야 하며 위치는 검토용 추정.",
+          "uncertainty": "high",
+          "alternatives": [
+            "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+          ],
+          "links": [
+            "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918189717912&bizId=BIZ201800002653"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rear-vestibule",
+      "name": "후면 돌출 출입부",
+      "x": 2842,
+      "z": -1900,
+      "width": 3077,
+      "depth": 1900,
+      "eave": 3300,
+      "roof": {
+        "type": "gable",
+        "axis": "z",
+        "rise": 750,
+        "overhang": 220
+      },
+      "roofOnly": false,
+      "evidence": [
+        {
+          "classification": "observed",
+          "sourceId": "plan",
+          "observation": "평면 상 뒤로 돌출된 출입부. 낮은 별도 박공.",
+          "reason": "사용자 첨부 입면·평면과 공개 미리보기 대조. 축간 치수와 외벽 외곽을 구분해야 하며 위치는 검토용 추정.",
+          "uncertainty": "high",
+          "alternatives": [
+            "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+          ],
+          "links": [
+            "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918171717911&bizId=BIZ201800002653"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "service",
+      "name": "후면 낮은 부속부",
+      "x": 0,
+      "z": -1900,
+      "width": 2842,
+      "depth": 1900,
+      "eave": 2800,
+      "roof": {
+        "type": "flat",
+        "axis": "x",
+        "rise": 0,
+        "overhang": 100
+      },
+      "roofOnly": false,
+      "evidence": [
+        {
+          "classification": "observed",
+          "sourceId": "south",
+          "observation": "낮은 부속부. 경사 지붕은 이번 검토에서 평지붕으로 단순화.",
+          "reason": "사용자 첨부 입면·평면과 공개 미리보기 대조. 축간 치수와 외벽 외곽을 구분해야 하며 위치는 검토용 추정.",
+          "uncertainty": "high",
+          "alternatives": [
+            "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+          ],
+          "links": [
+            "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918214717914&bizId=BIZ201800002653"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "veranda",
+      "name": "후면 개방 차양",
+      "x": 5919,
+      "z": -1900,
+      "width": 11221,
+      "depth": 1900,
+      "eave": 2800,
+      "roof": {
+        "type": "flat",
+        "axis": "x",
+        "rise": 0,
+        "overhang": 100
+      },
+      "roofOnly": true,
+      "evidence": [
+        {
+          "classification": "observed",
+          "sourceId": "south",
+          "observation": "후면 창 앞의 개방 차양. 벽으로 막지 않고 지붕만 표현.",
+          "reason": "사용자 첨부 입면·평면과 공개 미리보기 대조. 축간 치수와 외벽 외곽을 구분해야 하며 위치는 검토용 추정.",
+          "uncertainty": "high",
+          "alternatives": [
+            "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+          ],
+          "links": [
+            "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918214717914&bizId=BIZ201800002653"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "entry-canopy",
+      "name": "주출입구 차양",
+      "x": 9650,
+      "z": 5740,
+      "width": 3950,
+      "depth": 1400,
+      "eave": 3450,
+      "roof": {
+        "type": "flat",
+        "axis": "x",
+        "rise": 0,
+        "overhang": 0
+      },
+      "roofOnly": true,
+      "evidence": [
+        {
+          "classification": "observed",
+          "sourceId": "north",
+          "observation": "주출입구 위 돌출 차양. 두께·위치는 도면 비례 추정.",
+          "reason": "사용자 첨부 입면·평면과 공개 미리보기 대조. 축간 치수와 외벽 외곽을 구분해야 하며 위치는 검토용 추정.",
+          "uncertainty": "high",
+          "alternatives": [
+            "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+          ],
+          "links": [
+            "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918189717912&bizId=BIZ201800002653"
+          ]
+        }
+      ]
+    }
+  ],
+  "openings": [
+    {
+      "id": "north-window-1",
+      "name": "북측 긴 창 1",
+      "massId": "main",
+      "face": "front",
+      "x": 1100,
+      "y": 1200,
+      "width": 740,
+      "height": 2170,
+      "role": "window",
+      "evidence": [
+        {
+          "classification": "observed",
+          "sourceId": "north",
+          "observation": "북측 긴 창 1의 보이는 개수와 배치",
+          "reason": "반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.",
+          "uncertainty": "high",
+          "alternatives": [
+            "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+          ],
+          "links": [
+            "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918189717912&bizId=BIZ201800002653"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "north-window-2",
+      "name": "북측 긴 창 2",
+      "massId": "main",
+      "face": "front",
+      "x": 3900,
+      "y": 1200,
+      "width": 740,
+      "height": 2170,
+      "role": "window",
+      "evidence": [
+        {
+          "classification": "observed",
+          "sourceId": "north",
+          "observation": "북측 긴 창 2의 보이는 개수와 배치",
+          "reason": "반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.",
+          "uncertainty": "high",
+          "alternatives": [
+            "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+          ],
+          "links": [
+            "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918189717912&bizId=BIZ201800002653"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "north-window-3",
+      "name": "북측 긴 창 3",
+      "massId": "main",
+      "face": "front",
+      "x": 5250,
+      "y": 1200,
+      "width": 740,
+      "height": 2170,
+      "role": "window",
+      "evidence": [
+        {
+          "classification": "observed",
+          "sourceId": "north",
+          "observation": "북측 긴 창 3의 보이는 개수와 배치",
+          "reason": "반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.",
+          "uncertainty": "high",
+          "alternatives": [
+            "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+          ],
+          "links": [
+            "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918189717912&bizId=BIZ201800002653"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "north-window-4",
+      "name": "북측 긴 창 4",
+      "massId": "main",
+      "face": "front",
+      "x": 6600,
+      "y": 1200,
+      "width": 740,
+      "height": 2170,
+      "role": "window",
+      "evidence": [
+        {
+          "classification": "observed",
+          "sourceId": "north",
+          "observation": "북측 긴 창 4의 보이는 개수와 배치",
+          "reason": "반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.",
+          "uncertainty": "high",
+          "alternatives": [
+            "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+          ],
+          "links": [
+            "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918189717912&bizId=BIZ201800002653"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "north-window-5",
+      "name": "북측 긴 창 5",
+      "massId": "main",
+      "face": "front",
+      "x": 15300,
+      "y": 1200,
+      "width": 740,
+      "height": 2170,
+      "role": "window",
+      "evidence": [
+        {
+          "classification": "observed",
+          "sourceId": "north",
+          "observation": "북측 긴 창 5의 보이는 개수와 배치",
+          "reason": "반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.",
+          "uncertainty": "high",
+          "alternatives": [
+            "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+          ],
+          "links": [
+            "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918189717912&bizId=BIZ201800002653"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "north-slit-1",
+      "name": "북측 출입구 옆 좁은 창 1",
+      "massId": "main",
+      "face": "front",
+      "x": 8750,
+      "y": 1200,
+      "width": 350,
+      "height": 2170,
+      "role": "window",
+      "evidence": [
+        {
+          "classification": "observed",
+          "sourceId": "north",
+          "observation": "북측 출입구 옆 좁은 창 1의 보이는 개수와 배치",
+          "reason": "반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.",
+          "uncertainty": "high",
+          "alternatives": [
+            "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+          ],
+          "links": [
+            "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918189717912&bizId=BIZ201800002653"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "north-slit-2",
+      "name": "북측 출입구 옆 좁은 창 2",
+      "massId": "main",
+      "face": "front",
+      "x": 13850,
+      "y": 1200,
+      "width": 350,
+      "height": 2170,
+      "role": "window",
+      "evidence": [
+        {
+          "classification": "observed",
+          "sourceId": "north",
+          "observation": "북측 출입구 옆 좁은 창 2의 보이는 개수와 배치",
+          "reason": "반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.",
+          "uncertainty": "high",
+          "alternatives": [
+            "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+          ],
+          "links": [
+            "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918189717912&bizId=BIZ201800002653"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "north-door",
+      "name": "북측 주출입문",
+      "massId": "main",
+      "face": "front",
+      "x": 10520,
+      "y": 0,
+      "width": 2045,
+      "height": 2800,
+      "role": "door",
+      "evidence": [
+        {
+          "classification": "observed",
+          "sourceId": "north",
+          "observation": "북측 주출입문의 보이는 개수와 배치",
+          "reason": "반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.",
+          "uncertainty": "high",
+          "alternatives": [
+            "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+          ],
+          "links": [
+            "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918189717912&bizId=BIZ201800002653"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "north-attic",
+      "name": "북측 박공 환기구",
+      "massId": "cross",
+      "face": "front",
+      "x": 2780,
+      "y": 5250,
+      "width": 400,
+      "height": 550,
+      "role": "vent",
+      "evidence": [
+        {
+          "classification": "observed",
+          "sourceId": "north",
+          "observation": "북측 박공 환기구의 보이는 개수와 배치",
+          "reason": "반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.",
+          "uncertainty": "high",
+          "alternatives": [
+            "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+          ],
+          "links": [
+            "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918189717912&bizId=BIZ201800002653"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "south-attic",
+      "name": "남측 박공 환기구",
+      "massId": "cross",
+      "face": "back",
+      "x": 2780,
+      "y": 5250,
+      "width": 400,
+      "height": 550,
+      "role": "vent",
+      "evidence": [
+        {
+          "classification": "observed",
+          "sourceId": "south",
+          "observation": "남측 박공 환기구의 보이는 개수와 배치",
+          "reason": "반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.",
+          "uncertainty": "high",
+          "alternatives": [
+            "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+          ],
+          "links": [
+            "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918214717914&bizId=BIZ201800002653"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "left-window-1",
+      "name": "동측 창 1",
+      "massId": "main",
+      "face": "left",
+      "x": 950,
+      "y": 1130,
+      "width": 740,
+      "height": 2170,
+      "role": "window",
+      "evidence": [
+        {
+          "classification": "observed",
+          "sourceId": "sides",
+          "observation": "동측 창 1의 보이는 개수와 배치",
+          "reason": "반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.",
+          "uncertainty": "high",
+          "alternatives": [
+            "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+          ],
+          "links": [
+            "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918202717913&bizId=BIZ201800002653"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "left-window-2",
+      "name": "동측 창 2",
+      "massId": "main",
+      "face": "left",
+      "x": 2150,
+      "y": 1130,
+      "width": 740,
+      "height": 2170,
+      "role": "window",
+      "evidence": [
+        {
+          "classification": "observed",
+          "sourceId": "sides",
+          "observation": "동측 창 2의 보이는 개수와 배치",
+          "reason": "반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.",
+          "uncertainty": "high",
+          "alternatives": [
+            "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+          ],
+          "links": [
+            "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918202717913&bizId=BIZ201800002653"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "left-attic",
+      "name": "동측 박공 환기구",
+      "massId": "main",
+      "face": "left",
+      "x": 2670,
+      "y": 5150,
+      "width": 400,
+      "height": 550,
+      "role": "vent",
+      "evidence": [
+        {
+          "classification": "observed",
+          "sourceId": "sides",
+          "observation": "동측 박공 환기구의 보이는 개수와 배치",
+          "reason": "반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.",
+          "uncertainty": "high",
+          "alternatives": [
+            "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+          ],
+          "links": [
+            "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918202717913&bizId=BIZ201800002653"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "right-window-1",
+      "name": "서측 창 1",
+      "massId": "main",
+      "face": "right",
+      "x": 950,
+      "y": 1130,
+      "width": 740,
+      "height": 2170,
+      "role": "window",
+      "evidence": [
+        {
+          "classification": "observed",
+          "sourceId": "sides",
+          "observation": "서측 창 1의 보이는 개수와 배치",
+          "reason": "반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.",
+          "uncertainty": "high",
+          "alternatives": [
+            "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+          ],
+          "links": [
+            "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918202717913&bizId=BIZ201800002653"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "right-window-2",
+      "name": "서측 창 2",
+      "massId": "main",
+      "face": "right",
+      "x": 2150,
+      "y": 1130,
+      "width": 740,
+      "height": 2170,
+      "role": "window",
+      "evidence": [
+        {
+          "classification": "observed",
+          "sourceId": "sides",
+          "observation": "서측 창 2의 보이는 개수와 배치",
+          "reason": "반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.",
+          "uncertainty": "high",
+          "alternatives": [
+            "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+          ],
+          "links": [
+            "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918202717913&bizId=BIZ201800002653"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "right-window-3",
+      "name": "서측 창 3",
+      "massId": "main",
+      "face": "right",
+      "x": 3350,
+      "y": 1130,
+      "width": 740,
+      "height": 2170,
+      "role": "window",
+      "evidence": [
+        {
+          "classification": "observed",
+          "sourceId": "sides",
+          "observation": "서측 창 3의 보이는 개수와 배치",
+          "reason": "반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.",
+          "uncertainty": "high",
+          "alternatives": [
+            "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+          ],
+          "links": [
+            "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918202717913&bizId=BIZ201800002653"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "right-attic",
+      "name": "서측 박공 환기구",
+      "massId": "main",
+      "face": "right",
+      "x": 2670,
+      "y": 5150,
+      "width": 400,
+      "height": 550,
+      "role": "vent",
+      "evidence": [
+        {
+          "classification": "observed",
+          "sourceId": "sides",
+          "observation": "서측 박공 환기구의 보이는 개수와 배치",
+          "reason": "반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.",
+          "uncertainty": "high",
+          "alternatives": [
+            "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+          ],
+          "links": [
+            "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918202717913&bizId=BIZ201800002653"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "south-window-1",
+      "name": "남측 본체 창 1",
+      "massId": "main",
+      "face": "back",
+      "x": 6800,
+      "y": 1200,
+      "width": 900,
+      "height": 1900,
+      "role": "window",
+      "evidence": [
+        {
+          "classification": "observed",
+          "sourceId": "south",
+          "observation": "남측 본체 창 1의 보이는 개수와 배치",
+          "reason": "반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.",
+          "uncertainty": "high",
+          "alternatives": [
+            "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+          ],
+          "links": [
+            "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918214717914&bizId=BIZ201800002653"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "south-window-2",
+      "name": "남측 본체 창 2",
+      "massId": "main",
+      "face": "back",
+      "x": 9200,
+      "y": 1200,
+      "width": 900,
+      "height": 1900,
+      "role": "window",
+      "evidence": [
+        {
+          "classification": "observed",
+          "sourceId": "south",
+          "observation": "남측 본체 창 2의 보이는 개수와 배치",
+          "reason": "반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.",
+          "uncertainty": "high",
+          "alternatives": [
+            "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+          ],
+          "links": [
+            "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918214717914&bizId=BIZ201800002653"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "south-window-3",
+      "name": "남측 본체 창 3",
+      "massId": "main",
+      "face": "back",
+      "x": 13900,
+      "y": 1200,
+      "width": 900,
+      "height": 1900,
+      "role": "window",
+      "evidence": [
+        {
+          "classification": "observed",
+          "sourceId": "south",
+          "observation": "남측 본체 창 3의 보이는 개수와 배치",
+          "reason": "반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.",
+          "uncertainty": "high",
+          "alternatives": [
+            "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+          ],
+          "links": [
+            "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918214717914&bizId=BIZ201800002653"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "south-window-4",
+      "name": "남측 본체 창 4",
+      "massId": "main",
+      "face": "back",
+      "x": 15600,
+      "y": 1200,
+      "width": 900,
+      "height": 1900,
+      "role": "window",
+      "evidence": [
+        {
+          "classification": "observed",
+          "sourceId": "south",
+          "observation": "남측 본체 창 4의 보이는 개수와 배치",
+          "reason": "반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.",
+          "uncertainty": "high",
+          "alternatives": [
+            "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+          ],
+          "links": [
+            "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918214717914&bizId=BIZ201800002653"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "vestibule-door",
+      "name": "후면 돌출부 출입문",
+      "massId": "rear-vestibule",
+      "face": "back",
+      "x": 1600,
+      "y": 0,
+      "width": 900,
+      "height": 2400,
+      "role": "door",
+      "evidence": [
+        {
+          "classification": "observed",
+          "sourceId": "south",
+          "observation": "후면 돌출부 출입문의 보이는 개수와 배치",
+          "reason": "반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.",
+          "uncertainty": "high",
+          "alternatives": [
+            "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+          ],
+          "links": [
+            "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918214717914&bizId=BIZ201800002653"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "vestibule-window",
+      "name": "후면 돌출부 창",
+      "massId": "rear-vestibule",
+      "face": "back",
+      "x": 350,
+      "y": 1100,
+      "width": 900,
+      "height": 1600,
+      "role": "window",
+      "evidence": [
+        {
+          "classification": "observed",
+          "sourceId": "south",
+          "observation": "후면 돌출부 창의 보이는 개수와 배치",
+          "reason": "반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.",
+          "uncertainty": "high",
+          "alternatives": [
+            "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+          ],
+          "links": [
+            "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918214717914&bizId=BIZ201800002653"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "service-door",
+      "name": "후면 낮은 부속부 문",
+      "massId": "service",
+      "face": "back",
+      "x": 700,
+      "y": 0,
+      "width": 900,
+      "height": 2200,
+      "role": "door",
+      "evidence": [
+        {
+          "classification": "observed",
+          "sourceId": "south",
+          "observation": "후면 낮은 부속부 문의 보이는 개수와 배치",
+          "reason": "반대 입면의 좌우를 공통 축에 대응. 정확한 개구부 수치·종류는 사용자 대조 전.",
+          "uncertainty": "high",
+          "alternatives": [
+            "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+          ],
+          "links": [
+            "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918214717914&bizId=BIZ201800002653"
+          ]
+        }
+      ]
+    }
+  ],
+  "observations": [],
+  "assumptions": [
+    {
+      "classification": "inferred",
+      "sourceId": "plan",
+      "observation": "가로 17,140과 본체 5,740 및 후면 1,900은 기존 판독 제안 값",
+      "reason": "수치들은 공통 상대좌표로만 사용하며 실측확정·1:80으로 표시하지 않음",
+      "uncertainty": "high",
+      "alternatives": [
+        "원본 CAD·높은 해상도와 사용자 대조 후 좌표 수정"
+      ],
+      "links": [
+        "https://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid=13897468918171717911&bizId=BIZ201800002653"
+      ]
+    }
+  ],
+  "limitations": [
+    "작성자가 기존 첨부 도면과 국가유산청 공개 미리보기를 대조해 구성한 검토 사례입니다. 웹앱의 GPT API 자동생성 결과가 아닙니다.",
+    "입면의 좌우 반전을 공통 좌표에 대응시켰습니다. 같은 높은 박공을 앞면·뒷면에 각각 별도 건물로 만들지 않았습니다.",
+    "창호 위치·유효 개구부 크기·벽 두께·처마·돌출부·차양의 경사는 실측 미확인입니다. 간판·굴뚝·창살·가새는 이번 구조에 포함하지 않았습니다.",
+    "후면 차양과 낮은 부속부의 경사 지붕을 평면으로 단순화했습니다. 이 핵심 차이는 남은 항목으로 판정합니다.",
+    "번들 원본은 국가유산청 공개 웹 미리보기 JPEG 4개(500×354)입니다. CAD 원본이나 사용자 첨부 고해상도 원본 11개를 포함하지 않습니다."
+  ]
+}

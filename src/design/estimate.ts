@@ -157,7 +157,7 @@ function create(image: PixelImage, options: EstimateOptions, attempt: number) {
   return scene;
 }
 export function compareFront(scene: BuildingDesign): Comparison {
-  const observation = scene.observations[0], front = scene.elements.find(e => e.kind === "wall" && e.provenance === "observed");
+  const observation = scene.observations.find(o => o.view === "front"), front = scene.elements.find(e => e.kind === "wall" && e.provenance === "observed");
   let intersection = 0, union = 0;
   const errors: number[] = [];
   if (observation && front) {

@@ -15,6 +15,8 @@ export type Evidence = {
   links: string[];
 };
 export type BuildingElement = {
+  massId?: string;
+  face?: "front" | "back" | "left" | "right";
   id: string;
   name: string;
   kind: "wall" | "roof" | "opening" | "detail" | "base";
@@ -54,7 +56,7 @@ export type SourceObservation = {
   pixelHeight: number;
   crop: Rect;
   projection: "orthographic" | "perspective" | "concept";
-  view: "front";
+  view: "front" | "back" | "left" | "right" | "plan" | "unknown";
   rectified: boolean;
   silhouette: XY[];
   openings: Array<{ role: "window" | "door" | "vent"; bounds: Rect }>;
@@ -71,6 +73,9 @@ export type Comparison = {
   note: string;
 };
 export type DesignRun = {
+  model?: string;
+  responseId?: string;
+  inputSources?: Array<{ id: string; name: string; page?: number; sha256: string }>;
   id: string;
   engine: "local-image-estimator" | "chatgpt-plan" | "separate-api" | "test-fixture";
   state: "running" | "completed-with-review" | "failed" | "cancelled" | "limited";
@@ -87,6 +92,7 @@ export type DesignRun = {
   error?: string;
 };
 export type BuildingDesign = {
+  masses?: Array<{ id: string; name: string; origin: XYZ; size: XYZ; roofAxis: "x" | "z"; roofOnly: boolean; evidence: Evidence[] }>;
   schema: "tradiative.building.v2";
   revision: number;
   createdAt: string;

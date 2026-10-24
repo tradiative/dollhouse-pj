@@ -25,6 +25,9 @@ export function parseBuildingDesign(input: unknown, fromAi = false, allowGeometr
     if (o.silhouette.length > 128 || o.silhouette.some(p => !Array.isArray(p) || p.length !== 2 || p.some(n => !Number.isFinite(n))) || !Array.isArray(o.warnings) || o.warnings.some(w => typeof w !== "string")) throw new Error("원본 관찰 윤곽이 잘못되었습니다.");
     if (o.pixelWidth > 30000 || o.pixelHeight > 30000 || o.crop.x < 0 || o.crop.y < 0 || o.crop.width < 2 || o.crop.height < 2 || o.crop.x + o.crop.width > o.pixelWidth || o.crop.y + o.crop.height > o.pixelHeight) throw new Error("원본 분석 영역이 이미지 범위를 벗어납니다.");
   }
+  if (p.masses) {
+    if (!Array.isArray(p.masses) || p.masses.length > 20 || new Set(p.masses.map(m => m.id)).size !== p.masses.length || p.masses.some(m => !m || !/^[A-Za-z0-9_-]{1,70}$/.test(m.id) || typeof m.name !== "string" || !Array.isArray(m.origin) || !Array.isArray(m.size) || m.origin.length !== 3 || m.size.length !== 3 || [...m.origin, ...m.size].some(n => !Number.isFinite(n) || Math.abs(n) > 10000) || m.size.some(n => n <= 0) || !["x", "z"].includes(m.roofAxis) || !Array.isArray(m.evidence))) throw new Error("건물 덩어리 메타데이터가 잘못되었습니다.");
+  }
   const errors = validateDesign(p).filter(i => i.severity === "error");
   const blocking = allowGeometryIssues ? errors.filter(i => ["numeric", "limit", "size", "reference", "fabrication", "duplicate-id"].includes(i.code)) : errors;
   if (blocking.length) throw new Error(blocking.map(i => i.message).slice(0, 3).join(" "));

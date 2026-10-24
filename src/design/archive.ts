@@ -14,7 +14,7 @@ export function parseProjectMetadata(input: unknown): Project {
   if (new Set(sources.map(s => s.id)).size !== sources.length) throw new Error("자료 ID가 중복됩니다.");
   const design = p.design ? parseBuildingDesign(p.design, false, true) : undefined;
   const designHistory = Array.isArray(p.designHistory) ? p.designHistory.slice(-10).map(h => ({ at: String(h.at).slice(0, 50), label: String(h.label).slice(0, 200), design: parseBuildingDesign(h.design, false, true) })) : [];
-  return { ...sampleProject(), name: p.name.slice(0, 100), dimensions: p.dimensions, sources, design, designHistory, physicalNote: typeof p.physicalNote === "string" ? p.physicalNote.slice(0, 10000) : "", confirmed: false, physicalConfirmed: false, generatedSignature: "", updatedAt: new Date().toISOString() };
+  return { ...sampleProject(), mode: ["empty", "sample", "manual"].includes(p.mode || "") ? p.mode : "manual", name: p.name.slice(0, 100), dimensions: p.dimensions, sources, design, designHistory, physicalNote: typeof p.physicalNote === "string" ? p.physicalNote.slice(0, 10000) : "", confirmed: false, physicalConfirmed: false, generatedSignature: "", updatedAt: new Date().toISOString() };
 }
 async function digest(bytes: Uint8Array) {
   return [...new Uint8Array(await crypto.subtle.digest("SHA-256", new Uint8Array(bytes)))].map(n => n.toString(16).padStart(2, "0")).join("");
@@ -62,7 +62,8 @@ export async function restorePackage(data: Uint8Array): Promise<Project> {
   }));
   for (const scene of [p.design, ...p.designHistory!.map(h => h.design)].filter(s => s !== undefined)) {
     for (const o of scene.observations) o.sourceId = ids.get(o.sourceId) || o.sourceId;
-    for (const proof of [...scene.assumptions, ...scene.elements.flatMap(e => e.evidence)]) if (proof.sourceId) proof.sourceId = ids.get(proof.sourceId) || proof.sourceId;
+    for (const input of scene.run?.inputSources || []) input.id = ids.get(input.id) || input.id;
+    for (const proof of [...scene.assumptions, ...scene.elements.flatMap(e => e.evidence), ...(scene.masses || []).flatMap(m => m.evidence)]) if (proof.sourceId) proof.sourceId = ids.get(proof.sourceId) || proof.sourceId;
   }
   return p;
 }

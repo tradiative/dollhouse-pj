@@ -1,0 +1,22 @@
+import {readFile,mkdir,writeFile} from "node:fs/promises";
+import {createHash} from "node:crypto";
+import path from "node:path";
+import {zipSync,strToU8} from "fflate";
+import {compileProgram} from "../src/design/program";
+import {DEFAULT_FABRICATION} from "../src/design/types";
+import {emptyProject,manifest,projectSignature,projectParts} from "../src/engine";
+import {manufacturingPackage} from "../src/design/deliverables";
+const sourceDirectory=process.argv[2];if(!sourceDirectory)throw new Error("Provide the directory of the four attributed public preview images.");
+const p=emptyProject("임피역 · 도면 해석 검토 사례");p.mode="manual";
+p.design=compileProgram(JSON.parse(await readFile("docs/cases/impi-program-v3.json","utf8")),{mode:"target-width",targetWidthMm:300},DEFAULT_FABRICATION);
+p.design.limitations.push("자료 분석은 이 개발 대화에서 수행했습니다. 웹사이트의 GPT 이미지 API 요청은 아직 미검증이며 이 사례를 M1 통과로 세지 않습니다.");
+p.generatedSignature=projectSignature(p);
+const entries:Record<string,Uint8Array>={},files:Array<{id:string;path:string;sha256:string;bytes:number}>=[];
+const add=(id:string,name:string,type:string,data:Uint8Array)=>{const entry="references/"+id;entries[entry]=data;files.push({id,path:entry,sha256:createHash("sha256").update(data).digest("hex"),bytes:data.length});p.sources.push({id,name,type,size:data.length});};
+const sources=[{id:"plan",file:"plan.jpg",title:"A-006_1층평면도",uid:"13897468918171717911"},{id:"north",file:"south.jpg",title:"A-007_정면도_북측",uid:"13897468918189717912"},{id:"sides",file:"sides.jpg",title:"A-008_좌우측면도",uid:"13897468918202717913"},{id:"south",file:"north.jpg",title:"A-009_배면도_남측",uid:"13897468918214717914"}];
+let attribution="출처: 국가유산청 국가유산 디지털 서비스 · 국가등록유산 군산 구 임피역\n공공누리 제1유형(출처 표시): 각 기록 상세 페이지의 KOGL_1 표시를 2026-10-24에 직접 확인했습니다.\n라이선스 안내: https://www.kogl.or.kr/info/licenseType1.do\n이 번들의 이미지 입력은 500×354 JPEG 웹 미리보기 4개이며 CAD 원본이나 사용자 첨부 고해상도 원본 11개가 아닙니다.\n모델은 작성자의 도면 대조·추정을 포함한 검토 사례입니다. 실제 GPT API 호출·실측·가공·조립 완료의 증거가 아닙니다.\n";
+for(const s of sources){const bytes=new Uint8Array(await readFile(path.join(sourceDirectory,s.file)));add(s.id,"군산_구_임피역_"+s.title+"_웹미리보기.jpg","image/jpeg",bytes);attribution+="\n"+s.title+"\nhttps://digital.khs.go.kr/record/recordDetailDwg.do?ichDataUid="+s.uid+"&bizId=BIZ201800002653\n";}
+add("attribution","출처·해석범위.txt","text/plain",strToU8(attribution));p.sources.at(-1)!.text=attribution;
+entries["project.json"]=strToU8(JSON.stringify({...manifest(p),sourceFiles:files}));
+await mkdir("public/cases",{recursive:true});await writeFile("public/cases/impi-v3.zip",zipSync(entries,{level:4}));await writeFile("public/cases/impi-v3-project.json",JSON.stringify(manifest(p),null,2));await writeFile("public/cases/impi-v3-parts.zip",manufacturingPackage(p));await writeFile("public/cases/IMPI-SOURCE-NOTICE.txt",attribution);
+console.log(JSON.stringify({case:"operator-reviewed Impi drawings, NOT app GPT inference",elements:p.design.elements.length,parts:projectParts(p).length,masses:p.design.masses!.length,output:"public/cases/impi-v3.zip"}));

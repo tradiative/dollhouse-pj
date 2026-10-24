@@ -3,6 +3,8 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { existsSync } from "node:fs";
 import { registerAiRoutes } from "./ai";
+import { registerPlanRoutes } from "./planRoutes";
+import { personalPlanEnabled } from "./chatgpt";
 
 const app = express();
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -21,10 +23,11 @@ app.get("/api/health", (_req, res) =>
     ok: true,
     aiConfigured: false,
     storage: "browser-local",
-    version: "0.2.0",
+    version: "0.3.0",
     mode: process.env.NODE_ENV === "production" ? "production" : "development",
   }),
 );
+registerPlanRoutes(app);
 registerAiRoutes(app);
 app.post("/api/analyze", (_req, res) => res.status(503).json({ error: "기존 치수 전용 AI 연결은 비활성입니다. CSV/TXT 판독과 브라우저 이미지 추정은 키 없이 사용할 수 있습니다. ChatGPT 사용량 연결은 공식 인증과 실제 요청 검증 전입니다." }));
 app.use("/api", (_req, res) => {
@@ -61,7 +64,7 @@ app.use(
       });
   },
 );
-const server = app.listen(port, "0.0.0.0");
+const server = app.listen(port, personalPlanEnabled() ? "127.0.0.1" : "0.0.0.0");
 server.on("listening", () =>
   console.log(
     `TRADIATIVE Studio listening on port ${port} (${process.env.NODE_ENV === "production" ? "production" : "development"})`,

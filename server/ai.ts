@@ -2,6 +2,7 @@ import type { Express } from "express";
 import { EnvHttpProxyAgent, fetch as proxyFetch } from "undici";
 import { parseBuildingDesign } from "../src/design/parse";
 import type { BuildingDesign, EstimateOptions } from "../src/design/types";
+import { compileProgram } from "../src/design/program";
 
 let separateApiVerified = false;
 const dispatcher = new EnvHttpProxyAgent();
@@ -37,7 +38,7 @@ export function readCompletedDesign(result: unknown, options: EstimateOptions, s
   const texts = value.output.flatMap(o => o.content || []).filter(c => c.type === "output_text" && typeof c.text === "string").map(c => c.text!);
   if (texts.length !== 1 || texts[0].length > 2_000_000) throw new Error("완료된 구조화 형상 결과를 받지 못했습니다.");
   const raw = JSON.parse(texts[0]);
-  const scene = parseBuildingDesign({ ...raw, schema: "tradiative.building.v2", revision: 1, createdAt: new Date().toISOString(), size: options.size, fabrication: options.fabrication }, true);
+  const scene = parseBuildingDesign(raw.schema === "tradiative.program.v1" ? compileProgram(raw, options.size, options.fabrication) : { ...raw, schema: "tradiative.building.v2", revision: 1, createdAt: new Date().toISOString(), size: options.size, fabrication: options.fabrication }, true);
   if (!scene.elements.length || !scene.elements.some(e => e.kind === "wall")) throw new Error("유효한 건물 요소가 없습니다.");
   for (const proof of [...scene.assumptions, ...scene.elements.flatMap(e => e.evidence)]) {
     if ((proof.sourceId && !sourceIds.has(proof.sourceId)) || proof.links.length) throw new Error("열람하지 않은 자료 또는 외부 검색 출처가 포함되어 결과를 적용하지 않았습니다.");

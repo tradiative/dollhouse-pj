@@ -69,7 +69,7 @@ test("downloaded SVG/DXF/STL/JSON reopen and complete ZIP restores originals wit
   await page.getByRole("button",{name:"내보내기",exact:true}).click();
   for(const format of ["SVG","DXF","STL","JSON"]){
     const pending=page.waitForEvent("download");
-    await page.getByRole("dialog").getByRole("button",{name:new RegExp(format)}).click();
+    await page.getByRole("dialog").getByRole("button",{name:format==="STL"?/3D 조립 모델/:new RegExp(format)}).click();
     const download=await pending, bytes=await readFile((await download.path())!);
     expect(bytes.length).toBeGreaterThan(100);
     expect(download.suggestedFilename()).toContain("목표폭-300mm");

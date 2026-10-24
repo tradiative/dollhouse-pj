@@ -44,6 +44,7 @@ export type Source = {
   sample?: boolean;
 };
 export type Project = {
+  mode?: "empty" | "sample" | "manual";
   name: string;
   dimensions: Dimensions;
   sources: Source[];
@@ -77,12 +78,13 @@ export const DEFAULT_DIMENSIONS: Dimensions = {
 };
 export function sampleProject(): Project {
   return {
-    name: "임피역 본관",
+    mode: "sample",
+    name: "예시 건물 · 실자료 아님",
     dimensions: { ...DEFAULT_DIMENSIONS },
     sources: [
       {
         id: "sample-elevation",
-        name: "임피역_정면입면도.svg",
+        name: "예시_정면입면도.svg",
         type: "image/svg+xml",
         size: 2840,
         sample: true,
@@ -102,6 +104,9 @@ export function sampleProject(): Project {
     physicalNote: "",
     updatedAt: new Date().toISOString(),
   };
+}
+export function emptyProject(name = "새 건축 모형"): Project {
+  return { ...sampleProject(), mode: "empty", name, sources: [] };
 }
 export function signature(d: Dimensions) {
   return JSON.stringify(
@@ -143,7 +148,7 @@ export function projectParts(p: Project) {
   return p.design ? compileDesign(p.design) : awaitingImageModel(p) ? [] : buildParts(p.dimensions);
 }
 export function awaitingImageModel(p: Project) {
-  return !p.design && !p.confirmed && p.sources.some(s => !s.sample && (/^image\/(png|jpeg|webp)$/.test(s.type) || /\.pdf$/i.test(s.name)));
+  return !p.design && !p.confirmed && (p.mode === "empty" || p.sources.some(s => !s.sample && (/^image\/(png|jpeg|webp)$/.test(s.type) || /\.pdf$/i.test(s.name))));
 }
 export function geometryIssues(d: Dimensions): string[] {
   if (!validDimensions(d))

@@ -34,6 +34,8 @@ import {
 } from "lucide-react";
 import ModelView from "./ModelView";
 import DesignStudio from "./DesignStudio";
+import { manufacturingPackage, partsCsv } from "./design/deliverables";
+import { downloadBytes } from "./design/archive";
 import type { BuildingDesign } from "./design/types";
 import { modelBounds, validateDesign } from "./design/geometry";
 import { snapshot } from "./design/editing";
@@ -50,6 +52,7 @@ import {
   manifest,
   parseDimensions,
   sampleProject,
+  emptyProject,
   stlAssembly,
   stlPart,
   svgDrawing,
@@ -119,7 +122,7 @@ function loadProject(): Project {
   } catch {
     /* Keep a corrupt local file from preventing startup. */
   }
-  return sampleProject();
+  return emptyProject();
 }
 const bytes = (n: number) =>
   n > 1024 * 1024
@@ -128,7 +131,7 @@ const bytes = (n: number) =>
 
 export default function App() {
   const [project, setProject] = useState<Project>(loadProject);
-  const [stage, setStage] = useState(1);
+  const [stage, setStage] = useState(project.mode === "empty" && !project.design ? 0 : 1);
   const [nav, setNav] = useState("workspace");
   const [selected, setSelected] = useState("");
   const [filter, setFilter] = useState("all");
@@ -403,7 +406,7 @@ export default function App() {
     update({ generatedSignature: projectSignature(project) });
     notify(`${parts.length}개 파츠를 현재 설계 기준으로 생성했습니다.`);
   }
-  function exportFile(format: "svg" | "dxf" | "stl" | "json") {
+  function exportFile(format: "svg" | "dxf" | "stl" | "json" | "csv" | "package") {
     if (format !== "json" && issues.length) {
       notify("설계 기준의 치수 오류를 먼저 해결해 주세요.");
       return;
@@ -417,6 +420,8 @@ export default function App() {
     const safeName = project.name.replace(/[\\/:*?"<>|]/g, "_");
     const sizeLabel = project.design ? (project.design.size.mode === "known-reference" ? "1-" + project.design.size.scaleDenominator : "목표폭-" + project.design.size.targetWidthMm + "mm") : "1-" + d.scale;
     const prefix = safeName + "_" + sizeLabel + "_검토용";
+    if (format === "csv") download(partsCsv(parts, project.design?.revision || "legacy"), `${prefix}_부품표.csv`, "text/csv;charset=utf-8");
+    if (format === "package") downloadBytes(manufacturingPackage(project), `${prefix}_제작꾸러미.zip`);
     if (format === "svg")
       download(svgDrawing(parts, d, project.design?.size, project.design?.fabrication), `${prefix}.svg`, "image/svg+xml");
     if (format === "dxf")
@@ -458,7 +463,7 @@ export default function App() {
       `${project.name}_백업.json`,
       "application/json",
     );
-    setProject({ ...sampleProject(), name: newName.trim(), sources: [] });
+    setProject(emptyProject(newName.trim()));
     setCandidates([]);
     setSelected("");
     setStage(0);
@@ -591,6 +596,11 @@ export default function App() {
         <button className="new-project" onClick={() => setModal("new")}>
           <Plus size={15} />새 프로젝트 만들기
         </button>
+        <button className="new-project" onClick={() => {
+          if (project.sources.length || project.design) download(JSON.stringify(manifest(project), null, 2), `${project.name}_전환전_백업.json`, "application/json");
+          setProject(sampleProject()); setSelected(""); setStage(1);
+          notify("실제 건축물과 관계없는 예시 프로젝트입니다. 이전 원본 파일은 브라우저에 보존됩니다.");
+        }}>예시 프로젝트 열기</button>
         <div className="sidebar-bottom">
           <div className="studio-note">
             <span>
@@ -1801,11 +1811,13 @@ export default function App() {
 function ExportOptions({
   onExport,
 }: {
-  onExport: (format: "svg" | "dxf" | "stl" | "json") => void;
+  onExport: (format: "svg" | "dxf" | "stl" | "json" | "csv" | "package") => void;
 }) {
   return (
     <div className="export-options">
       {[
+        { id: "package", name: "제작 검토 꾸러미", ext: "ZIP", detail: "도안·부품별 STL·부품표·mm 단위 안내", icon: Box },
+        { id: "csv", name: "부품표", ext: "CSV", detail: "번호·재료·두께·크기·수량·형상 버전", icon: FileJson },
         {
           id: "svg",
           name: "벡터 도안",
@@ -1839,7 +1851,7 @@ function ExportOptions({
         return (
           <button
             key={f.id}
-            onClick={() => onExport(f.id as "svg" | "dxf" | "stl" | "json")}
+            onClick={() => onExport(f.id as "svg" | "dxf" | "stl" | "json" | "csv" | "package")}
           >
             <span className="export-icon">
               <Icon size={23} />

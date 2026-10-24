@@ -9,6 +9,7 @@ import { estimateInWorker, imagePixels } from "./design/client";
 import { compareFront } from "./design/estimate";
 import { downloadBytes, packageProject, restorePackage } from "./design/archive";
 import "./design/studio.css";
+import { aiReference, connectionAction, connectionStatus, DISCONNECTED, requestAiDesign, type AiConnection } from "./design/aiClient";
 
 type Props = {
   project: Project;
@@ -20,8 +21,6 @@ type Props = {
   notify: (message: string) => void;
   onAddSources: () => void;
 };
-type Connection = { state: string; label: string; reason: string; actualRequestVerified: boolean; remainingUsage: null; capabilities?: { images: string; structuredOutput: string; search: string } };
-const disconnected: Connection = { state: "disconnected", label: "ChatGPT 사용량 미연결", reason: "로그인·모델 사용 권한·이미지 요청 완료 검증이 필요합니다. 별도 과금 API로 자동 전환하지 않습니다.", actualRequestVerified: false, remainingUsage: null };
 
 async function sourceBlob(source: Source) {
   const blob = await readSourceFile(source.id);
@@ -43,7 +42,10 @@ export default function DesignStudio({ project, selectedId, onSelect, onDesign, 
   const [busy, setBusy] = useState(false);
   const [stage, setStage] = useState("준비");
   const [error, setError] = useState("");
-  const [connection, setConnection] = useState<Connection>(disconnected);
+  const [connection, setConnection] = useState<AiConnection>(DISCONNECTED);
+  const [model, setModel] = useState("");
+  const [aiSourceIds, setAiSourceIds] = useState<string[]>([]);
+  const [aiInstruction, setAiInstruction] = useState("");
   const [overlay, setOverlay] = useState(true);
   const [proofFilter, setProofFilter] = useState("all");
   const [instruction, setInstruction] = useState("");
@@ -63,7 +65,7 @@ export default function DesignStudio({ project, selectedId, onSelect, onDesign, 
   const pdf = source?.name.toLowerCase().endsWith(".pdf");
   const preview = pdf ? pdfPreview?.sourceId === sourceId ? pdfPreview.url : undefined : source?.url;
   const scene = project.design, element = scene?.elements.find(e => e.id === selectedId);
-  const observation = scene?.observations.find(o => o.sourceId === sourceId && (!pdf || o.page === pdfPreview?.page));
+  const observation = scene?.observations.find(o => o.view === "front" && o.sourceId === sourceId && (!pdf || o.page === pdfPreview?.page));
   const filtered = scene?.elements.filter(e => proofFilter === "all" || e.provenance === proofFilter) || [];
   const issues = scene ? validateDesign(scene) : [];
   useEffect(() => {
@@ -76,20 +78,31 @@ export default function DesignStudio({ project, selectedId, onSelect, onDesign, 
     if (!element) return;
     const b = bounds(element.outline); setNewWidth(b.width); setNewHeight(b.height); setMoveX(0); setMoveY(0);
   }, [selectedId, element]);
-  useEffect(() => {
-    const abort = new AbortController();
-    if (location.hostname.endsWith(".github.io")) {
-      setConnection({ ...disconnected, reason: "현재 GitHub Pages 주소에는 AI 실행부가 연결되지 않았습니다. 브라우저 이미지 추정은 사용할 수 있습니다. 구독 모델 호출 권한은 미확인입니다." });
-      return;
-    }
-    fetch("/api/ai/status", { signal: abort.signal }).then(async r => {
-      if (!r.ok) throw new Error("실행부 미연결");
-      const value = await r.json();
-      if (typeof value.state !== "string" || typeof value.actualRequestVerified !== "boolean") throw new Error("연결 상태 형식 오류");
-      setConnection(value);
-    }).catch(() => setConnection(disconnected));
-    return () => abort.abort();
-  }, []);
+  async function refreshConnection() { const c=await connectionStatus().catch(()=>DISCONNECTED);setConnection(c);setModel(current=>c.plan?.models.some(m=>m.slug===current)?current:c.plan?.models[0]?.slug||""); }
+  useEffect(() => { void refreshConnection(); }, []);
+  useEffect(() => { setAiSourceIds(current => current.filter(id=>sources.some(s=>s.id===id))); }, [project.sources]);
+  async function connect(action: "login"|"models"|"logout") {
+    if(!connection.csrf)return;
+    const popup=action==="login"?window.open("about:blank","_blank"):null;
+    if(popup)popup.opener=null;
+    try { const data=await connectionAction(action,connection.csrf);if(action==="login"){if(!data.url?.startsWith("https://auth.openai.com/api/accounts/authorize?"))throw new Error("공식 로그인 주소가 아닙니다.");if(popup)popup.location.href=data.url;else window.location.assign(data.url);}else {await refreshConnection();if(data.message)notify(data.message);} }
+    catch(e){popup?.close();setError(e instanceof Error?e.message:"연결 실패");}
+  }
+  async function runAi() {
+    const chosen=sources.filter(s=>aiSourceIds.includes(s.id));
+    if(!chosen.length){setError("AI에 전달할 같은 건물의 자료를 선택하세요.");return;}
+    const abort=new AbortController();controller.current=abort;setBusy(true);setError("");setStage("AI에 보낼 선택 자료 준비 중");
+    try{
+      const references=await Promise.all(chosen.map(s=>aiReference(s,s.name.toLowerCase().endsWith(".pdf")&&pdfPreview?.sourceId===s.id?{blob:pdfPreview.blob,page:pdfPreview.page}:undefined)));
+      if(abort.signal.aborted)throw new DOMException("취소됨","AbortError");
+      const size:SizeSettings=sizeMode==="known-reference"?{mode:sizeMode,targetWidthMm:realWidth/denominator,realWidthMm:realWidth,scaleDenominator:denominator}:{mode:sizeMode,targetWidthMm:targetWidth};
+      const options:EstimateOptions={sourceId:chosen[0].id,size,fabrication:{...DEFAULT_FABRICATION,thicknessMm:thickness},projection,completion,depthRatio,maxIterations:Math.min(3,iterations),maxDurationMs:90000};
+      setStage("GPT 이미지 해석·구조 생성·수치 검사 중");
+      const result=await requestAiDesign(connection,model,references,options,scene,aiInstruction,abort.signal);
+      onDesign(result,"실제 GPT 이미지 설계");setStage("GPT 응답 완료·형상 검사 통과·원본 대조 필요");await refreshConnection();
+    }catch(e){const cancelled=e instanceof Error&&e.name==="AbortError";setStage(cancelled?"AI 작업 취소·이전 모델 보존":"AI 작업 실패·이전 모델 보존");setError(cancelled?"취소했습니다. 이전 모델을 보존했습니다.":e instanceof Error?e.message:"AI 요청 실패");}
+    finally{setBusy(false);controller.current=null;}
+  }
   async function run() {
     if (!source) { setError("사진 또는 PDF 자료를 먼저 추가해 주세요."); return; }
     setBusy(true); setError(""); setStage("이미지 픽셀 읽는 중"); best.current = undefined;
@@ -162,6 +175,19 @@ export default function DesignStudio({ project, selectedId, onSelect, onDesign, 
     } catch (e) { setError(e instanceof Error ? e.message : "복원 실패"); }
     finally { if (zipInput.current) zipInput.current.value = ""; }
   }
+  async function loadCase() {
+    const abort = new AbortController(); controller.current = abort; setBusy(true); setError("");
+    try {
+      await backupBeforeRestore();
+      const r = await fetch(import.meta.env.BASE_URL + "cases/impi-v3.zip", { signal: abort.signal });
+      if (!r.ok) throw new Error("검토 사례 파일을 열지 못했습니다.");
+      const restored = await restorePackage(new Uint8Array(await r.arrayBuffer()));
+      if (abort.signal.aborted) throw new DOMException("취소됨", "AbortError");
+      onRestore(restored); setStage("임피역 도면 검토 사례 · GPT API 자동생성 아님");
+      notify("실제 공개 도면을 대조해 구성한 검토 사례입니다. 단순화한 부분은 근거와 제약을 확인하세요.");
+    } catch (e) { setError(e instanceof Error ? e.message : "사례 열기 실패"); }
+    finally { setBusy(false); controller.current = null; }
+  }
   async function backupBeforeRestore() {
     if (!project.sources.some(s => !s.sample) && !project.design) return;
     downloadBytes(await packageProject(project), project.name + "_가져오기전_백업.zip");
@@ -171,7 +197,7 @@ export default function DesignStudio({ project, selectedId, onSelect, onDesign, 
   }
   const obsCrop = observation?.crop;
   const front = scene?.elements.find(e => e.kind === "wall" && e.provenance === "observed");
-  const comparison = scene ? compareFront(scene) : undefined;
+  const comparison = scene?.run?.engine === "local-image-estimator" ? compareFront(scene) : undefined;
   function projectionPath(poly: Array<[number, number]>) {
     if (!scene || !observation || !obsCrop) return "";
     const pixelToMm = scene.size.targetWidthMm / (obsCrop.width - 1);
@@ -179,11 +205,29 @@ export default function DesignStudio({ project, selectedId, onSelect, onDesign, 
   }
   return <section className="design-studio" aria-label="이미지 추정·자동 보완">
     <div className="design-studio-heading"><div><span className="eyebrow">IMAGE → BUILDING ELEMENTS</span><h2>이미지 추정·자동 보완</h2><p>보이는 윤곽과 창호를 개별 요소로 만들고, 보이지 않는 깊이와 뒷면은 근거를 남겨 보완합니다.</p></div>
-      <div className="archive-actions"><button className="button secondary small" onClick={() => void backup()}><Download size={15}/>원본 포함 백업</button><button className="button secondary small" disabled={busy} onClick={() => zipInput.current?.click()}><FolderOpen size={15}/>백업 ZIP 가져오기</button><input ref={zipInput} type="file" accept=".zip" hidden onChange={e => void restore(e.target.files?.[0])}/></div></div>
+      <div className="archive-actions"><button className="button secondary small" disabled={busy} onClick={() => void loadCase()}>임피역 도면 검토 사례 열기</button><button className="button secondary small" onClick={() => void backup()}><Download size={15}/>원본 포함 백업</button><button className="button secondary small" disabled={busy} onClick={() => zipInput.current?.click()}><FolderOpen size={15}/>백업 ZIP 가져오기</button><input ref={zipInput} type="file" accept=".zip" hidden onChange={e => void restore(e.target.files?.[0])}/></div></div>
     <div className="connection-banner" role="status"><Sparkles size={18}/><div><b>{connection.label}</b><p>{connection.reason}</p><small>남은 구독 사용량: 조회하지 못함 · 실제 AI 요청: {connection.actualRequestVerified ? "완료 검증됨" : "미검증"} · 외부 검색: 미연결</small></div></div>
+    <details className="connection-options"><summary>연결 방식 보기</summary>
+      <p>현재 링크를 유지한 구독 연동: 원격 앱 승인과 사용자 인증을 갖춘 실행부가 필요합니다. 저장소에 서버 파일을 올리는 것만으로 작동하지 않습니다.</p>
+      <p>개인 PC에서 공식 로그인: 로그인·모델 목록·이미지 요청 코드를 준비했습니다. 설치 형태 선택과 실제 계정 검증은 아직 필요합니다. 현재 사이트를 로컬 전용으로 바꾸지는 않았습니다.</p>
+      <p>일반 API: 별도 요금입니다. 현재 비활성이고 자동 전환하지 않습니다.</p>
+      <a href="https://openai.com/form/sign-in-with-chatgpt-interest/" target="_blank" rel="noreferrer">공식 원격 앱 관심 등록 안내</a>
+    </details>
+    {connection.csrf && <div className="ai-account-actions">
+      <button className="button secondary small" disabled={busy} onClick={()=>void connect("login")}>Continue with ChatGPT</button>
+      <button className="button secondary small" disabled={busy} onClick={()=>void refreshConnection()}>연결 상태 새로고침</button>
+      <button className="button secondary small" disabled={busy||!connection.plan?.loginCompleted} onClick={()=>void connect("models")}>사용 가능한 모델 확인</button>
+      {connection.plan?.account && <><span>{connection.plan.account.email} · 등록 {connection.plan.account.registration}</span><button className="button secondary small" disabled={busy} onClick={()=>void connect("logout")}>앱 로그아웃</button></>}
+    </div>}
+    <div className="ai-source-selection"><b>GPT에 전달할 같은 건물의 자료 · 최대 6개</b><p>선택한 사진·도면을 한 구조로 해석합니다. PDF는 미리 연 한 페이지를 사용합니다. 로컬 윤곽 추출은 아래에서 선택한 한 입면만 처리합니다.</p>
+      {sources.map(s=><label key={s.id}><input type="checkbox" aria-label={"GPT 자료 선택: "+s.name} checked={aiSourceIds.includes(s.id)} disabled={busy||(!aiSourceIds.includes(s.id)&&aiSourceIds.length>=6)} onChange={e=>setAiSourceIds(ids=>e.target.checked?[...ids,s.id]:ids.filter(id=>id!==s.id))}/>{s.name}</label>)}
+      {connection.plan?.models.length ? <label>계정에서 확인한 모델<select aria-label="GPT 모델 선택" value={model} onChange={e=>setModel(e.target.value)}>{connection.plan.models.map(m=><option value={m.slug} key={m.slug}>{m.display_name}</option>)}</select></label> : null}
+      <label>전체 설계·수정 요청<textarea aria-label="GPT 설계 요청" value={aiInstruction} disabled={busy} onChange={e=>setAiInstruction(e.target.value)} placeholder="보존할 특징 또는 선택 요소 ID와 수정할 내용을 적어 주세요."/></label>
+    </div>
+    {scene && <p className="source-version-note">현재 모델의 근거: {[...new Set(scene.elements.flatMap(e=>e.evidence.map(v=>v.sourceId).filter(Boolean)))].map(id=>project.sources.find(s=>s.id===id)?.name||id).join(", ")||"자료 연결 기록 없음"}. {sources.some(s=>!scene.elements.some(e=>e.evidence.some(v=>v.sourceId===s.id)))?"새로 추가한 자료 중 모델에 아직 반영되지 않은 자료가 있습니다. 이전 모델을 보존 중입니다.":"자료가 추가되면 다시 해석하기 전까지 기존 모델을 유지합니다."}</p>}
     <div className="design-input-grid">
       <div className="design-reference">
-        <div className="reference-tools"><button className="button secondary small" onClick={onAddSources} disabled={busy}>이미지·PDF 추가</button><span>여러 장 중 분석할 입면 한 장을 선택하세요.</span></div>
+        <div className="reference-tools"><button className="button secondary small" onClick={onAddSources} disabled={busy}>이미지·PDF 추가</button><span>원본을 고르고 PDF 페이지나 로컬 윤곽 영역을 확인하세요.</span></div>
         <label>분석할 자료<select aria-label="분석할 자료" value={sourceId} disabled={busy} onChange={e => setSourceId(e.target.value)}><option value="">사진·도면 자료를 선택하세요</option>{sources.map(s => <option key={s.id} value={s.id}>{s.name}</option>)}</select></label>
         {pdf && <div className="pdf-controls"><label>PDF 페이지<input aria-label="PDF 분석 페이지" type="number" min="1" value={pageNumber} disabled={busy} onChange={e => setPageNumber(Number(e.target.value))}/></label><button className="button secondary small" disabled={busy} onClick={() => void openPdf()}>페이지 이미지 열기</button></div>}
         {preview ? <div className="reference-stage" onPointerDown={e => { if (!busy) { startPoint.current = cropPoint(e); e.currentTarget.setPointerCapture(e.pointerId); } }} onPointerUp={cropEnd}>
@@ -204,7 +248,7 @@ export default function DesignStudio({ project, selectedId, onSelect, onDesign, 
         <label>자동 검사·보완 최대 횟수<input aria-label="자동 보완 최대 횟수" type="number" min="1" max="5" value={iterations} onChange={e => setIterations(Number(e.target.value))}/></label>
       </fieldset><div className="design-run-actions"><button className="button primary" disabled={busy || !source || (pdf && !preview)} onClick={() => void run()}><Play size={16}/>이미지에서 외형 추정</button><button className="button secondary" disabled={!busy} onClick={() => controller.current?.abort()}><Square size={14}/>취소</button></div>
         <p className="local-engine-note">브라우저의 윤곽·대비 분석입니다. AI 의미 해석이나 건물 실측 복원은 미검증입니다. 실행 시간 15초, 외부 AI 요청 0회입니다.</p>
-        <button className="button secondary wide" disabled title={connection.reason}>ChatGPT로 설계하기 · 연결 검증 필요</button>
+        <button className="button primary wide" disabled={busy||!connection.csrf||!connection.plan?.modelAccessVerified||!model||!aiSourceIds.length} title={connection.reason} onClick={()=>void runAi()}>ChatGPT로 설계하기</button>
         <div className="run-stage" aria-live="polite"><b>{busy ? "진행 중: " : ""}{stage}</b>{scene?.run && <span>수행 {scene.run.attempts.length}/{scene.run.maxIterations}회 · 실제 AI {scene.run.actualAiCompleted ? "완료" : "미실행"}</span>}</div>
       </div>
     </div>

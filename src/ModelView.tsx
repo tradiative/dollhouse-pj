@@ -31,7 +31,7 @@ export default function ModelView({
   pendingImage?: boolean;
 }) {
   const mount = useRef<HTMLDivElement>(null);
-  const [view, setView] = useState<"3d" | "front" | "plan">("3d");
+  const [view, setView] = useState<"3d" | "front" | "back" | "left" | "right" | "plan">("3d");
   const [exploded, setExploded] = useState(false);
   const [reset, setReset] = useState(0);
   const [error, setError] = useState(false);
@@ -83,6 +83,9 @@ export default function ModelView({
     );
     const target = new THREE.Vector3(0, (h + rise) * 0.34, 0);
     if (view === "front") camera.position.set(0, target.y, 600);
+    else if (view === "back") camera.position.set(0, target.y, -600);
+    else if (view === "left") camera.position.set(-600, target.y, 0);
+    else if (view === "right") camera.position.set(600, target.y, 0);
     else camera.position.set(240, 175, 275);
     camera.lookAt(target);
     const controls = new OrbitControls(camera, renderer.domElement);
@@ -118,6 +121,11 @@ export default function ModelView({
     grid.position.y = -2.59;
     scene.add(grid);
     const building = new THREE.Group();
+    if (dimensions) building.position.set(
+      -(dimensions.min[0] + dimensions.max[0]) / 2,
+      -dimensions.min[1],
+      -(dimensions.min[2] + dimensions.max[2]) / 2,
+    );
     scene.add(building);
     const interactables: THREE.Mesh[] = [];
     const lineMaterial = new THREE.LineBasicMaterial({
@@ -336,6 +344,9 @@ export default function ModelView({
           {[
             ["3d", "3D 모델"],
             ["front", "정면도"],
+            ["back", "후면도"],
+            ["left", "좌측면"],
+            ["right", "우측면"],
             ["plan", "부품 도안"],
           ].map(([id, label]) => (
             <button
@@ -369,12 +380,12 @@ export default function ModelView({
             <button onClick={() => setView("plan")}>부품 도안 보기</button>
           </div>
         )}
-        {pendingImage && <div className="canvas-fallback"><Box size={35}/><p>이미지 모델을 아직 만들지 않았습니다.</p><p>위의 ‘이미지에서 외형 추정’을 실행해 주세요.</p></div>}
+        {pendingImage && <div className="canvas-fallback"><Box size={35}/><p>모델을 아직 만들지 않았습니다.</p><p>자료를 첨부해 모델 만들기를 시작해 주세요.</p></div>}
         <div className="canvas-label">
           <span className="tiny-dot" />{" "}
           {view === "plan"
             ? "제작 전 검토용 · kerf 보정 전"
-            : design ? "이미지 윤곽 추정 · 깊이 보완 · 검토용" : "기존 예시 형상 · 이미지 분석 결과 아님"}
+            : design ? "건물 구조 · 근거·가정 검토 필요" : "기존 예시 형상 · 이미지 분석 결과 아님"}
         </div>
         <div className="compass">
           <span>N</span>
