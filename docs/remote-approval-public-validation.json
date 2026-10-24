@@ -1,0 +1,23 @@
+{
+  "version": "0.3.1",
+  "base": "https://tradiative.github.io/dollhouse-pj/",
+  "guideUrl": "https://tradiative.github.io/dollhouse-pj/connection/",
+  "phase": "public",
+  "sourceCommit": "fa117dd13b34b29c665f192059375cf108ee6144",
+  "checkedAt": "2026-10-24T03:49:17.807Z",
+  "homeHttpStatus": 200,
+  "mainEntryWorks": true,
+  "clipboardEqualsDraft": true,
+  "downloadEqualsDraft": true,
+  "draftBytes": 4691,
+  "officialFormHrefVerified": true,
+  "officialFormItselfOpened": false,
+  "officialFormSubmission": false,
+  "privacyPageOpened": true,
+  "personalInfoFieldsOnGuide": 0,
+  "mobileOverflow": false,
+  "existingImpiParts": 64,
+  "pageErrors": [],
+  "actualAiRequests": 0,
+  "remoteApprovalConfirmed": false
+}
